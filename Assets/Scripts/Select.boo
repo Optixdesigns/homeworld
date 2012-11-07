@@ -5,8 +5,10 @@ import UnityEngine
 
 class Select(MonoBehaviour):
     public numSelectedShips as int
-    #public selectedShips as Dictionary[of Ship]
-    public selectedShips as (GameObject)
+    #public selectedShips as ArrayList(GameObject)
+
+    # HOW THE HELL AM I GOING TO SHOW THIS IN THE INSPECTOR
+    public selectedShips as ArrayList = ArrayList()
 
     def Start():
         pass
@@ -31,17 +33,21 @@ class Select(MonoBehaviour):
             return
 
         // Check if this is an ship
-        ship = hit.collider.GetComponent[of ShipController]()
-        if not ship: 
+        ship = hit.collider.gameObject
+        if not ship.GetComponent[of ShipController](): 
             return
 
         // Can we select the ship
-        if not ship.selectable: 
+        if not ship.GetComponent[of ShipController]().selectable: 
             return
         
         // We got a hit
         SelectionSetSingleShip(ship)
         print('Hit a ship')
+        # test movement
+        team = ship.GetComponent[of AITeamController]()
+        team.ChangeState(AITeamController.States.Moving)
+        #ship.GetComponent[of AITeamController]().ChangeState(Moving)
 
     /*-----------------------------------------------------------------------------
         Name        : SelectionSetSingleShip
@@ -49,9 +55,6 @@ class Select(MonoBehaviour):
         Inputs      : ship - ship to select
         Outputs     :
     ----------------------------------------------------------------------------*/
-    def SelectionSetSingleShip(ship as ShipController):
-        pass
-        #dbgAssertOrIgnore(ship->playerowner == universe.curPlayerPtr);
-        #selSelected.numShips = 1;
-        #selSelected.ShipPtr[0] = ship;
-        #selCentrePoint = ship->posinfo.position;
+    def SelectionSetSingleShip(ship):
+        numSelectedShips = 1
+        selectedShips.Add(ship)

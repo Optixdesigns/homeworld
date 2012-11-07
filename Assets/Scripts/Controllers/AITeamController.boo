@@ -74,7 +74,7 @@ class StateIdle(FSMState[AITeamController, AITeamController.States]):
 
     public override def Enter():
         controller = entity
-        controller.ChangeState(controller.States.Moving)
+        #controller.ChangeState(controller.States.Moving)
 
     public override def Execute():
         pass
