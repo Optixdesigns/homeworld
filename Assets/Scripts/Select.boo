@@ -38,7 +38,7 @@ class Select(MonoBehaviour):
 
         // Check if this is an ship
         ship = hit.collider.gameObject
-        if not ship.GetComponent[of ShipController](): 
+        if not ship.GetComponent[of ShipController]():
             return
 
         // Set target for selected ships and move
