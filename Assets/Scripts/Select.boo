@@ -4,24 +4,48 @@ import UnityEngine
 =============================================================================*/
 
 class Select(MonoBehaviour):
-    public numSelectedShips as int
-    #public selectedShips as ArrayList(GameObject)
 
-    # HOW THE HELL AM I GOING TO SHOW THIS IN THE INSPECTOR
-    public selectedShips as ArrayList = ArrayList()
+    private numSelectedShips as int
+    public selectedShips as List[of GameObject] = List[of GameObject]()
 
     def Start():
         pass
 
     def Update():
-        if Input.GetMouseButton(0):
+        if Input.GetMouseButtonDown(0):
             RightMouseClick()
 
+        if Input.GetMouseButtonDown(1):
+            LeftMouseClick()
+
     /*=============================================================================
-        Purpose : Trigger apropiate functions on right mouse click
+        Purpose : Trigger apropiate functions on RIGHT mouse click
     =============================================================================*/
     def RightMouseClick():
         SelectionClick()
+
+    /*=============================================================================
+        Purpose : Trigger apropiate functions on LEFT mouse click
+    =============================================================================*/
+    def LeftMouseClick():
+        ObjectClick()
+
+    def ObjectClick():
+        // Only if we hit something, do we continue
+        hit as RaycastHit
+        if not Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), hit):
+            return
+
+        // Check if this is an ship
+        ship = hit.collider.gameObject
+        if not ship.GetComponent[of ShipController](): 
+            return
+
+        // Set target for selected ships and move
+        for i in range(selectedShips.Count):
+            teamController = selectedShips[i].GetComponent[of AITeamController]()
+            teamController.target = ship
+            teamController.ChangeState(AITeamController.States.Moving)
 
     /*=============================================================================
         Purpose : Select ship(s) / Group(s) on mouse click
@@ -43,11 +67,9 @@ class Select(MonoBehaviour):
         
         // We got a hit
         SelectionSetSingleShip(ship)
-        print('Hit a ship')
-        # test movement
-        team = ship.GetComponent[of AITeamController]()
-        team.ChangeState(AITeamController.States.Moving)
-        #ship.GetComponent[of AITeamController]().ChangeState(Moving)
+
+    def CheckIfShip():
+        pass
 
     /*-----------------------------------------------------------------------------
         Name        : SelectionSetSingleShip
@@ -57,4 +79,4 @@ class Select(MonoBehaviour):
     ----------------------------------------------------------------------------*/
     def SelectionSetSingleShip(ship):
         numSelectedShips = 1
-        selectedShips.Add(ship)
+        selectedShips.Push(ship)

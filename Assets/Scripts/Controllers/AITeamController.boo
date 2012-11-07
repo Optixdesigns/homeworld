@@ -30,6 +30,7 @@ class AITeamController(MonoBehaviour):
         pass
 
     public def Start():
+        #Debug.Log(gameObject.GetInstanceID())
         self.MakeFSM()
 
     public def FixedUpdate():
@@ -101,19 +102,26 @@ class StateMoving(FSMState[AITeamController, AITeamController.States]):
         controller = entity
         target = entity.target
 
+        Debug.Log("attacker" + controller.gameObject.GetInstanceID())
+        Debug.Log("target" + target.GetInstanceID())
+
         // Follow the path of waypoints
         // Find the direction of the player         
-        vel as Vector3 = controller.gameObject.rigidbody.velocity
+        velocity as Vector3 = controller.gameObject.rigidbody.velocity
         moveDir as Vector3 = (target.transform.position - controller.gameObject.transform.position)
+        #Debug.Log(moveDir)
+        #print(target)
         
         // Rotate towards the waypoint
         controller.gameObject.transform.rotation = Quaternion.Slerp(controller.gameObject.transform.rotation, Quaternion.LookRotation(moveDir), (5 * Time.deltaTime))
         controller.gameObject.transform.eulerAngles = Vector3(0, controller.gameObject.transform.eulerAngles.y, 0)
         
-        vel = (moveDir.normalized * 10)
+        velocity = (moveDir.normalized * 10)
+        #Debug.Log(velocity)
         
         // Apply the new Velocity
-        controller.gameObject.rigidbody.velocity = vel
+        controller.gameObject.rigidbody.velocity = velocity
+        #Debug.Log("moving")
 
     public override def Exit():
         pass
