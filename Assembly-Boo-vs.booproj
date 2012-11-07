@@ -45,10 +45,17 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\AIMove.boo" />
-     <Compile Include="Assets\Scripts\AITeamController.boo" />
-     <Compile Include="Assets\Scripts\AITeamManager.boo" />
+     <Compile Include="Assets\Scripts\Attack.boo" />
+     <Compile Include="Assets\Scripts\Controllers\AITeamController.boo" />
+     <Compile Include="Assets\Scripts\Controllers\MainCameraController.boo" />
+     <Compile Include="Assets\Scripts\Controllers\ShipController.boo" />
      <Compile Include="Assets\Scripts\FSMSystem.boo" />
-     <Compile Include="Assets\Scripts\MainCameraController.boo" />
+     <Compile Include="Assets\Scripts\Main.boo" />
+     <Compile Include="Assets\Scripts\Managers\AITeamManager.boo" />
+     <Compile Include="Assets\Scripts\Managers\ShipManager.boo" />
+     <Compile Include="Assets\Scripts\Select.boo" />
+     <Compile Include="Assets\Scripts\ShipSelect.boo" />
+     <Compile Include="Assets\Scripts\Universe\Player.boo" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
