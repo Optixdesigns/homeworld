@@ -4,7 +4,7 @@ import System
 /*-----------------------------------------------------------------------------
     Ship Controller: Controls the current state of an ship
 -----------------------------------------------------------------------------*/
-class ShipController(MonoBehaviour):
+class Ship(MonoBehaviour):
 
     #private health as single                  // current health
     private selected as bool                // Selected flag

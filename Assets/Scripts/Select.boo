@@ -6,7 +6,8 @@ import UnityEngine
 class Select(MonoBehaviour):
 
     private numSelectedShips as int
-    public selectedShips as List[of GameObject] = List[of GameObject]()
+    #public selectedShips as List[of GameObject] = List[of GameObject]()
+    public selectedShips as List[of Ship] = List[of Ship]()
 
     def Start():
         pass
@@ -43,7 +44,7 @@ class Select(MonoBehaviour):
 
         // Set target for selected ships and move
         for i in range(selectedShips.Count):
-            __shipController = selectedShips[i].GetComponent[of ShipController]()
+            __shipController = selectedShips[i].GetComponent[of Ship]()
             __shipController.target = ship
             __shipController.behaviourOnMove.enabled = true
             #teamController.ChangeState(AITeamController.States.Moving)
@@ -60,20 +61,20 @@ class Select(MonoBehaviour):
             return
 
         // Check if this is an ship
-        ship = hit.collider.gameObject
-        if not CheckIfShip(ship):
+        obj = hit.collider.gameObject
+        if not CheckIfShip(obj):
             return
 
         // Can we select the ship
-        if not ship.GetComponent[of ShipProperties]().selectable: 
+        if not obj.GetComponent[of ShipProperties]().selectable: 
             return
         
         // We got a hit
-        SelectionSetSingleShip(ship)
+        SelectionSetSingleShip(obj.GetComponent[of Ship]())
         print("Ship selected")
 
     def CheckIfShip(obj as GameObject):
-        if obj.GetComponent[of ShipController]():
+        if obj.GetComponent[of Ship]():
             return true
 
         return false
