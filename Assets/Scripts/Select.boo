@@ -62,7 +62,7 @@ class Select(MonoBehaviour):
             return
 
         // Can we select the ship
-        if not ship.GetComponent[of ShipController]().selectable: 
+        if not ship.GetComponent[of ShipProperties]().selectable: 
             return
         
         // We got a hit

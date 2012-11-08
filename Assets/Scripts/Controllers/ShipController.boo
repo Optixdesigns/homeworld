@@ -5,9 +5,9 @@ import System
     Ship Object
 -----------------------------------------------------------------------------*/
 class ShipController(MonoBehaviour):
-    public maxHealth as single               // Maximum health
-    public health as single                  // current healt
-    public selectable as bool                // Selectable object
-    public selected as bool                // Selected or not
+
+    private health as single                  // current healt
+    private selected as bool                // Selected or not
+    private speed as single                // Current speed/velocity
 
     public player as Player // Owner of this ship
