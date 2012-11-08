@@ -95,33 +95,26 @@ class StateMoving(FSMState[AITeamController, AITeamController.States]):
         get:
             return AITeamController.States.Moving
 
-    public override def Enter():
-        pass
-
     public override def Execute():
         controller = entity
         target = entity.target
+        __shipProperties = controller.GetComponent[of ShipProperties]()
 
-        Debug.Log("attacker" + controller.gameObject.GetInstanceID())
-        Debug.Log("target" + target.GetInstanceID())
+        #Debug.Log("attacker" + controller.gameObject.GetInstanceID())
+        #Debug.Log("target" + target.GetInstanceID())
 
         // Follow the path of waypoints
-        // Find the direction of the player         
-        velocity as Vector3 = controller.gameObject.rigidbody.velocity
-        moveDir as Vector3 = (target.transform.position - controller.gameObject.transform.position)
-        #Debug.Log(moveDir)
-        #print(target)
+        // Find the direction of the player    
+        moveDir as Vector3 = (target.transform.position - controller.gameObject.transform.position)     
+        #velocity as Vector3 = controller.gameObject.rigidbody.velocity
         
         // Rotate towards the waypoint
-        controller.gameObject.transform.rotation = Quaternion.Slerp(controller.gameObject.transform.rotation, Quaternion.LookRotation(moveDir), (5 * Time.deltaTime))
+        controller.gameObject.transform.rotation = Quaternion.Slerp(controller.gameObject.transform.rotation, Quaternion.LookRotation(moveDir), (__shipProperties.maxRotate * Time.deltaTime))
         controller.gameObject.transform.eulerAngles = Vector3(0, controller.gameObject.transform.eulerAngles.y, 0)
         
-        velocity = (moveDir.normalized * 10)
-        #Debug.Log(velocity)
+        // Calculate velocity
+        velocity = (moveDir.normalized * __shipProperties.maxVelocity)
         
         // Apply the new Velocity
         controller.gameObject.rigidbody.velocity = velocity
         #Debug.Log("moving")
-
-    public override def Exit():
-        pass

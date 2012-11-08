@@ -2,14 +2,16 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Controllers/ShipController.boo">
     <Files>
-      <File FileName="Assets/Scripts/FSMSystem.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Attack.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Main.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Managers/ShipManager.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Universe/Player.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Select.boo" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Controllers/ShipController.boo" Line="1" Column="19" />
+      <File FileName="Assets/Scripts/Controllers/ShipController.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/ShipProperties.boo" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Controllers/AITeamController.boo" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Behaviours/ShipIdleController.boo" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Behaviours/ShipMoveController.boo" Line="15" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

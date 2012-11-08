@@ -18,7 +18,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_3_5_4;UNITY_3_5;UNITY_EDITOR;ENABLE_PROFILER;UNITY_STANDALONE_OSX;ENABLE_GENERICS;ENABLE_DUCK_TYPING;ENABLE_TERRAIN;ENABLE_MOVIES;ENABLE_WEBCAM;ENABLE_MICROPHONE;ENABLE_NETWORK;ENABLE_CLOTH;ENABLE_WWW;ENABLE_SUBSTANCE</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_3_5_6;UNITY_3_5;UNITY_EDITOR;ENABLE_PROFILER;UNITY_STANDALONE_OSX;ENABLE_GENERICS;ENABLE_DUCK_TYPING;ENABLE_TERRAIN;ENABLE_MOVIES;ENABLE_WEBCAM;ENABLE_MICROPHONE;ENABLE_NETWORK;ENABLE_CLOTH;ENABLE_WWW;ENABLE_SUBSTANCE</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -46,11 +46,14 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AIMove.boo" />
      <Compile Include="Assets\Scripts\Attack.boo" />
+     <Compile Include="Assets\Scripts\Behaviours\ShipIdleController.boo" />
+     <Compile Include="Assets\Scripts\Behaviours\ShipMoveController.boo" />
      <Compile Include="Assets\Scripts\Command.boo" />
      <Compile Include="Assets\Scripts\Controllers\AITeamController.boo" />
      <Compile Include="Assets\Scripts\Controllers\MainCameraController.boo" />
      <Compile Include="Assets\Scripts\Controllers\ShipController.boo" />
      <Compile Include="Assets\Scripts\FSMSystem.boo" />
+     <Compile Include="Assets\Scripts\Health.boo" />
      <Compile Include="Assets\Scripts\Main.boo" />
      <Compile Include="Assets\Scripts\Managers\AITeamManager.boo" />
      <Compile Include="Assets\Scripts\Managers\ShipManager.boo" />

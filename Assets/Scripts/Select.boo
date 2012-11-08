@@ -38,14 +38,17 @@ class Select(MonoBehaviour):
 
         // Check if this is an ship
         ship = hit.collider.gameObject
-        if not ship.GetComponent[of ShipController]():
+        if not CheckIfShip(ship):
             return
 
         // Set target for selected ships and move
         for i in range(selectedShips.Count):
-            teamController = selectedShips[i].GetComponent[of AITeamController]()
-            teamController.target = ship
-            teamController.ChangeState(AITeamController.States.Moving)
+            __shipController = selectedShips[i].GetComponent[of ShipController]()
+            __shipController.target = ship
+            __shipController.behaviourOnMove.enabled = true
+            #teamController.ChangeState(AITeamController.States.Moving)
+
+        print("Target selected")
 
     /*=============================================================================
         Purpose : Select ship(s) / Group(s) on mouse click
@@ -58,7 +61,7 @@ class Select(MonoBehaviour):
 
         // Check if this is an ship
         ship = hit.collider.gameObject
-        if not ship.GetComponent[of ShipController](): 
+        if not CheckIfShip(ship):
             return
 
         // Can we select the ship
@@ -67,9 +70,13 @@ class Select(MonoBehaviour):
         
         // We got a hit
         SelectionSetSingleShip(ship)
+        print("Ship selected")
 
-    def CheckIfShip():
-        pass
+    def CheckIfShip(obj as GameObject):
+        if obj.GetComponent[of ShipController]():
+            return true
+
+        return false
 
     /*-----------------------------------------------------------------------------
         Name        : SelectionSetSingleShip
