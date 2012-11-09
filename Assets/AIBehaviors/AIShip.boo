@@ -19,12 +19,26 @@ class Ship(MonoBehaviour):
     public behaviourOnAttackCancel as MonoBehaviour
     public behaviourOnGuard as MonoBehaviour
 
+    public currentBehaviour as MonoBehaviour
+
     def OnEnable():
-        behaviourOnIdle.enabled = true
+        currentBehaviour = behaviourOnIdle
+        currentBehaviour.enabled = true
+        
+        # Loop through all behaviours and disable them
         behaviourOnMove.enabled = false
         #behaviourOnAttack.enabled = false
         #behaviourOnAttack.enabled = false
         #behaviourOnAttack.enabled = false
 
-    #public def ChangeState(state as States):
-        #fsm.ChangeState(state)
+    def Update():
+        ChangeState(behaviourOnMove)
+
+    public def ChangeState(behaviour as MonoBehaviour):
+        # ADD EXIT POST AND PRE PROCESSORS FOR SMOOTH TRANSITIONS
+
+        // Disable current state
+        currentBehaviour.enabled = false
+        // Enable new bahavior
+        currentBehaviour = behaviour
+        currentBehaviour.enabled = true

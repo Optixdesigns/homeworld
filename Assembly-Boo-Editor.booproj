@@ -5,11 +5,11 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{1547C417-C19A-73E9-DBEF-DB0CD877DB92}</ProjectGuid>
+	<ProjectGuid>{18DD5B63-842C-23C1-8CE3-B84BD7913555}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
-	<AssemblyName>Assembly-Boo</AssemblyName>
+	<AssemblyName>Assembly-Boo-Editor</AssemblyName>
 	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
 	<FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,25 +44,26 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AIBehaviors\AIBehaviors.boo" />
-     <Compile Include="Assets\AIBehaviors\AIShip.boo" />
-     <Compile Include="Assets\AIBehaviors\States\IdleState.boo" />
-     <Compile Include="Assets\AIBehaviors\States\MoveState.boo" />
-     <Compile Include="Assets\Scripts\AIMove.boo" />
-     <Compile Include="Assets\Scripts\Attack.boo" />
-     <Compile Include="Assets\Scripts\Command.boo" />
-     <Compile Include="Assets\Scripts\Controllers\MainCameraController.boo" />
-     <Compile Include="Assets\Scripts\FSMSystem.boo" />
-     <Compile Include="Assets\Scripts\Health.boo" />
-     <Compile Include="Assets\Scripts\Main.boo" />
-     <Compile Include="Assets\Scripts\Managers\AITeamManager.boo" />
-     <Compile Include="Assets\Scripts\Managers\ShipManager.boo" />
-     <Compile Include="Assets\Scripts\Select.boo" />
-     <Compile Include="Assets\Scripts\ShipProperties.boo" />
-     <Compile Include="Assets\Scripts\ShipSelect.boo" />
-     <Compile Include="Assets\Scripts\Universe\Player.boo" />
+     <Compile Include="Assets\AIBehaviors\Editor\AIBehaviorsEditor.boo" />
+     <Compile Include="Assets\BooInspector-Samples\Ragetools\Editor\RageCanvasAlignEditor.boo" />
+     <Compile Include="Assets\BooInspector-Samples\Ragetools\Editor\RageEdgetuneEditor.boo" />
+     <Compile Include="Assets\BooInspector-Samples\Ragetools\Editor\RageGroupEditor.boo" />
+     <Compile Include="Assets\BooInspector-Samples\Ragetools\Editor\RageMagnetEditor.boo" />
+     <Compile Include="Assets\BooInspector-Samples\Ragetools\Editor\RagePivotoolsEditor.boo" />
+     <Compile Include="Assets\BooInspector-Samples\Ragetools\Editor\RageSvgInEditor.boo" />
+     <Compile Include="Assets\Editor\BooInspector\EasyEditor.boo" />
+     <Compile Include="Assets\Editor\BooInspector\EasyMacros.boo" />
+     <Compile Include="Assets\Editor\BooInspector\EasyStyles.boo" />
+     <Compile Include="Assets\Editor\RageToolsEditor.boo" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\readme-booinspector.txt" />
+ <Reference Include="\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs">
+ <HintPath>\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp.csproj">
+      <Project>{1D404749-D4E2-951A-817F-9B600498E47E}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

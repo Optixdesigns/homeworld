@@ -1,6 +1,6 @@
 import UnityEngine
 
-class ShipMoveController(MonoBehaviour): 
+class MoveState(MonoBehaviour): 
 
     def Start():
         pass
