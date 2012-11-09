@@ -4,9 +4,9 @@ import System
 /*-----------------------------------------------------------------------------
     Ship Controller: Controls the current state of an ship
 -----------------------------------------------------------------------------*/
-class Ship(MonoBehaviour):
+#import Ship as AIShip
 
-    #private health as single                  // current health
+class AIShip(MonoBehaviour):
     private selected as bool                // Selected flag
     private speed as single                // Current speed/velocity
 
@@ -20,25 +20,31 @@ class Ship(MonoBehaviour):
     public behaviourOnGuard as MonoBehaviour
 
     public currentBehaviour as MonoBehaviour
+    public startBehaviour as MonoBehaviour
 
     def OnEnable():
-        currentBehaviour = behaviourOnIdle
+        # Set current behaviour
+        currentBehaviour = startBehaviour
         currentBehaviour.enabled = true
         
-        # Loop through all behaviours and disable them
-        behaviourOnMove.enabled = false
-        #behaviourOnAttack.enabled = false
-        #behaviourOnAttack.enabled = false
-        #behaviourOnAttack.enabled = false
+        # Loop through all behaviours and disable them just to be sure
+        if behaviourOnMove:
+            behaviourOnMove.enabled = false
+        if behaviourOnAttack:
+            behaviourOnAttack.enabled = false
+        if behaviourOnAttackCancel:
+            behaviourOnAttackCancel.enabled = false
+        if behaviourOnGuard:
+            behaviourOnGuard.enabled = false
 
-    def Update():
-        ChangeState(behaviourOnMove)
+    #def Update():
+        #ChangeState(behaviourOnMove)
 
     public def ChangeState(behaviour as MonoBehaviour):
         # ADD EXIT POST AND PRE PROCESSORS FOR SMOOTH TRANSITIONS
-
         // Disable current state
         currentBehaviour.enabled = false
         // Enable new bahavior
         currentBehaviour = behaviour
         currentBehaviour.enabled = true
+

@@ -7,7 +7,7 @@ class MoveState(MonoBehaviour):
     
     def Update():
         ship = transform.parent.gameObject
-        __shipController = ship.gameObject.GetComponent[of Ship]() 
+        __shipController = ship.gameObject.GetComponent[of AIShip]() 
         __shipProperties = ship.gameObject.GetComponent[of ShipProperties]()
 
         moveDir as Vector3 = (__shipController.target.transform.position - ship.gameObject.transform.position)     

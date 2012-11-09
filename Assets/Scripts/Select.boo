@@ -7,7 +7,7 @@ class Select(MonoBehaviour):
 
     private numSelectedShips as int
     #public selectedShips as List[of GameObject] = List[of GameObject]()
-    public selectedShips as List[of Ship] = List[of Ship]()
+    public selectedShips as List[of AIShip] = List[of AIShip]()
 
     def Start():
         pass
@@ -44,7 +44,7 @@ class Select(MonoBehaviour):
 
         // Set target for selected ships and move
         for i in range(selectedShips.Count):
-            __shipController = selectedShips[i].GetComponent[of Ship]()
+            __shipController = selectedShips[i].GetComponent[of AIShip]()
             __shipController.target = ship
             __shipController.behaviourOnMove.enabled = true
             #teamController.ChangeState(AITeamController.States.Moving)
@@ -70,11 +70,11 @@ class Select(MonoBehaviour):
             return
         
         // We got a hit
-        SelectionSetSingleShip(obj.GetComponent[of Ship]())
+        SelectionSetSingleShip(obj.GetComponent[of AIShip]())
         print("Ship selected")
 
     def CheckIfShip(obj as GameObject):
-        if obj.GetComponent[of Ship]():
+        if obj.GetComponent[of AIShip]():
             return true
 
         return false

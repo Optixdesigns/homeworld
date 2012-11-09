@@ -10,7 +10,7 @@ public class Attack:
         Return      :
     ----------------------------------------------------------------------------*/
     #def Simple(ship as Ship, target as SpaceObjRotImpTarg):
-    def Simple(ship as Ship):
+    def Simple(ship as AIShip):
         #vector trajectory;
         range as single
         dist as single

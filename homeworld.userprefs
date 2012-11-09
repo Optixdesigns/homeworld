@@ -1,12 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BooInspector-Samples/Ragetools/RageCanvasAlign.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/AIBehaviors/AIShip.boo">
     <Files>
       <File FileName="Assets/BooInspector-Samples/Ragetools/RageCanvasAlign.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Behaviours/ShipMoveController.boo" Line="1" Column="1" />
-      <File FileName="Assets/AIBehaviors/AIBehaviors.boo" Line="9" Column="2" />
-      <File FileName="Assets/AIBehaviors/States/Idle.boo" Line="3" Column="1" />
-      <File FileName="Assets/AIBehaviors/Editor/AIBehaviorsEditor.boo" Line="19" Column="48" />
+      <File FileName="Assets/AIBehaviors/AIBehaviors.boo" Line="1" Column="1" />
+      <File FileName="Assets/AIBehaviors/Editor/AIBehaviorsEditor.boo" Line="1" Column="1" />
+      <File FileName="Assets/AIBehaviors/AIShip.boo" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
