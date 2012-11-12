@@ -48,6 +48,9 @@ class Ship(MonoBehaviour):
         #print("collision")
         #behaviours.ChangeState(behaviours.behaviourOnIdle)
     def OnCollisionEnter(collision as Collision):
+        // Debug-draw all contact points and normals
+        for contact as ContactPoint in collision.contacts:
+            Debug.DrawRay(contact.point, contact.normal, Color.white)
         print("collision")
         Debug.Log("yes")
         behaviours.ChangeState(behaviours.behaviourOnIdle)
