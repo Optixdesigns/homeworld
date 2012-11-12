@@ -66,8 +66,8 @@ class Select(MonoBehaviour):
             return
 
         // Can we select the ship
-        if not obj.GetComponent[of ShipProperties]().selectable: 
-            return
+        #if not obj.GetComponent[of ShipProperties]().selectable: 
+            #return
         
         // We got a hit
         SelectionSetSingleShip(obj.GetComponent[of AIShip]())

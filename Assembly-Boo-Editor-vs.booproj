@@ -57,6 +57,9 @@
      <Compile Include="Assets\Editor\RageToolsEditor.boo" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\readme-booinspector.txt" />
+ <Reference Include="Library\ScriptAssemblies\Assembly-Boo">
+ <HintPath>Library\ScriptAssemblies\Assembly-Boo.dll</HintPath>
+ </Reference>
  <Reference Include="\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs">
  <HintPath>\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs.dll</HintPath>
  </Reference>

@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\Managers\AITeamManager.boo" />
      <Compile Include="Assets\Scripts\Managers\ShipManager.boo" />
      <Compile Include="Assets\Scripts\Select.boo" />
+     <Compile Include="Assets\Scripts\Ship.boo" />
      <Compile Include="Assets\Scripts\ShipProperties.boo" />
      <Compile Include="Assets\Scripts\ShipSelect.boo" />
      <Compile Include="Assets\Scripts\Universe\Player.boo" />

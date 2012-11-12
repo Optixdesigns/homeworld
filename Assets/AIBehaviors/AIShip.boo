@@ -7,6 +7,7 @@ import System
 #import Ship as AIShip
 
 class AIShip(MonoBehaviour):
+
     private selected as bool                // Selected flag
     private speed as single                // Current speed/velocity
 

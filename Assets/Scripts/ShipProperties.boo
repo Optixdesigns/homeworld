@@ -5,10 +5,10 @@ import System
 /*-----------------------------------------------------------------------------
     Holds the ship static properties
 -----------------------------------------------------------------------------*/
-class ShipProperties (MonoBehaviour):
+[System.Serializable]
+public class ShipProperties:
 
     public mass as single 
-    #public maxHealth as single               // Maximum health 
     public selectable as bool                // Selectable object
     public maxVelocity as single               // // maximum velocity
     public maxRotate as single               // // maximum rotate speed
