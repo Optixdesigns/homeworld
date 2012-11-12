@@ -1,7 +1,7 @@
 import UnityEngine
 
-
-class IdleState(MonoBehaviour):
+[System.Serializable]
+class IdleState(AIState):
     def Start():
         pass
     

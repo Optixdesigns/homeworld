@@ -5,27 +5,22 @@ import System
     Ship Controller: Controls the current state of an ship
 -----------------------------------------------------------------------------*/
 #import Ship as AIShip
-
-class AIShip(MonoBehaviour):
-
-    private selected as bool                // Selected flag
-    private speed as single                // Current speed/velocity
-
-    public target as GameObject
-    public player as Player // Owner of this ship
-
+[System.Serializable]
+public class AIShipBehaviours(MonoBehaviour):
     public behaviourOnIdle as MonoBehaviour
     public behaviourOnMove as MonoBehaviour
     public behaviourOnAttack as MonoBehaviour
     public behaviourOnAttackCancel as MonoBehaviour
     public behaviourOnGuard as MonoBehaviour
+    public behaviourOnStart as MonoBehaviour
 
-    public currentBehaviour as MonoBehaviour
-    public startBehaviour as MonoBehaviour
+    public triggerOnAttack as MonoBehaviour
+
+    private currentBehaviour as MonoBehaviour
 
     def OnEnable():
         # Set current behaviour
-        currentBehaviour = startBehaviour
+        currentBehaviour = behaviourOnStart
         currentBehaviour.enabled = true
         
         # Loop through all behaviours and disable them just to be sure
@@ -37,7 +32,7 @@ class AIShip(MonoBehaviour):
             behaviourOnAttackCancel.enabled = false
         if behaviourOnGuard:
             behaviourOnGuard.enabled = false
-
+   
     #def Update():
         #ChangeState(behaviourOnMove)
 

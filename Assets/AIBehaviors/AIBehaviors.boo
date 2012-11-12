@@ -6,12 +6,14 @@ import System.Collections.Generic
 import System.Globalization
 
 
-[AddComponentMenu('AIBehaviors')]
-public class AIBehaviors(MonoBehaviour):
+#[AddComponentMenu('AIBehaviors')]
+[System.Serializable]
+public class AIBehaviors():
 
-    public AIStates as List[of AIState] = List[of AIState]()
-    public AITriggers as List[of AITrigger] = List[of AITrigger]()
-    public MinVertexDensity = 3
+    #public AIStates as List[of AIState] = List[of AIState]()
+    #public AITriggers as List[of AITrigger] = List[of AITrigger]()
+    public states as AIState
+    public triggers as List[of AITrigger]
 
     #public def Awake():
         #AIStates.Add(AIIdleState())
@@ -27,8 +29,8 @@ public class AIBehaviors(MonoBehaviour):
         #stateRef.Add(state.ID, state)
         #return stat
 
-
-public class AIState:
+[System.Serializable]
+public class AIState(MonoBehaviour):
 
     public virtual def Reason(fsm as AIBehaviors):
         pass
@@ -36,7 +38,7 @@ public class AIState:
     public virtual def Action(fsm as AIBehaviors):
         pass
 
-
+[System.Serializable]
 public class AITrigger:
 
     public virtual def Evaluate(fsm as AIBehaviors):

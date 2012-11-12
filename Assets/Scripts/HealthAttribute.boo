@@ -2,7 +2,7 @@ import UnityEngine
 import System
 
 [System.Serializable]
-class HealthAttribute:
+class HealthAttribute(MonoBehaviour):
     public maxHealth as single = 100.0
     public regenerateSpeed as single = 0.0
     public invincible as bool = false
@@ -20,6 +20,3 @@ class HealthAttribute:
 
     [HideInInspector]
     public health as single = 100.0
-
-    #def OnEnable():
-        #health = maxHealth

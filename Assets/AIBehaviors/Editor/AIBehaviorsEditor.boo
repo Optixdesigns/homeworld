@@ -5,7 +5,7 @@ import UnityEngine
 Setup AIBehavior in an gameobject
 
 */
-
+/*
 [CustomEditor(typeof(AIBehaviors))]
 public class AIBehaviorsEditor(RageToolsEditor): 
     
@@ -28,3 +28,4 @@ public class AIBehaviorsEditor(RageToolsEditor):
             EasyRow:
                 LookLikeControls(50f, 10f)
                 EasyIntField "state", _aiBehaviors.MinVertexDensity
+*/

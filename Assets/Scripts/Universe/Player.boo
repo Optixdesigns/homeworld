@@ -1,7 +1,7 @@
 import UnityEngine
 
 class Player(MonoBehaviour): 
-	public playerMothership as AIShip
+	public playerMothership as Ship
 
 	def Start ():
 		pass

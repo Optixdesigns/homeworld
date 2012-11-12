@@ -7,10 +7,12 @@ class Select(MonoBehaviour):
 
     private numSelectedShips as int
     #public selectedShips as List[of GameObject] = List[of GameObject]()
-    public selectedShips as List[of AIShip] = List[of AIShip]()
-
+    public selectedShips as List[of Ship] = List[of Ship]() // Reference to the selected ships
+    private _command as CommandLayer
+    
     def Start():
-        pass
+        _command = GetComponent(typeof(CommandLayer))
+        #command = GameObject.Find("GameManager").GetComponent[of CommandLayer]()
 
     def Update():
         if Input.GetMouseButtonDown(0):
@@ -38,17 +40,12 @@ class Select(MonoBehaviour):
             return
 
         // Check if this is an ship
-        ship = hit.collider.gameObject
-        if not CheckIfShip(ship):
+        target = hit.collider.gameObject
+        if not CheckIfShip(target):
             return
 
-        // Set target for selected ships and move
-        for i in range(selectedShips.Count):
-            __shipController = selectedShips[i].GetComponent[of AIShip]()
-            __shipController.target = ship
-            __shipController.behaviourOnMove.enabled = true
-            #teamController.ChangeState(AITeamController.States.Moving)
-
+        // Send move command
+        _command.Move(selectedShips, target.transform.position)
         print("Target selected")
 
     /*=============================================================================
@@ -70,11 +67,11 @@ class Select(MonoBehaviour):
             #return
         
         // We got a hit
-        SelectionSetSingleShip(obj.GetComponent[of AIShip]())
+        SelectionSetSingleShip(obj.GetComponent[of Ship]())
         print("Ship selected")
 
     def CheckIfShip(obj as GameObject):
-        if obj.GetComponent[of AIShip]():
+        if obj.GetComponent[of Ship]():
             return true
 
         return false

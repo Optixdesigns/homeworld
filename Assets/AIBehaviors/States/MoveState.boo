@@ -1,24 +1,31 @@
 import UnityEngine
 
-class MoveState(MonoBehaviour): 
+[System.Serializable]
+class MoveState(AIState): 
+    private _ship as Ship
 
     def Start():
-        pass
+        ship = transform.parent.gameObject.GetComponent[of Ship]()
     
     def Update():
-        ship = transform.parent.gameObject
-        __shipController = ship.gameObject.GetComponent[of AIShip]() 
-        __shipProperties = ship.gameObject.GetComponent[of Ship]()
+        ship = transform.parent.gameObject.GetComponent[of Ship]()
 
-        moveDir as Vector3 = (__shipController.target.transform.position - ship.gameObject.transform.position)     
-        #velocity as Vector3 = controller.gameObject.rigidbody.velocity
+        #moveToPosition = ship.moveToPosition + ship.damageAttribute.range // Stay at perfect damage range
+        moveDir as Vector3 = (ship.moveToPosition - ship.gameObject.transform.position) 
         
         // Rotate towards the waypoint
-        gameObject.transform.rotation = Quaternion.Slerp(gameObject.transform.rotation, Quaternion.LookRotation(moveDir), (__shipProperties.baseProperties.maxRotate * Time.deltaTime))
-        gameObject.transform.eulerAngles = Vector3(0, gameObject.transform.eulerAngles.y, 0)
+        ship.gameObject.transform.rotation = Quaternion.Slerp(ship.gameObject.transform.rotation, Quaternion.LookRotation(moveDir), (ship.baseProperties.maxRotate * Time.deltaTime))
+        ship.gameObject.transform.eulerAngles = Vector3(0, ship.gameObject.transform.eulerAngles.y, 0)
         
         // Calculate velocity
-        velocity = (moveDir.normalized * __shipProperties.baseProperties.maxVelocity)
+        velocity = (moveDir.normalized * ship.baseProperties.maxVelocity)
         
         // Apply the new Velocity
-        gameObject.rigidbody.velocity = velocity
+        ship.gameObject.rigidbody.velocity = velocity
+
+        # CHECK IF SOMETHING IS IN THE WAY
+
+    def OnCollisionEnter(collision as Collision):
+        _ship.behaviours.ChangeState(_ship.behaviours.behaviourOnIdle)
+
+

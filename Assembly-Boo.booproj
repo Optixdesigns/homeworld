@@ -45,15 +45,16 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\AIBehaviors\AIBehaviors.boo" />
-     <Compile Include="Assets\AIBehaviors\AIShip.boo" />
+     <Compile Include="Assets\AIBehaviors\AIShipBehaviours.boo" />
      <Compile Include="Assets\AIBehaviors\States\IdleState.boo" />
      <Compile Include="Assets\AIBehaviors\States\MoveState.boo" />
      <Compile Include="Assets\Scripts\AIMove.boo" />
      <Compile Include="Assets\Scripts\Attack.boo" />
-     <Compile Include="Assets\Scripts\Command.boo" />
+     <Compile Include="Assets\Scripts\CommandLayer.boo" />
      <Compile Include="Assets\Scripts\Controllers\MainCameraController.boo" />
+     <Compile Include="Assets\Scripts\DamageAttribute.boo" />
      <Compile Include="Assets\Scripts\FSMSystem.boo" />
-     <Compile Include="Assets\Scripts\Health.boo" />
+     <Compile Include="Assets\Scripts\HealthAttribute.boo" />
      <Compile Include="Assets\Scripts\Main.boo" />
      <Compile Include="Assets\Scripts\Managers\AITeamManager.boo" />
      <Compile Include="Assets\Scripts\Managers\ShipManager.boo" />
@@ -63,6 +64,7 @@
      <Compile Include="Assets\Scripts\ShipSelect.boo" />
      <Compile Include="Assets\Scripts\Universe\Player.boo" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\Debugger\READ ME.txt" />
      <None Include="Assets\readme-booinspector.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

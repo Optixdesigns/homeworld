@@ -56,6 +56,7 @@
      <Compile Include="Assets\Editor\BooInspector\EasyStyles.boo" />
      <Compile Include="Assets\Editor\RageToolsEditor.boo" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\Debugger\READ ME.txt" />
      <None Include="Assets\readme-booinspector.txt" />
  <Reference Include="Library\ScriptAssemblies\Assembly-Boo">
  <HintPath>Library\ScriptAssemblies\Assembly-Boo.dll</HintPath>
