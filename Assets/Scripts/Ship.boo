@@ -10,7 +10,7 @@ class Ship(MonoBehaviour):
     private selected as bool                // Selected flag
     private speed as single                // Current speed/velocity
 
-    public target as GameObject	// target
+    public target as GameObject // target
     public moveToPosition as Vector3 // move to position
     public player as Player // Owner of this ship
 
@@ -26,20 +26,28 @@ class Ship(MonoBehaviour):
     public damageAttribute as DamageAttribute
 
     def Start():
-    	// Setup initial values and references
-    	behaviours = gameObject.GetComponent[of AIShipBehaviours]() // REQUIRED
-    	healthAttribute = gameObject.GetComponent[of HealthAttribute]() // REQUIRED
-    	damageAttribute = gameObject.GetComponent[of DamageAttribute]() // REQUIRED
-    	
-    	gameObject.rigidbody.mass = baseProperties.mass
-    	gameObject.rigidbody.detectCollisions = false // For now
+        // Setup initial values and references
+        behaviours = gameObject.GetComponent[of AIShipBehaviours]() // REQUIRED
+        healthAttribute = gameObject.GetComponent[of HealthAttribute]() // REQUIRED
+        damageAttribute = gameObject.GetComponent[of DamageAttribute]() // REQUIRED
+        
+        gameObject.rigidbody.mass = baseProperties.mass
+        gameObject.rigidbody.detectCollisions = false // For now
 
-    	// Check our setup
-    	if baseProperties.maxVelocity == 0.0:
-    		Debug.Log("WARNING: Ships maximum velocity is zero") 
+        // Check our setup
+        if baseProperties.maxVelocity == 0.0:
+            Debug.Log("WARNING: Ships maximum velocity is zero")
 
     def setTarget(t as GameObject):
-    	target = t
+        target = t
 
     def setTargetPosition(p as Vector3):
-    	targetPosition = p
+        targetPosition = p
+
+    #def OnCollisionEnter(collision as Collision):
+        #print("collision")
+        #behaviours.ChangeState(behaviours.behaviourOnIdle)
+    def OnCollisionEnter(collision as Collision):
+        print("collision")
+        Debug.Log("yes")
+        behaviours.ChangeState(behaviours.behaviourOnIdle)

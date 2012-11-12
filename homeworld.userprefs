@@ -1,8 +1,21 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../../New Unity Project 3/Assets/TDTK_Free/Scripts/C#/UnitTower.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/AIBehaviors/States/MoveState.boo">
     <Files>
-      <File FileName="../../New Unity Project 3/Assets/TDTK_Free/Scripts/C#/UnitTower.cs" Line="874" Column="40" />
+      <File FileName="../../New Unity Project 3/Assets/TDTK_Free/Scripts/C#/UnitTower.cs" Line="389" Column="58" />
+      <File FileName="Assets/BooInspector-Samples/Ragetools/RageCanvasAlign.cs" Line="1" Column="1" />
+      <File FileName="Assets/AIBehaviors/AIBehaviors.boo" Line="1" Column="1" />
+      <File FileName="Assets/AIBehaviors/States/MoveState.boo" Line="13" Column="14" />
+      <File FileName="Assets/Scripts/Select.boo" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Ship.boo" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/HealthAttribute.boo" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/CommandLayer.boo" Line="28" Column="30" />
+      <File FileName="Assets/Scripts/DamageAttribute.boo" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Attack.boo" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Universe/Player.boo" Line="1" Column="1" />
+      <File FileName="Assets/AIBehaviors/AIShipBehaviours.boo" Line="15" Column="14" />
+      <File FileName="Assets/AIBehaviors/Editor/AIBehaviorsEditor.boo" Line="1" Column="1" />
+      <File FileName="../../New Unity Project 3/Assets/TDTK_Free/Scripts/C#/Unit.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

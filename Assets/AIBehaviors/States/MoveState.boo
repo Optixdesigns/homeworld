@@ -5,27 +5,29 @@ class MoveState(AIState):
     private _ship as Ship
 
     def Start():
-        ship = transform.parent.gameObject.GetComponent[of Ship]()
+        _ship = transform.parent.gameObject.GetComponent[of Ship]()
     
     def Update():
-        ship = transform.parent.gameObject.GetComponent[of Ship]()
-
         #moveToPosition = ship.moveToPosition + ship.damageAttribute.range // Stay at perfect damage range
-        moveDir as Vector3 = (ship.moveToPosition - ship.gameObject.transform.position) 
+        moveDir as Vector3 = (_ship.moveToPosition - _ship.gameObject.transform.position) 
         
         // Rotate towards the waypoint
-        ship.gameObject.transform.rotation = Quaternion.Slerp(ship.gameObject.transform.rotation, Quaternion.LookRotation(moveDir), (ship.baseProperties.maxRotate * Time.deltaTime))
-        ship.gameObject.transform.eulerAngles = Vector3(0, ship.gameObject.transform.eulerAngles.y, 0)
+        _ship.gameObject.transform.rotation = Quaternion.Slerp(_ship.gameObject.transform.rotation, Quaternion.LookRotation(moveDir), (_ship.baseProperties.maxRotate * Time.deltaTime))
+        _ship.gameObject.transform.eulerAngles = Vector3(0, _ship.gameObject.transform.eulerAngles.y, 0)
         
         // Calculate velocity
-        velocity = (moveDir.normalized * ship.baseProperties.maxVelocity)
+        velocity = (moveDir.normalized * _ship.baseProperties.maxVelocity)
         
         // Apply the new Velocity
-        ship.gameObject.rigidbody.velocity = velocity
+        _ship.gameObject.rigidbody.velocity = velocity
 
-        # CHECK IF SOMETHING IS IN THE WAY
+        # CHECK IF SOMETHING IS IN THE WAY OR ARRIVED
+        if _ship.moveToPosition == _ship.gameObject.transform.position: // arrived
+            _ship.behaviours.ChangeState(_ship.behaviours.behaviourOnIdle)
 
-    def OnCollisionEnter(collision as Collision):
+    def OnTriggerEnter(other as Collider):
+        print("collision")
         _ship.behaviours.ChangeState(_ship.behaviours.behaviourOnIdle)
+        #Destroy(other.gameObject)
 
 
