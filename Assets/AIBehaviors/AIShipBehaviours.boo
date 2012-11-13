@@ -18,7 +18,7 @@ public class AIShipBehaviours(MonoBehaviour):
 
     private currentBehaviour as MonoBehaviour
 
-    def OnEnable():
+    def Awake():
         # Set current behaviour
         currentBehaviour = behaviourOnStart
         currentBehaviour.enabled = true
@@ -32,6 +32,12 @@ public class AIShipBehaviours(MonoBehaviour):
             behaviourOnAttackCancel.enabled = false
         if behaviourOnGuard:
             behaviourOnGuard.enabled = false
+
+        // Setup collision sphere
+        #sphere = gameObject.GetComponent("SphereCollider")
+        #sphere.radius = baseProperties.collisionRadius
+        #_collisionSphere.isTrigger = true
+        #print(_collisionSphere.Rigidbody)
    
     #def Update():
         #ChangeState(behaviourOnMove)
@@ -43,4 +49,19 @@ public class AIShipBehaviours(MonoBehaviour):
         // Enable new bahavior
         currentBehaviour = behaviour
         currentBehaviour.enabled = true
+    
+    def OnTriggerEnter(collider as Collider):
+        // Debug-draw all contact points and normals
+        #for contact as ContactPoint in collision.contacts:
+            #Debug.DrawRay(contact.point, contact.normal, Color.white)
+        
+        print("collision")
+        Debug.Log("yes")
 
+    def OnCollisionEnter(collider as Collision):
+        // Debug-draw all contact points and normals
+        #for contact as ContactPoint in collision.contacts:
+            #Debug.DrawRay(contact.point, contact.normal, Color.white)
+        
+        print("collision")
+        Debug.Log("yes")

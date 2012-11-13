@@ -27,6 +27,7 @@ class MoveState(AIState):
 
     def OnTriggerEnter(other as Collider):
         print("collision")
+        Debug.Log("collision")
         _ship.behaviours.ChangeState(_ship.behaviours.behaviourOnIdle)
         #Destroy(other.gameObject)
 

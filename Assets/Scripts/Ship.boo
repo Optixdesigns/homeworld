@@ -15,8 +15,6 @@ class Ship(MonoBehaviour):
     public player as Player // Owner of this ship
 
     public baseProperties as ShipProperties
-    #public healthAttribute as HealthAttribute
-    #public damageAttribute as DamageAttribute
 
     [HideInInspector]
     public behaviours as AIShipBehaviours
@@ -25,18 +23,33 @@ class Ship(MonoBehaviour):
     [HideInInspector]
     public damageAttribute as DamageAttribute
 
-    def Start():
+    #private _collisionSphere as SphereCollider // Collision Sphere, used as trigger
+
+    def Awake():
         // Setup initial values and references
         behaviours = gameObject.GetComponent[of AIShipBehaviours]() // REQUIRED
         healthAttribute = gameObject.GetComponent[of HealthAttribute]() // REQUIRED
         damageAttribute = gameObject.GetComponent[of DamageAttribute]() // REQUIRED
         
+        // Set rigibody
         gameObject.rigidbody.mass = baseProperties.mass
         gameObject.rigidbody.detectCollisions = false // For now
+
+        // Setup collision sphere
+        #_collisionSphere = gameObject.AddComponent("SphereCollider")
+        #_collisionSphere.radius = baseProperties.collisionRadius
+        #_collisionSphere.isTrigger = true
+        #print(_collisionSphere.Rigidbody)
+
+        #print(collider)
 
         // Check our setup
         if baseProperties.maxVelocity == 0.0:
             Debug.Log("WARNING: Ships maximum velocity is zero")
+
+    def Update():
+        pass
+        #print("update")
 
     def setTarget(t as GameObject):
         target = t
@@ -44,13 +57,16 @@ class Ship(MonoBehaviour):
     def setTargetPosition(p as Vector3):
         targetPosition = p
 
-    #def OnCollisionEnter(collision as Collision):
-        #print("collision")
-        #behaviours.ChangeState(behaviours.behaviourOnIdle)
+
     def OnCollisionEnter(collision as Collision):
-        // Debug-draw all contact points and normals
-        for contact as ContactPoint in collision.contacts:
-            Debug.DrawRay(contact.point, contact.normal, Color.white)
         print("collision")
         Debug.Log("yes")
-        behaviours.ChangeState(behaviours.behaviourOnIdle)
+
+    def OnTriggerEnter(collider as Collider):
+        // Debug-draw all contact points and normals
+        #for contact as ContactPoint in collision.contacts:
+            #Debug.DrawRay(contact.point, contact.normal, Color.white)
+        
+        print("collision")
+        Debug.Log("yes")
+        #behaviours.ChangeState(behaviours.behaviourOnIdle)

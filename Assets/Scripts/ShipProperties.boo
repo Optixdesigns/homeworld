@@ -9,10 +9,11 @@ import System
 public class ShipProperties:
 
     public mass as single = 0.1
-    public selectable as bool                // Selectable object
-    public maxVelocity as single = 0.0               // // maximum velocity
-    public maxRotate as single               // // maximum rotate speed
-    public accelerationSpeed as single               // Acceleration speed
+    public selectable as bool = false               // Selectable object
+    public maxVelocity as single = 1.0               // // maximum velocity
+    public maxRotate as single = 1.0             // maximum rotate speed
+    public accelerationSpeed as single = 1.0         // Acceleration speed
+    public collisionRadius as single = 2.0 // Collision Radius
 
 
     #public thrustStrength as single
