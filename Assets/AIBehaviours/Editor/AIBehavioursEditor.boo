@@ -10,10 +10,13 @@ public class AIBehavioursEditor(Editor):
     
     private fsm as AIBehaviours = null
     private m_Object as SerializedObject
+    /// Holds reference to the "States" gameobject
     private statesGameObject as GameObject
 
     /// Toggle states for each state foldout
     toggle as Dictionary[of int, bool] = Dictionary[of int, bool]()
+    
+    m_InitialState as SerializedProperty
 
     def OnEnable():
         states as (AIState)
@@ -26,7 +29,11 @@ public class AIBehavioursEditor(Editor):
         for i in range(0, fsm.stateCount):
             toggle[i] = false
 
+        m_InitialState = m_Object.FindProperty('initialState')
+
     public override def OnInspectorGUI():
+        m_Object.Update()
+
         states as (AIState) = fsm.GetAllStates()
         
         for i in range(0, fsm.stateCount):
@@ -48,6 +55,8 @@ public class AIBehavioursEditor(Editor):
                 GUILayout.EndHorizontal()
 
         DrawInitialStatePopup()
+
+        m_Object.ApplyModifiedProperties()
 
     def OnInspectorUpdate():
         Repaint()
@@ -105,21 +114,26 @@ public class AIBehavioursEditor(Editor):
                 sObject.ApplyModifiedProperties()
 
     private def DrawInitialStatePopup():
-        m_InitialState as SerializedProperty = m_Object.FindProperty('initialState')
+        #m_InitialState as SerializedProperty = m_Object.FindProperty('initialState')
+        #state = (m_InitialState.objectReferenceValue as AIState)
+        #indexPopup as int = 0
         state = (m_InitialState.objectReferenceValue as AIState)
         
         statesList as List[of string] = List[of string]()
         states as (AIState) = fsm.GetAllStates()
-        __index as int = 0
-        __currentIndex as int = 0
+        
+        #__currentIndex as int = 0
 
         for i in range(0, fsm.stateCount):
+            if state.name == states[i].name:
+                indexPopup = i
             statesList.Add(states[i].name)
         
-        GUILayout.Label('Initial State:')
-        __index = EditorGUILayout.Popup(__index, statesList.ToArray())
+        #GUILayout.Label('Initial State:')
+        indexPopup = EditorGUILayout.Popup('Initial State:', indexPopup, statesList.ToArray())
         
-        if __index != __currentIndex:
-            __currentIndex = __index
+        #if __index != __currentIndex:
+            #__currentIndex = __index
             #Debug.Log(__currentIndex)
-            m_InitialState.objectReferenceValue = states[__index]
+        m_InitialState.objectReferenceValue = states[indexPopup]
+        #m_Object.ApplyModifiedProperties()
