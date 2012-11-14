@@ -43,7 +43,11 @@ public class AIBehavioursEditor(Editor):
 
             /// Render state if toggled
             if toggle[i]:
+                GUILayout.BeginHorizontal()
                 states[i].DrawInspectorEditor(fsm)
+                GUILayout.EndHorizontal()
+
+        DrawInitialStatePopup()
 
     def OnInspectorUpdate():
         Repaint()
@@ -99,3 +103,23 @@ public class AIBehavioursEditor(Editor):
                 
                 mProp.stringValue = AIBehaviorsComponentInfoHelper.GetNameFromType(stateTypeName)
                 sObject.ApplyModifiedProperties()
+
+    private def DrawInitialStatePopup():
+        m_InitialState as SerializedProperty = m_Object.FindProperty('initialState')
+        state = (m_InitialState.objectReferenceValue as AIState)
+        
+        statesList as List[of string] = List[of string]()
+        states as (AIState) = fsm.GetAllStates()
+        __index as int = 0
+        __currentIndex as int = 0
+
+        for i in range(0, fsm.stateCount):
+            statesList.Add(states[i].name)
+        
+        GUILayout.Label('Initial State:')
+        __index = EditorGUILayout.Popup(__index, statesList.ToArray())
+        
+        if __index != __currentIndex:
+            __currentIndex = __index
+            #Debug.Log(__currentIndex)
+            m_InitialState.objectReferenceValue = states[__index]
