@@ -21,6 +21,12 @@ public class AIBehaviours(MonoBehaviour):
     /// Holds reference to the "States" gameobject
     public statesGameObject as GameObject = null
 
+    /*
+        Callables
+    */
+    public callable StateChangedDelegate(newState as AIState, previousState as AIState)
+    public onStateChanged as StateChangedDelegate = null
+
     def Awake():
         pass
 
@@ -29,7 +35,28 @@ public class AIBehaviours(MonoBehaviour):
 
     def ReplaceAllStates(newStates as (AIState)):
         states = newStates
+    /*
+    public def ChangeActiveStateByName(stateName as string):
+        for state as AIState in states:
+            if state.name.Equals(stateName):
+                ChangeActiveState(state)
+                return
+    */
+    public def ChangeActiveStateByIndex(index as int):
+        ChangeActiveState(states[index])
 
+    public def ChangeActiveState(newState as AIState):
+        previousState as AIState = currentState
+        
+        if currentState is not null:
+            currentState.EndState(self)
+        
+        currentState = newState
+        
+        if currentState is not null:
+            currentState.InitState(self)
+        onStateChanged(newState, previousState)
+        
 
 #[System.Serializable]
 public abstract class AIState(MonoBehaviour):
@@ -38,14 +65,32 @@ public abstract class AIState(MonoBehaviour):
 
     #[SerializeField]
     public triggers as (AITrigger) = array(AITrigger, 0)
-    #public triggers as List[of AITrigger]
-
-    public virtual def Reason(fsm as AIBehaviours):
+    
+    /*
+        State methods
+    */
+    protected abstract def Init(fsm as AIBehaviours):
         pass
 
-    public virtual def Action(fsm as AIBehaviours):
+    protected abstract def StateEnded(fsm as AIBehaviours):
         pass
 
+    protected abstract def Reason(fsm as AIBehaviours) as bool:
+        pass
+
+    protected abstract def Action(fsm as AIBehaviours):
+        pass
+
+    public def InitState(fsm as AIBehaviours):        
+        #InitTriggers()
+        Init(fsm)
+    
+    public def EndState(fsm as AIBehaviours):
+        StateEnded(fsm)
+
+    /*
+        Editor methods
+    */
     protected abstract def DrawStateInspectorEditor(m_Object as SerializedObject, fsm as AIBehaviours):
         pass
 
@@ -60,26 +105,15 @@ public abstract class AIState(MonoBehaviour):
         #AIBehaviorsTriggersGUI.Draw(m_Object, stateMachine)
         EditorGUILayout.Separator()
 
-        #AIBehaviorsAnimationEditorGUI.DrawAnimationFields(m_Object)
+        #DrawProperties(m_Object, stateMachine)
         EditorGUILayout.Separator()
-
-        #DrawMovementOptions(m_Object)
-        EditorGUILayout.Separator()
-
-        #DrawCooldownProperties(m_Object, stateMachine)
-        EditorGUILayout.Separator()
-
-        #DrawAudioProperties(m_Object)
-        EditorGUILayout.Separator()
-
-        #DrawStateInspectorEditor(m_Object, fsm)
 
         m_Object.ApplyModifiedProperties()
-
-        #GUI.enabled = oldEnabled;
 
 
 #[System.Serializable]
 public abstract class AITrigger(MonoBehaviour):
-    public virtual def Evaluate(fsm as AIBehaviours):
+    public transitionState as AIState
+
+    protected abstract def Evaluate(fsm as AIBehaviours)  as bool:
         pass

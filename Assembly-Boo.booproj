@@ -48,6 +48,7 @@
      <Compile Include="Assets\AIBehaviours\AIShipBehaviours.boo" />
      <Compile Include="Assets\AIBehaviours\States\AIIdleState.boo" />
      <Compile Include="Assets\AIBehaviours\States\AIMoveState.boo" />
+     <Compile Include="Assets\AIBehaviours\Triggers\AIKeyUpTrigger.boo" />
      <Compile Include="Assets\AIBehaviours\Triggers\TestTrigger.boo" />
      <Compile Include="Assets\Scripts\AIMove.boo" />
      <Compile Include="Assets\Scripts\Attack.boo" />
