@@ -1,38 +1,12 @@
-#import System
-#import System.IO
-#import System.Text.RegularExpressions
+#ifdef UNITY_EDITOR:
+import UnityEditor
 import UnityEngine
-#import System.Collections.Generic
-#import System.Globalization
+#ifdef not UNITY_EDITOR:
+#    import UnityEngine
 
 
-#[AddComponentMenu('AIBehaviors')]
-#[System.Serializable]
 [AddComponentMenu('Neworld/AIBehaviours')]
 public class AIBehaviours(MonoBehaviour):
-
-    #public AIStates as List[of AIState] = List[of AIState]()
-    #public AITriggers as List[of AITrigger] = List[of AITrigger]()
-    #public states as List[of AIState] = List[typeof(AIState)](AIState)
-    #private states as Dictionary[of AIState, AIState] = Dictionary[of AIState, AIState]()
-    #public triggers as List[of AITrigger]
-    /*
-    public enum StateID:
-        Monoscopic
-        Red
-        Cyan
-        Green
-        Magenta
-
-    [System.Serializable]
-    public class Storage:
-        public stateID as string
-        public state as AIState
-    */
-    #public Dictionary<Material, Dictionary<ShaderType, Shader>> 
-    #public states as Dictionary[of string, AIState]
-    #public statesArray as Storage
-
 
     /// This is the state the AI is in once the game is playing.
     public initialState as AIState
@@ -40,6 +14,10 @@ public class AIBehaviours(MonoBehaviour):
     public currentState as AIState
     /// An array of all the states that belong to this AI.
     public states as (AIState) = array(AIState, 0)
+    /// Holds the total state count
+    public stateCount as int:
+        get:
+            return states.Length
     /// Holds reference to the "States" gameobject
     public statesGameObject as GameObject = null
 
@@ -67,6 +45,38 @@ public abstract class AIState(MonoBehaviour):
 
     public virtual def Action(fsm as AIBehaviours):
         pass
+
+    protected abstract def DrawStateInspectorEditor(m_Object as SerializedObject, fsm as AIBehaviours):
+        pass
+
+    public def DrawInspectorEditor(fsm as AIBehaviours):
+        m_Object as SerializedObject = SerializedObject(self)
+        #bool oldEnabled = GUI.enabled
+        #bool drawEnabled = DrawIsEnabled(m_Object)
+
+        GUI.enabled = true
+        GUILayout.Label('test')
+
+        #AIBehaviorsTriggersGUI.Draw(m_Object, stateMachine)
+        EditorGUILayout.Separator()
+
+        #AIBehaviorsAnimationEditorGUI.DrawAnimationFields(m_Object)
+        EditorGUILayout.Separator()
+
+        #DrawMovementOptions(m_Object)
+        EditorGUILayout.Separator()
+
+        #DrawCooldownProperties(m_Object, stateMachine)
+        EditorGUILayout.Separator()
+
+        #DrawAudioProperties(m_Object)
+        EditorGUILayout.Separator()
+
+        #DrawStateInspectorEditor(m_Object, fsm)
+
+        m_Object.ApplyModifiedProperties()
+
+        #GUI.enabled = oldEnabled;
 
 
 #[System.Serializable]

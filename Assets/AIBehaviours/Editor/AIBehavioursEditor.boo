@@ -12,6 +12,9 @@ public class AIBehavioursEditor(Editor):
     private m_Object as SerializedObject
     private statesGameObject as GameObject
 
+    /// Toggle states for each state foldout
+    toggle as Dictionary[of int, bool] = Dictionary[of int, bool]()
+
     def OnEnable():
         states as (AIState)
 
@@ -20,6 +23,30 @@ public class AIBehavioursEditor(Editor):
 
         InitStates()
         states = fsm.GetAllStates()
+        for i in range(0, fsm.stateCount):
+            toggle[i] = false
+
+    public override def OnInspectorGUI():
+        states as (AIState) = fsm.GetAllStates()
+        
+        for i in range(0, fsm.stateCount):
+            GUILayout.BeginHorizontal(GUILayout.Height(20))
+            #guiWidths = 90
+            
+            #GUILayout.Label(states[i].name, GUILayout.MaxWidth(guiWidths))
+            toggle[i] = EditorGUILayout.Foldout(toggle[i], states[i].name)
+            if EditorGUILayout.Toggle(states[i].isEnabled, GUILayout.Height(20)) != states[i].isEnabled:
+                states[i].isEnabled = (not states[i].isEnabled)
+            
+            GUILayout.Space(20)
+            GUILayout.EndHorizontal()
+
+            /// Render state if toggled
+            if toggle[i]:
+                states[i].DrawInspectorEditor(fsm)
+
+    def OnInspectorUpdate():
+        Repaint()
 
     private def InitStates():
         m_Prop as SerializedProperty = m_Object.FindProperty('statesGameObject')
@@ -42,7 +69,6 @@ public class AIBehavioursEditor(Editor):
     private def InitNewStates():
         statesDictionary as Dictionary[of string, Type] = Dictionary[of string, Type]()
         statesList as List[of AIState] = List[of AIState]()
-        // GetType().Name
         
         // Setup a dictionary of the default states
         statesDictionary['Idle'] = typeof(AIIdleState)
