@@ -44,10 +44,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AIBehaviors\AIBehaviors.boo" />
-     <Compile Include="Assets\AIBehaviors\AIShipBehaviours.boo" />
-     <Compile Include="Assets\AIBehaviors\States\IdleState.boo" />
-     <Compile Include="Assets\AIBehaviors\States\MoveState.boo" />
+     <Compile Include="Assets\AIBehaviours\AIBehaviours.boo" />
+     <Compile Include="Assets\AIBehaviours\AIShipBehaviours.boo" />
+     <Compile Include="Assets\AIBehaviours\States\AIIdleState.boo" />
+     <Compile Include="Assets\AIBehaviours\States\AIMoveState.boo" />
+     <Compile Include="Assets\AIBehaviours\Triggers\TestTrigger.boo" />
      <Compile Include="Assets\Scripts\AIMove.boo" />
      <Compile Include="Assets\Scripts\Attack.boo" />
      <Compile Include="Assets\Scripts\CommandLayer.boo" />
@@ -64,8 +65,11 @@
      <Compile Include="Assets\Scripts\ShipSelect.boo" />
      <Compile Include="Assets\Scripts\Universe\Player.boo" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\AIBehavior\_ReadMe.txt" />
      <None Include="Assets\Debugger\READ ME.txt" />
-     <None Include="Assets\readme-booinspector.txt" />
+     <None Include="Assets\BooInspector-Samples\readme-booinspector.txt" />
+     <None Include="Assets\AIBehavior\_Setup.txt" />
+     <None Include="Assets\AIBehavior\_ReleaseNotes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

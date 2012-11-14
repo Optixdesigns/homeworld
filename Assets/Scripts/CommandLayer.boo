@@ -25,10 +25,12 @@ class CommandLayer(MonoBehaviour):
     // Move selection to certain position
     def Move(selection as List[of Ship], targetPosition as Vector3):
         // Move commando
-        for ship in selection: # should wrap selection into a gameobject
+        # USE SENDMESSAGES
+        pass
+        #for ship in selection: # should wrap selection into a gameobject
             #print(targetPosition) 
-            ship.moveToPosition = targetPosition
-            ship.behaviours.ChangeState(ship.behaviours.behaviourOnMove)
+            #ship.moveToPosition = targetPosition
+            #ship.behaviours.ChangeState(ship.behaviours.behaviourOnMove)
         #for ship in ships:  
             #ship.Move(targetVector)
 

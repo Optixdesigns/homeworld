@@ -44,7 +44,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AIBehaviors\Editor\AIBehaviorsEditor.boo" />
+     <Compile Include="Assets\AIBehaviours\Editor\AIBehavioursEditor.boo" />
      <Compile Include="Assets\BooInspector-Samples\Ragetools\Editor\RageCanvasAlignEditor.boo" />
      <Compile Include="Assets\BooInspector-Samples\Ragetools\Editor\RageEdgetuneEditor.boo" />
      <Compile Include="Assets\BooInspector-Samples\Ragetools\Editor\RageGroupEditor.boo" />
@@ -56,10 +56,16 @@
      <Compile Include="Assets\Editor\BooInspector\EasyStyles.boo" />
      <Compile Include="Assets\Editor\RageToolsEditor.boo" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\AIBehavior\_ReadMe.txt" />
      <None Include="Assets\Debugger\READ ME.txt" />
-     <None Include="Assets\readme-booinspector.txt" />
+     <None Include="Assets\BooInspector-Samples\readme-booinspector.txt" />
+     <None Include="Assets\AIBehavior\_Setup.txt" />
+     <None Include="Assets\AIBehavior\_ReleaseNotes.txt" />
  <Reference Include="Library\ScriptAssemblies\Assembly-Boo">
  <HintPath>Library\ScriptAssemblies\Assembly-Boo.dll</HintPath>
+ </Reference>
+ <Reference Include="Library\ScriptAssemblies\Assembly-UnityScript">
+ <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
  </Reference>
  <Reference Include="\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs">
  <HintPath>\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs.dll</HintPath>

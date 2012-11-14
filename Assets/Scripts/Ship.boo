@@ -1,10 +1,11 @@
 import UnityEngine
 import System
 
-[RequireComponent(typeof(AIShipBehaviours))]
+#[RequireComponent(typeof(AIShipBehaviours))]
 [RequireComponent(typeof(HealthAttribute))]
 [RequireComponent(typeof(DamageAttribute))]
 [RequireComponent(typeof(Rigidbody))]
+[AddComponentMenu('Neworld/Ship')]
 class Ship(MonoBehaviour):
     public shipName as string
     private selected as bool                // Selected flag
@@ -16,8 +17,9 @@ class Ship(MonoBehaviour):
 
     public baseProperties as ShipProperties
 
-    [HideInInspector]
-    public behaviours as AIShipBehaviours
+    #[HideInInspector]
+    #public behaviours as AIShipBehaviours
+    #public behaviours as AIBehaviours
     [HideInInspector]
     public healthAttribute as HealthAttribute
     [HideInInspector]
@@ -27,7 +29,7 @@ class Ship(MonoBehaviour):
 
     def Awake():
         // Setup initial values and references
-        behaviours = gameObject.GetComponent[of AIShipBehaviours]() // REQUIRED
+        #behaviours = gameObject.GetComponent[of AIShipBehaviours]() // REQUIRED
         healthAttribute = gameObject.GetComponent[of HealthAttribute]() // REQUIRED
         damageAttribute = gameObject.GetComponent[of DamageAttribute]() // REQUIRED
         
