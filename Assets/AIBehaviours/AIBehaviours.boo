@@ -37,6 +37,7 @@ public class AIBehaviours(MonoBehaviour):
         states = newStates
     /*
     public def ChangeActiveStateByName(stateName as string):
+        #state as AIState
         for state as AIState in states:
             if state.name.Equals(stateName):
                 ChangeActiveState(state)
@@ -61,7 +62,7 @@ public class AIBehaviours(MonoBehaviour):
 #[System.Serializable]
 public abstract class AIState(MonoBehaviour):
     public isEnabled as bool = true
-    public name as string = ""
+    public override name as string
 
     #[SerializeField]
     public triggers as (AITrigger) = array(AITrigger, 0)

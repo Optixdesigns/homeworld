@@ -8,7 +8,7 @@ import UnityEditor
 [CustomEditor(typeof(AIBehaviours))]
 public class AIBehavioursEditor(Editor):
     
-    private fsm as AIBehaviours = null
+    private fsm as AIBehaviours
     private m_Object as SerializedObject
     /// Holds reference to the "States" gameobject
     private statesGameObject as GameObject
@@ -20,7 +20,7 @@ public class AIBehavioursEditor(Editor):
 
     def OnEnable():
         states as (AIState)
-
+        
         m_Object = SerializedObject(target)
         fsm = (m_Object.targetObject as AIBehaviours)
 
@@ -30,9 +30,16 @@ public class AIBehavioursEditor(Editor):
         for i in range(0, fsm.stateCount):
             toggle[i] = false
 
-        m_InitialState = m_Object.FindProperty('initialState')
+        #fsm.initialState = states[0]
+        #m_InitialState = m_Object.FindProperty('initialState')
+        #m_InitialState.objectReferenceValue = states[0]
+        #Debug.Log(states[0])
+        #if not m_InitialState.objectReferenceValue:
+        #m_InitialState.objectReferenceValue as AIState = states[0]
+        if not fsm.initialState:
+            fsm.initialState = states[0]
 
-        // Init triggers
+        m_InitialState = m_Object.FindProperty('initialState')
 
     public override def OnInspectorGUI():
         m_Object.Update()
@@ -109,16 +116,20 @@ public class AIBehavioursEditor(Editor):
         
         for state as AIState in states:
             if string.IsNullOrEmpty(state.name):
-                sObject = SerializedObject(state)
-                mProp as SerializedProperty = sObject.FindProperty('name')
+                #sObject = SerializedObject(state)
+                #mProp as SerializedProperty = sObject.FindProperty('name')
+                #stateTypeName as string = state.GetType().ToString()
+                #state as AIState = fsm.initialState
                 stateTypeName as string = state.GetType().ToString()
+                state.name = stateTypeName
                 
-                mProp.stringValue = AIBehaviorsComponentInfoHelper.GetNameFromType(stateTypeName)
-                sObject.ApplyModifiedProperties()
+                #mProp.stringValue = AIBehaviorsComponentInfoHelper.GetNameFromType(stateTypeName)
+                #sObject.ApplyModifiedProperties()
 
     private def DrawInitialStatePopup():
-        state = (m_InitialState.objectReferenceValue as AIState)
-        
+        m_InitialState as SerializedProperty = m_Object.FindProperty("initialState")
+        state as AIState = m_InitialState.objectReferenceValue as AIState
+
         statesList as List[of string] = List[of string]()
         states as (AIState) = fsm.GetAllStates()
 
