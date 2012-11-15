@@ -24,12 +24,15 @@ public class AIBehavioursEditor(Editor):
         m_Object = SerializedObject(target)
         fsm = (m_Object.targetObject as AIBehaviours)
 
+        // Init states
         InitStates()
         states = fsm.GetAllStates()
         for i in range(0, fsm.stateCount):
             toggle[i] = false
 
         m_InitialState = m_Object.FindProperty('initialState')
+
+        // Init triggers
 
     public override def OnInspectorGUI():
         m_Object.Update()
@@ -114,26 +117,46 @@ public class AIBehavioursEditor(Editor):
                 sObject.ApplyModifiedProperties()
 
     private def DrawInitialStatePopup():
-        #m_InitialState as SerializedProperty = m_Object.FindProperty('initialState')
-        #state = (m_InitialState.objectReferenceValue as AIState)
-        #indexPopup as int = 0
         state = (m_InitialState.objectReferenceValue as AIState)
         
         statesList as List[of string] = List[of string]()
         states as (AIState) = fsm.GetAllStates()
-        
-        #__currentIndex as int = 0
 
         for i in range(0, fsm.stateCount):
             if state.name == states[i].name:
                 indexPopup = i
             statesList.Add(states[i].name)
         
-        #GUILayout.Label('Initial State:')
         indexPopup = EditorGUILayout.Popup('Initial State:', indexPopup, statesList.ToArray())
-        
-        #if __index != __currentIndex:
-            #__currentIndex = __index
-            #Debug.Log(__currentIndex)
+
         m_InitialState.objectReferenceValue = states[indexPopup]
-        #m_Object.ApplyModifiedProperties()
+
+    /*
+    private def InitNewTriggers():
+        triggersDictionary as Dictionary[of string, Type] = Dictionary[of string, Type]()
+        triggersList as List[of AITrigger] = List[of AITrigger]()
+   
+        // Setup a dictionary of the default triggers
+        triggersDictionary['Test'] = typeof(TestTrigger)
+        
+        for triggerName as string in triggersDictionary.Keys:
+
+            triggerClassName as string = triggersDictionary[triggerName].ToString()
+            
+            try:
+                aiTrigger as AITrigger = (fsm.statesGameObject.AddComponent(triggerClassName) as AITrigger)
+
+                sObject = SerializedObject(aiTrigger)
+                mProp as SerializedProperty = sObject.FindProperty('name')
+                
+                mProp.stringValue = triggerName
+                sObject.ApplyModifiedProperties()
+                
+                triggersList.Add(aiTrigger)
+            except :
+                Debug.LogError((((('Type "' + triggerClassName) + '" does not exist.  You must have a class named "') + triggerClassName) + '" that derives from "AITrigger".'))
+                inittedSuccessfully = false 
+        
+        state.ReplaceAllTriggers(triggersList.ToArray())
+    */
+

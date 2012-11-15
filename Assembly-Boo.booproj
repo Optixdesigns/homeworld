@@ -46,6 +46,7 @@
   <ItemGroup>
      <Compile Include="Assets\AIBehaviours\AIBehaviours.boo" />
      <Compile Include="Assets\AIBehaviours\AIShipBehaviours.boo" />
+     <Compile Include="Assets\AIBehaviours\EditorHelpers\AIBehavioursTriggersGUI.boo" />
      <Compile Include="Assets\AIBehaviours\States\AIIdleState.boo" />
      <Compile Include="Assets\AIBehaviours\States\AIMoveState.boo" />
      <Compile Include="Assets\AIBehaviours\Triggers\AIKeyUpTrigger.boo" />

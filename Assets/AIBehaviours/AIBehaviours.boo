@@ -65,6 +65,12 @@ public abstract class AIState(MonoBehaviour):
 
     #[SerializeField]
     public triggers as (AITrigger) = array(AITrigger, 0)
+
+    def GetAllTriggers() as (AITrigger):
+        return triggers
+
+    def ReplaceAllTriggers(newTriggers as (AITrigger)):
+        triggers = newTriggers
     
     /*
         State methods
@@ -102,7 +108,7 @@ public abstract class AIState(MonoBehaviour):
         GUI.enabled = true
         GUILayout.Label('test')
 
-        #AIBehaviorsTriggersGUI.Draw(m_Object, stateMachine)
+        AIBehavioursTriggersGUI.Draw(self, fsm)
         EditorGUILayout.Separator()
 
         #DrawProperties(m_Object, stateMachine)
@@ -114,6 +120,7 @@ public abstract class AIState(MonoBehaviour):
 #[System.Serializable]
 public abstract class AITrigger(MonoBehaviour):
     public transitionState as AIState
+    public name as string = ""
 
     protected abstract def Evaluate(fsm as AIBehaviours)  as bool:
         pass
