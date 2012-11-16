@@ -7,7 +7,8 @@ import UnityEngine
 
 [AddComponentMenu('Neworld/AIBehaviours')]
 public class AIBehaviours(MonoBehaviour):
-
+    /// Is this AI active (Read Only)?
+    public isActive as bool
     /// This is the state the AI is in once the game is playing.
     public initialState as AIState
     /// This is the state the AI is currently in (Read Only).
@@ -29,11 +30,14 @@ public class AIBehaviours(MonoBehaviour):
 
     def Awake():
         pass
+        #Debug.Log("sd: " + states.Length)
+        #pass
 
     def GetAllStates() as (AIState):
         return states
 
     def ReplaceAllStates(newStates as (AIState)):
+        #Debug.Log(newStates[0])
         states = newStates
     /*
     public def ChangeActiveStateByName(stateName as string):
