@@ -10,7 +10,7 @@ import UnityEditor
 public class AIBehavioursEditor(Editor):
     
     private fsm as AIBehaviours
-    private states as (AIState)
+    #private states as (AIState)
     #private m_Object as SerializedObject
     /// Holds reference to the "States" gameobject
     #private statesGameObject as GameObject
@@ -18,6 +18,8 @@ public class AIBehavioursEditor(Editor):
     private statesGameObjectProp as SerializedProperty
     private initialStateProp as SerializedProperty
     private isActiveProp as SerializedProperty
+
+    private statesProp as SerializedProperty
 
     /// Toggle states for each state foldout
     statesToggle as Dictionary[of int, bool] = Dictionary[of int, bool]()
@@ -27,7 +29,9 @@ public class AIBehavioursEditor(Editor):
     def OnEnable():
         #states as (AIState)
         isActiveProp = serializedObject.FindProperty('isActive')
-        #Debug.Log(isActiveProp.name)
+        statesProp = serializedObject.FindProperty('states')
+        
+        #Debug.Log(statesProp.propertyPath)
         
         #Debug.Log(target)
         #Debug.Log(targets)
@@ -67,7 +71,6 @@ public class AIBehavioursEditor(Editor):
         serializedObject.Update()
         
         isActiveProp.boolValue = EditorGUILayout.Toggle(isActiveProp.name.ToString(), isActiveProp.boolValue)
-
 
         for i in range(0, states.Length):
             GUILayout.BeginHorizontal(GUILayout.Height(20))
