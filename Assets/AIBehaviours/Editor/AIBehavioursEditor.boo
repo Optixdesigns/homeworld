@@ -32,6 +32,11 @@ public class AIBehavioursEditor(Editor):
         statesProp = serializedObject.FindProperty('states')
         
         #Debug.Log(statesProp.propertyPath)
+        #m_Object = SerializedObject(target)
+        #Debug.Log(m_Object.targetObject)
+        #Debug.Log(serializedObject.targetObject)
+        #Debug.Log(target)
+        #fsm as AIBehaviours = m_Object.targetObject
         
         #Debug.Log(target)
         #Debug.Log(targets)
@@ -117,8 +122,7 @@ public class AIBehavioursEditor(Editor):
             InitNewStates()
             Debug.Log("new")
         else:    
-            statesGameObject = (statesGameObjectProp.objectReferenceValue as GameObject)
-            #GetExistingStates()
+            statesGameObject as GameObject = statesGameObjectProp.objectReferenceValue
             Debug.Log("Existing")
 
         #states = fsm.GetAllStates()
