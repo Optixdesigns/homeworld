@@ -44,8 +44,10 @@ class Select(MonoBehaviour):
         if not CheckIfShip(target):
             return
 
+        Debug.Log(target)
         // Send move command
-        _command.Move(selectedShips, target.transform.position)
+        #_command.Move(selectedShips, target.transform.position)
+        _command.Attack(selectedShips, target)
         print("Target selected")
 
     /*=============================================================================

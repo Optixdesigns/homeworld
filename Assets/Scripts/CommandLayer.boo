@@ -13,10 +13,10 @@ class CommandLayer(MonoBehaviour):
     def Update ():
         pass
 
-
-    def Attack(ships as List[of Ship]):
-        // Attack commando
-        pass
+    def Attack(selection as List[of Ship], target as GameObject):
+        for ship in selection:
+            ship.target = target
+            ship.fsm.ChangeActiveStateByIndex(2)
 
     def CancelAttack():
         // Cancel attack commando
@@ -28,7 +28,7 @@ class CommandLayer(MonoBehaviour):
         # USE SENDMESSAGES
         #pass
         for ship in selection:
-            ship.fsm.ChangeActiveStateByIndex(2)
+            ship.fsm.ChangeActiveStateByIndex(1)
         #pass
         #for ship in selection: # should wrap selection into a gameobject
             #print(targetPosition) 
