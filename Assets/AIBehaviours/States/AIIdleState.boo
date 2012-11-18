@@ -2,8 +2,5 @@ import UnityEngine
 
 [System.Serializable]
 class AIIdleState(AIState):
-    def Start():
+    protected override def StateEnded(fsm as AIBehaviours):
         pass
-    
-    def Update():
-    	pass

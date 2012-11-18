@@ -59,6 +59,9 @@ class Ship(MonoBehaviour):
     def setTargetPosition(p as Vector3):
         targetPosition = p
 
+    def Shoot():
+        # VALIDATE TARGET
+        damageAttribute.Shoot(target)
 
     def OnCollisionEnter(collision as Collision):
         print("collision")

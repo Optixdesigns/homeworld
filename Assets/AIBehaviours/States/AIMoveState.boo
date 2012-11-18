@@ -4,12 +4,10 @@ import UnityEngine
 class AIMoveState(AIState): 
     private _ship as Ship
 
-    def Start():
+    protected override def StateEnded(fsm as AIBehaviours):
         pass
-        #_ship = transform.parent.gameObject.GetComponent[of Ship]()
-        #print(_ship)
-    
-    def Update():
+
+    protected override def Action(fsm as AIBehaviours):
         pass
         /*
         #moveToPosition = ship.moveToPosition + ship.damageAttribute.range // Stay at perfect damage range
@@ -31,11 +29,3 @@ class AIMoveState(AIState):
         if _ship.moveToPosition == _ship.gameObject.transform.position: // arrived
             _ship.behaviours.ChangeState(_ship.behaviours.behaviourOnIdle)
         */    
-
-    def OnTriggerEnter(other as Collider):
-        print("collision")
-        Debug.Log("collision")
-        #_ship.behaviours.ChangeState(_ship.behaviours.behaviourOnIdle)
-        #Destroy(other.gameObject)
-
-

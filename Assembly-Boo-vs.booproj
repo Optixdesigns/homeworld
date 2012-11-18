@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\ShipProperties.boo" />
      <Compile Include="Assets\Scripts\ShipSelect.boo" />
      <Compile Include="Assets\Scripts\Universe\Player.boo" />
+     <Compile Include="Assets\Scripts\Weapon.boo" />
      <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\AIBehavior\_ReadMe.txt" />
      <None Include="Assets\Debugger\READ ME.txt" />
