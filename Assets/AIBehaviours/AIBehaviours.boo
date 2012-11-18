@@ -8,7 +8,7 @@ import UnityEngine
 [AddComponentMenu('Neworld/AIBehaviours')]
 public class AIBehaviours(MonoBehaviour):
     /// Is this AI active (Read Only)?
-    public isActive as bool
+    #public isActive as bool
     /// This is the state the AI is in once the game is playing.
     public initialState as AIState
     /// This is the state the AI is currently in (Read Only).
@@ -30,8 +30,12 @@ public class AIBehaviours(MonoBehaviour):
 
     def Awake():
         pass
-        #Debug.Log("sd: " + states.Length)
-        #pass
+
+    def Update():
+        #if isActive:       
+        // If the state remained the same, do the action
+        if currentState.HandleReason(self):
+            currentState.HandleAction(self)
 
     def GetAllStates() as (AIState):
         return states
@@ -101,6 +105,22 @@ public abstract class AIState(MonoBehaviour):
     public def EndState(fsm as AIBehaviours):
         StateEnded(fsm)
 
+    public def HandleReason(fsm as AIBehaviours):
+        if CheckTriggers(fsm):
+            return false
+
+        return Reason(fsm)
+
+    public def HandleAction(fsm as AIBehaviours):
+        Action(fsm)
+
+    protected def CheckTriggers(fsm as AIBehaviours) as bool:
+        for trigger as AITrigger in triggers:
+            if trigger.HandleEvaluate(fsm):
+                return true
+
+        return false
+
     /*
         Editor methods
     */
@@ -129,5 +149,15 @@ public abstract class AITrigger(MonoBehaviour):
     public transitionState as AIState
     public name as string = ""
 
-    protected abstract def Evaluate(fsm as AIBehaviours)  as bool:
+    public def HandleEvaluate(fsm as AIBehaviours) as bool:
+        if not self.enabled:
+            return false
+
+        return Evaluate(fsm)
+
+    protected abstract def Init(fsm as AIBehaviours):
         pass
+
+    protected abstract def Evaluate(fsm as AIBehaviours) as bool:
+        pass
+

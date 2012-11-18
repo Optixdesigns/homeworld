@@ -3,15 +3,18 @@ import UnityEngine
 
 [System.Serializable]
 class AIAttackState(AIState): 
-    private _ship as Ship
+    #private _ship as Ship
 
     protected override def Init(fsm as AIBehaviours):
         Debug.Log("Attack state called")
         #pass
 
-    def Update():
-        pass
-        /*
+    protected override def Reason(fsm as AIBehaviours):
+        return true
+
+    protected override def Action(fsm as AIBehaviours):
+        Debug.Log("Attacking")
+        _ship = fsm.gameObject.GetComponent(typeof(Ship))
         #moveToPosition = ship.moveToPosition + ship.damageAttribute.range // Stay at perfect damage range
         moveDir as Vector3 = (_ship.moveToPosition - _ship.gameObject.transform.position)
         #print(_ship.moveToPosition)
@@ -28,9 +31,8 @@ class AIAttackState(AIState):
         _ship.gameObject.rigidbody.velocity = velocity
 
         # CHECK IF SOMETHING IS IN THE WAY OR ARRIVED
-        if _ship.moveToPosition == _ship.gameObject.transform.position: // arrived
-            _ship.behaviours.ChangeState(_ship.behaviours.behaviourOnIdle)
-        */    
+        #if _ship.moveToPosition == _ship.gameObject.transform.position: // arrived
+            #_ship.behaviours.ChangeState(_ship.behaviours.behaviourOnIdle) 
 
     def OnTriggerEnter(other as Collider):
         print("collision")

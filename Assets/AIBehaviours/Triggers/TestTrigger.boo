@@ -2,11 +2,8 @@ import UnityEngine
 
 [System.Serializable]
 class TestTrigger(AITrigger):
-    #[SerializeField]
-    #public test as string
+    protected override def Init(fsm as AIBehaviours):
+        pass
 
-    def Start():
-        pass
-    
-    def Update():
-        pass
+    protected override def Evaluate(fsm as AIBehaviours):
+        return false
