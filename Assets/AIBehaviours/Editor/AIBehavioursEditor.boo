@@ -11,7 +11,7 @@ public class AIBehavioursEditor(Editor):
     
     private fsm as AIBehaviours
     #private states as (AIState)
-    #private m_Object as SerializedObject
+    private SO as SerializedObject
     /// Holds reference to the "States" gameobject
     #private statesGameObject as GameObject
     private statesGameObject as GameObject
@@ -27,53 +27,22 @@ public class AIBehavioursEditor(Editor):
     #m_InitialState as SerializedProperty
 
     def OnEnable():
-        #states as (AIState)
-        isActiveProp = serializedObject.FindProperty('isActive')
-        statesProp = serializedObject.FindProperty('states')
+        states as (AIState)
+        SO = SerializedObject(target)
+        isActiveProp = SO.FindProperty('isActive')
+        statesProp = SO.FindProperty('states')
         
-        #Debug.Log(statesProp.propertyPath)
-        #m_Object = SerializedObject(target)
-        #Debug.Log(m_Object.targetObject)
-        #Debug.Log(serializedObject.targetObject)
-        #Debug.Log(target)
-        #fsm as AIBehaviours = m_Object.targetObject
-        
-        #Debug.Log(target)
-        #Debug.Log(targets)
         fsm = target
         transform = fsm.transform
-        #m_Object = SerializedObject(target)
-        #fsm = m_Object.targetObject as AIBehaviours
-        
-        
+
         InitStates()
-        states = fsm.GetAllStates()
-        Debug.Log(states.Length)
-        #state as (AIIdleState) = statesGameObject.GetComponents(AIIdleState)
-        #Debug.Log(state)
-
-
-        #if initialStateProp.objectReferenceValue is null: // Get first state
-            #initialStateProp.objectReferenceValue = states[0]
-        #Debug.Log(statesGameObjectProp.objectReferenceValue)
-        // Init states
-        
         
         for i in range(0, fsm.stateCount):
             statesToggle[i] = false
 
-        #fsm.initialState = states[0]
-        #m_InitialState = m_Object.FindProperty('initialState')
-        #m_InitialState.objectReferenceValue = states[0]
-        #Debug.Log(states[0])
-        #if not m_InitialState.objectReferenceValue:
-        #m_InitialState.objectReferenceValue as AIState = states[0]
-        #if initialStateProp.objectReferenceValue is null:
-            #initialStateProp.objectReferenceValue = states[0]
-
     def OnInspectorGUI():
         states = fsm.GetAllStates()
-        serializedObject.Update()
+        SO.Update()
         
         isActiveProp.boolValue = EditorGUILayout.Toggle(isActiveProp.name.ToString(), isActiveProp.boolValue)
 
@@ -96,16 +65,18 @@ public class AIBehavioursEditor(Editor):
                 GUILayout.EndHorizontal()
 
         #DrawInitialStatePopup()
+        if GUI.changed:
+            EditorUtility.SetDirty(target)
 
-        serializedObject.ApplyModifiedProperties()
+        SO.ApplyModifiedProperties()
 
     #def OnInspectorUpdate():
         #Repaint()
 
     private def InitStates():
         #serializedObject.Update()
-        statesGameObjectProp = serializedObject.FindProperty('statesGameObject')
-        initialStateProp = serializedObject.FindProperty('initialState')
+        statesGameObjectProp = SO.FindProperty('statesGameObject')
+        initialStateProp = SO.FindProperty('initialState')
         #Debug.Log(statesGameObjectProp.objectReferenceValue)
     
         #m_Prop as SerializedProperty = SerializedObject.FindProperty('statesGameObject')
@@ -118,17 +89,18 @@ public class AIBehavioursEditor(Editor):
             statesGameObject.transform.localPosition = Vector3.zero
             statesGameObject.transform.localRotation = Quaternion.identity
             statesGameObject.transform.localScale = Vector3.one
-            #serializedObject.ApplyModifiedProperties()
+            SO.ApplyModifiedProperties()
+
             InitNewStates()
             Debug.Log("new")
         else:    
             statesGameObject as GameObject = statesGameObjectProp.objectReferenceValue
             Debug.Log("Existing")
 
-        #states = fsm.GetAllStates()
+        states = fsm.GetAllStates()
         #Debug.Log(states.Length)
 
-        serializedObject.ApplyModifiedProperties()
+        #serializedObject.ApplyModifiedProperties()
 
         #Debug.Log(initialStateProp.objectReferenceValue)
 
