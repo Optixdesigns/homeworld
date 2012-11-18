@@ -28,9 +28,12 @@ public class AIBehavioursEditor(Editor):
 
     def OnEnable():
         states as (AIState)
+
         SO = SerializedObject(target)
         isActiveProp = SO.FindProperty('isActive')
         statesProp = SO.FindProperty('states')
+        initialStateProp = SO.FindProperty('initialState')
+        statesGameObjectProp = SO.FindProperty('statesGameObject')
         
         fsm = target
         transform = fsm.transform
@@ -44,7 +47,7 @@ public class AIBehavioursEditor(Editor):
         states = fsm.GetAllStates()
         SO.Update()
         
-        isActiveProp.boolValue = EditorGUILayout.Toggle(isActiveProp.name.ToString(), isActiveProp.boolValue)
+        #isActiveProp.boolValue = EditorGUILayout.Toggle(isActiveProp.name.ToString(), isActiveProp.boolValue)
 
         for i in range(0, states.Length):
             GUILayout.BeginHorizontal(GUILayout.Height(20))
@@ -64,7 +67,8 @@ public class AIBehavioursEditor(Editor):
                 states[i].DrawInspectorEditor(fsm)
                 GUILayout.EndHorizontal()
 
-        #DrawInitialStatePopup()
+        DrawInitialStatePopup()
+
         if GUI.changed:
             EditorUtility.SetDirty(target)
 
@@ -75,8 +79,8 @@ public class AIBehavioursEditor(Editor):
 
     private def InitStates():
         #serializedObject.Update()
-        statesGameObjectProp = SO.FindProperty('statesGameObject')
-        initialStateProp = SO.FindProperty('initialState')
+        
+        
         #Debug.Log(statesGameObjectProp.objectReferenceValue)
     
         #m_Prop as SerializedProperty = SerializedObject.FindProperty('statesGameObject')
@@ -145,23 +149,16 @@ public class AIBehavioursEditor(Editor):
                 sObject.ApplyModifiedProperties()
 
     private def DrawInitialStatePopup():
-        #m_InitialState as SerializedProperty = SerializedObject.FindProperty("initialState")
-        #__state = initialStateProp.objectReferenceValue
-        #__state = serializedObject.FindProperty("initialState")
-        __state = serializedObject.FindProperty("initialState")
-        
-
-        statesList as List[of string] = List[of string]()
+        statesPopupList as List[of string] = List[of string]()
         states as (AIState) = fsm.GetAllStates()
-        #Debug.Log(states.Length)
+
         for i in range(0, states.Length):
-            if __state.name == states[i].name:
+            statesPopupList.Add(states[i].name)
+            if initialStateProp.objectReferenceValue is states[i]:
                 indexPopup = i
-            statesList.Add(states[i].name)
-        
-        indexPopup = EditorGUILayout.Popup('Initial State:', indexPopup, statesList.ToArray())
-        #Debug.Log(initialStateProp.objectReferenceValue)
-        initialStateProp.objectReferenceValue = states[indexPopup]
+
+        indexPopup = EditorGUILayout.Popup('Initial State:', indexPopup, statesPopupList.ToArray())
+        initialStateProp.objectReferenceValue = states[indexPopup] as AIState  # Maybe only on mutation of the value?
 
     /*
     private def InitNewTriggers():
