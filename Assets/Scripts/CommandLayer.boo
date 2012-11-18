@@ -26,9 +26,10 @@ class CommandLayer(MonoBehaviour):
     def Move(selection as List[of Ship], targetPosition as Vector3):
         // Move commando
         # USE SENDMESSAGES
-        #for ship in selection:
-            #ship.behaviours.ChangeState(ship.behaviours.behaviourOnMove)
-        pass
+        #pass
+        for ship in selection:
+            ship.fsm.ChangeActiveStateByIndex(2)
+        #pass
         #for ship in selection: # should wrap selection into a gameobject
             #print(targetPosition) 
             #ship.moveToPosition = targetPosition

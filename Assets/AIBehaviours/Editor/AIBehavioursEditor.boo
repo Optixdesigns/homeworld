@@ -115,6 +115,7 @@ public class AIBehavioursEditor(Editor):
         // Setup a dictionary of the default states
         statesDictionary['Idle'] = typeof(AIIdleState)
         statesDictionary['Move'] = typeof(AIMoveState)
+        statesDictionary['Attack'] = typeof(AIAttackState)
         
         for stateName as string in statesDictionary.Keys:
             stateClassName as string = statesDictionary[stateName].ToString()
@@ -130,7 +131,7 @@ public class AIBehavioursEditor(Editor):
 
         fsm.ReplaceAllStates(statesList.ToArray())
         #states = fsm.GetAllStates()
-
+    /*
     private def GetExistingStates():
         states as (AIState) = fsm.GetAllStates()
         
@@ -147,6 +148,7 @@ public class AIBehavioursEditor(Editor):
                 
                 mProp.stringValue = stateTypeName
                 sObject.ApplyModifiedProperties()
+    */
 
     private def DrawInitialStatePopup():
         statesPopupList as List[of string] = List[of string]()

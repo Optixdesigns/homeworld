@@ -17,9 +17,9 @@ class Ship(MonoBehaviour):
 
     public baseProperties as ShipProperties
 
-    #[HideInInspector]
+    [HideInInspector]
     #public behaviours as AIShipBehaviours
-    #public behaviours as AIBehaviours
+    public fsm as AIBehaviours
     [HideInInspector]
     public healthAttribute as HealthAttribute
     [HideInInspector]
@@ -29,7 +29,7 @@ class Ship(MonoBehaviour):
 
     def Awake():
         // Setup initial values and references
-        #behaviours = gameObject.GetComponent[of AIShipBehaviours]() // REQUIRED
+        fsm = gameObject.GetComponent[of AIBehaviours]() // REQUIRED
         healthAttribute = gameObject.GetComponent[of HealthAttribute]() // REQUIRED
         damageAttribute = gameObject.GetComponent[of DamageAttribute]() // REQUIRED
         

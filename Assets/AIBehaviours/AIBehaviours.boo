@@ -52,7 +52,7 @@ public class AIBehaviours(MonoBehaviour):
 
     public def ChangeActiveState(newState as AIState):
         previousState as AIState = currentState
-        
+        #Debug.Log(newState)
         if currentState is not null:
             currentState.EndState(self)
         
@@ -60,13 +60,15 @@ public class AIBehaviours(MonoBehaviour):
         
         if currentState is not null:
             currentState.InitState(self)
-        onStateChanged(newState, previousState)
+
+        #Debug.Log(previousState)    
+        #onStateChanged(newState, previousState)
         
 
 #[System.Serializable]
 public abstract class AIState(MonoBehaviour):
     public isEnabled as bool = true
-    public override name as string
+    public name as string
 
     #[SerializeField]
     public triggers as (AITrigger) = array(AITrigger, 0)
