@@ -18,10 +18,10 @@ class MainCameraController(MonoBehaviour):
     private x = 0.0
     private y = 0.0
 
-    private SelectScript as Select
+    private gameManager as GameObject
 
     def Awake():
-        select = GetComponent("Select")
+        gameManager = GameObject.Find("GameManager")
 
     def Start():
         angles = transform.eulerAngles
@@ -36,13 +36,26 @@ class MainCameraController(MonoBehaviour):
         if target and Input.GetMouseButton(1):
             Rotate()
 
+        if target:
+            Focus()
+
         if Input.GetAxis("Mouse ScrollWheel") < 0:
             Zoom('back', mouseSens)
         elif Input.GetAxis("Mouse ScrollWheel") > 0:
             Zoom('forward', mouseSens)
 
-        if Input.GetKeyDown('F'):
-            pass
+        if Input.GetKeyDown(KeyCode.F) and gameManager.GetComponent(Select).selection[0]:
+            target = gameManager.GetComponent(Select).selection[0].transform    /// First obj in selection
+            Focus()
+
+    /**
+     * Function: Focus
+     * 
+     * Focus on object
+     * 
+     */
+    def Focus():
+        _updateTransform()
 
     /**
      * Function: Rotate
@@ -57,14 +70,7 @@ class MainCameraController(MonoBehaviour):
         x += Input.GetAxis("Mouse X") * mouseSens * 0.02
         y -= Input.GetAxis("Mouse Y") * mouseSens * 0.02
 
-        # Caclulate new values and set them
-        y = _clampAngle(y, yMinLimit, yMaxLimit)
-
-        rotation = Quaternion.Euler(y, x, 0)
-        position = rotation * Vector3(0.0, 0.0, -distance) + target.position
-
-        transform.rotation = rotation
-        transform.position = position
+        _updateTransform()
 
     /**
      * Function: Zoom
@@ -87,14 +93,7 @@ class MainCameraController(MonoBehaviour):
         elif direction == 'forward':
             distance = distance + speed * 0.02
 
-        # Caclulate new values and set them
-        y = _clampAngle(y, yMinLimit, yMaxLimit)
-
-        rotation = Quaternion.Euler(y, x, 0)
-        position = rotation * Vector3(0.0, 0.0, -distance) + target.position
-
-        transform.rotation = rotation
-        transform.position = position
+        _updateTransform()
 
     /**
      * Function: _clampAngle
@@ -116,3 +115,18 @@ class MainCameraController(MonoBehaviour):
             angle -= 360
 
         return Mathf.Clamp(angle, min, max)
+    
+    /**
+     * Function: _updateTransform
+     * 
+     * Updates current transform, call this after altering camera values
+     */
+    def _updateTransform():
+        y = _clampAngle(y, yMinLimit, yMaxLimit)
+
+        rotation = Quaternion.Euler(y, x, 0)
+        position = rotation * Vector3(0.0, 0.0, -distance) + target.position
+
+        transform.rotation = rotation
+        transform.position = position
+

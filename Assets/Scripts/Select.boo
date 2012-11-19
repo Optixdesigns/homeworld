@@ -5,15 +5,11 @@ import UnityEngine
 [System.Serializable]
 class Select(MonoBehaviour):
 
-    private numSelectedShips as int
-    #[SerializeField]
-    public selection as (GameObject) = array(GameObject, 0)
-    private selectionList as List[of GameObject] = List[of GameObject]()
+    public numSelectedShips as int
 
-    #public selection as List[of GameObject] = List[of GameObject]()
-    #public selectedShips as List[of Ship] = List[of Ship]() // Reference to the selected ships
-    
-    #public selection as (GameObject) = array(GameObject, 0)
+    /// Holds the object selection
+    public selection as (GameObject) = array(GameObject, 0)
+    private selectionAsList as List[of GameObject] = List[of GameObject]()
     
     private _command as CommandLayer
     
@@ -25,7 +21,7 @@ class Select(MonoBehaviour):
         if Input.GetMouseButtonDown(0):
             RightMouseClick()
 
-        if Input.GetMouseButtonDown(1):
+        if Input.GetMouseButtonUp(1):
             LeftMouseClick()
 
     /*=============================================================================
@@ -94,9 +90,9 @@ class Select(MonoBehaviour):
     def SelectionSetSingleObject(obj as GameObject):
         numSelectedShips = 1
 
-        selectionList.Clear()
-        selectionList.Add(obj as GameObject)
-        selection = selectionList.ToArray()
+        selectionAsList.Clear()
+        selectionAsList.Add(obj as GameObject)
+        selection = selectionAsList.ToArray()
 
     def SelectionAddObject(obj as GameObject):
         pass
