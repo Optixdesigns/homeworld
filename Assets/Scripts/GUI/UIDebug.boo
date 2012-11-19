@@ -17,7 +17,7 @@ class UIDebug(MonoBehaviour):
             #Debug.Log("GameObjects count: " + objects.Length)
 
             for obj as GameObject in objects:
-                Debug.Log(obj.collider.bounds.size)
+                #Debug.Log(obj.collider.bounds.size)
                 screenPosition as Vector3 = Camera.main.WorldToScreenPoint(obj.transform.position) // gets screen position.
                 screenPosition.y = Screen.height - (screenPosition.y + 1) // inverts y
                 #screenPosition as Vector3 = obj.transform.position
