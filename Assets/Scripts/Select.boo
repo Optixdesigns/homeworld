@@ -2,14 +2,17 @@ import UnityEngine
 /*=============================================================================
     Purpose : Logic for selecting ships and groups of ships.
 =============================================================================*/
+
+
 [System.Serializable]
 class Select(MonoBehaviour):
 
     public numSelectedShips as int
 
     /// Holds the object selection
-    public selection as (GameObject) = array(GameObject, 0)
-    private selectionAsList as List[of GameObject] = List[of GameObject]()
+    #public selection as (GameObject) = array(GameObject, 0)
+    public gameObjects as (GameObject) = array(GameObject, 0)
+    private gameObjectsAsList as List[of GameObject] = List[of GameObject]()
     
     private _command as CommandLayer
     
@@ -21,7 +24,7 @@ class Select(MonoBehaviour):
         if Input.GetMouseButtonDown(0):
             RightMouseClick()
 
-        if Input.GetMouseButtonUp(1):
+        if Input.GetMouseButtonDown(1):
             LeftMouseClick()
 
     /*=============================================================================
@@ -50,7 +53,7 @@ class Select(MonoBehaviour):
         Debug.Log(target)
         // Send move command
         #_command.Move(selectedShips, target.transform.position)
-        _command.Attack(selection, target)
+        _command.Attack(gameObjects, target)
         print("Target selected")
 
     /*=============================================================================
@@ -88,12 +91,27 @@ class Select(MonoBehaviour):
         Outputs     :
     ----------------------------------------------------------------------------*/
     def SelectionSetSingleObject(obj as GameObject):
-        numSelectedShips = 1
+        // Unset current selection first
+        SelectionUnset(gameObjects)
 
-        selectionAsList.Clear()
-        selectionAsList.Add(obj as GameObject)
-        selection = selectionAsList.ToArray()
+        numSelectedShips = 1
+        gameObjectsAsList.Clear()
+        gameObjectsAsList.Add(obj as GameObject)
+        gameObjects = gameObjectsAsList.ToArray()
+
+        /// Notifiy unit its selected
+        obj.SendMessage("IsSelected", true)
+
 
     def SelectionAddObject(obj as GameObject):
         pass
+
+    /// Deselect selection of objects
+    def SelectionUnset(selection as (GameObject)):
+        for obj in selection:
+            SelectionUnsetSingleObject(obj)
+
+    /// Notifies object its not selected anymore
+    def SelectionUnsetSingleObject(obj as GameObject):
+        obj.SendMessage("IsSelected", false)
 

@@ -45,22 +45,42 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\AIBehaviours\Editor\AIBehavioursEditor.boo" />
-     <Compile Include="Assets\BooInspector-Samples\Ragetools\Editor\RageCanvasAlignEditor.boo" />
-     <Compile Include="Assets\BooInspector-Samples\Ragetools\Editor\RageEdgetuneEditor.boo" />
-     <Compile Include="Assets\BooInspector-Samples\Ragetools\Editor\RageGroupEditor.boo" />
-     <Compile Include="Assets\BooInspector-Samples\Ragetools\Editor\RageMagnetEditor.boo" />
-     <Compile Include="Assets\BooInspector-Samples\Ragetools\Editor\RagePivotoolsEditor.boo" />
-     <Compile Include="Assets\BooInspector-Samples\Ragetools\Editor\RageSvgInEditor.boo" />
      <Compile Include="Assets\Editor\BooInspector\EasyEditor.boo" />
      <Compile Include="Assets\Editor\BooInspector\EasyMacros.boo" />
      <Compile Include="Assets\Editor\BooInspector\EasyStyles.boo" />
      <Compile Include="Assets\Editor\RageToolsEditor.boo" />
-     <None Include="Assets\iTween\ReadMe!\ReadMe!.txt" />
-     <None Include="Assets\AIBehavior\_ReadMe.txt" />
-     <None Include="Assets\Debugger\READ ME.txt" />
-     <None Include="Assets\BooInspector-Samples\readme-booinspector.txt" />
-     <None Include="Assets\AIBehavior\_Setup.txt" />
-     <None Include="Assets\AIBehavior\_ReleaseNotes.txt" />
+     <Compile Include="Assets\Packages\BooInspector-Samples\Ragetools\Editor\RageCanvasAlignEditor.boo" />
+     <Compile Include="Assets\Packages\BooInspector-Samples\Ragetools\Editor\RageEdgetuneEditor.boo" />
+     <Compile Include="Assets\Packages\BooInspector-Samples\Ragetools\Editor\RageGroupEditor.boo" />
+     <Compile Include="Assets\Packages\BooInspector-Samples\Ragetools\Editor\RageMagnetEditor.boo" />
+     <Compile Include="Assets\Packages\BooInspector-Samples\Ragetools\Editor\RagePivotoolsEditor.boo" />
+     <Compile Include="Assets\Packages\BooInspector-Samples\Ragetools\Editor\RageSvgInEditor.boo" />
+     <None Include="Assets\Packages\NGUI\Resources\Shaders\Depth.shader" />
+     <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
+     <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
+     <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Masked Colored.shader" />
+     <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
+     <None Include="Assets\Packages\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\Packages\AIBehavior\_ReadMe.txt" />
+     <None Include="Assets\Packages\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
+     <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
+     <None Include="Assets\Packages\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
+     <None Include="Assets\Packages\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
+     <None Include="Assets\Packages\NGUI\ReadMe.txt" />
+     <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
+     <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (HardClip).shader" />
+     <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored Overlay.shader" />
+     <None Include="Assets\Packages\NGUI\Examples\Other\English.txt" />
+     <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed).shader" />
+     <None Include="Assets\Packages\Debugger\READ ME.txt" />
+     <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Additive Colored.shader" />
+     <None Include="Assets\Packages\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
+     <None Include="Assets\Packages\NGUI\Examples\Shaders\Refractive.shader" />
+     <None Include="Assets\Packages\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
+     <None Include="Assets\Packages\BooInspector-Samples\readme-booinspector.txt" />
+     <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (SoftClip).shader" />
+     <None Include="Assets\Packages\AIBehavior\_Setup.txt" />
+     <None Include="Assets\Packages\AIBehavior\_ReleaseNotes.txt" />
  <Reference Include="Library\ScriptAssemblies\Assembly-Boo">
  <HintPath>Library\ScriptAssemblies\Assembly-Boo.dll</HintPath>
  </Reference>
@@ -69,6 +89,12 @@
  </Reference>
  <Reference Include="\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs">
  <HintPath>\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+ <Reference Include="Assets\Packages\NGUI\DLLs\Editor\NGUI_Editor">
+ <HintPath>Assets\Packages\NGUI\DLLs\Editor\NGUI_Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Assets\Packages\NGUI\DLLs\NGUI">
+ <HintPath>Assets\Packages\NGUI\DLLs\NGUI.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

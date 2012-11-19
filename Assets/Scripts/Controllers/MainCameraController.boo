@@ -36,7 +36,7 @@ class MainCameraController(MonoBehaviour):
         if target and Input.GetMouseButton(1):
             Rotate()
 
-        if target:
+        if target: /// If we have a target, stay focused on it
             Focus()
 
         if Input.GetAxis("Mouse ScrollWheel") < 0:
@@ -44,8 +44,8 @@ class MainCameraController(MonoBehaviour):
         elif Input.GetAxis("Mouse ScrollWheel") > 0:
             Zoom('forward', mouseSens)
 
-        if Input.GetKeyDown(KeyCode.F) and gameManager.GetComponent(Select).selection[0]:
-            target = gameManager.GetComponent(Select).selection[0].transform    /// First obj in selection
+        if Input.GetKeyDown(KeyCode.F) and gameManager.GetComponent(Select).gameObjects[0]:
+            target = gameManager.GetComponent(Select).gameObjects[0].transform    /// First obj in selection
             Focus()
 
     /**

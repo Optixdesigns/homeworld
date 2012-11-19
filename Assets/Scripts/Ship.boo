@@ -2,26 +2,25 @@ import UnityEngine
 import System
 
 #[RequireComponent(typeof(AIShipBehaviours))]
-[RequireComponent(typeof(HealthAttribute))]
+#[RequireComponent(typeof(HealthAttribute))]
 [RequireComponent(typeof(DamageAttribute))]
 [RequireComponent(typeof(Rigidbody))]
 [AddComponentMenu('Neworld/Ship')]
 class Ship(MonoBehaviour):
     public shipName as string
-    private selected as bool                // Selected flag
     private speed as single                // Current speed/velocity
 
     public target as GameObject // target
     public moveToPosition as Vector3 // move to position
     public player as Player // Owner of this ship
-
-    public baseProperties as ShipProperties
+    public isEnemy as bool = false // Is this an enemy?
 
     [HideInInspector]
-    #public behaviours as AIShipBehaviours
     public fsm as AIBehaviours
-    [HideInInspector]
-    public healthAttribute as HealthAttribute
+    #[HideInInspector]
+    public baseProperties as ShipProperties
+    public health as HealthAttribute
+    public select as SelectController
     [HideInInspector]
     public damageAttribute as DamageAttribute
 
@@ -30,7 +29,7 @@ class Ship(MonoBehaviour):
     def Awake():
         // Setup initial values and references
         fsm = gameObject.GetComponent[of AIBehaviours]() // REQUIRED
-        healthAttribute = gameObject.GetComponent[of HealthAttribute]() // REQUIRED
+        #health = gameObject.GetComponent[of HealthAttribute]() // REQUIRED
         damageAttribute = gameObject.GetComponent[of DamageAttribute]() // REQUIRED
         
         // Set rigibody
@@ -59,10 +58,20 @@ class Ship(MonoBehaviour):
     def setTargetPosition(p as Vector3):
         targetPosition = p
 
+    /*
+    * Receivers
+    */
+
+    /// Shoot receiver
     def Shoot():
         # VALIDATE TARGET
         damageAttribute.Shoot(target)
 
+    /// Selected state receiver
+    def IsSelected(s as bool):
+        select.isSelected = s   
+
+    /*
     def OnCollisionEnter(collision as Collision):
         print("collision")
         Debug.Log("yes")
@@ -75,3 +84,4 @@ class Ship(MonoBehaviour):
         print("collision")
         Debug.Log("yes")
         #behaviours.ChangeState(behaviours.behaviourOnIdle)
+    */
