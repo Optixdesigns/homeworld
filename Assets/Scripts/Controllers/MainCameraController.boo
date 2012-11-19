@@ -18,6 +18,11 @@ class MainCameraController(MonoBehaviour):
     private x = 0.0
     private y = 0.0
 
+    private SelectScript as Select
+
+    def Awake():
+        select = GetComponent("Select")
+
     def Start():
         angles = transform.eulerAngles
         x = angles.y
@@ -35,6 +40,9 @@ class MainCameraController(MonoBehaviour):
             Zoom('back', mouseSens)
         elif Input.GetAxis("Mouse ScrollWheel") > 0:
             Zoom('forward', mouseSens)
+
+        if Input.GetKeyDown('F'):
+            pass
 
     /**
      * Function: Rotate

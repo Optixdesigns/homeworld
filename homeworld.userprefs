@@ -1,7 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Ship.boo">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Select.boo">
     <Files>
+      <File FileName="../../New Unity Project 3/Assets/TDTK_Free/Scripts/C#/UnitTower.cs" Line="389" Column="58" />
+      <File FileName="../../New Unity Project 3/Assets/TDTK_Free/Scripts/C#/Unit.cs" Line="1" Column="1" />
       <File FileName="Assets/AIBehavior/_ReadMe.txt" Line="1" Column="1" />
       <File FileName="Assets/AIBehavior/Plugins/AIBehaviorsMadeEasy/AIBehaviors.cs" Line="1" Column="1" />
       <File FileName="Assets/AIBehavior/Plugins/AIBehaviorsMadeEasy/States/AttackState.cs" Line="1" Column="1" />
@@ -11,15 +13,18 @@
       <File FileName="Assets/AIBehaviours/Triggers/AIKeyUpTrigger.boo" Line="1" Column="1" />
       <File FileName="Assets/AIBehaviours/States/AIIdleState.boo" Line="1" Column="1" />
       <File FileName="Assets/AIBehaviours/EditorHelpers/AIBehavioursTriggersGUI.boo" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Select.boo" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Select.boo" Line="53" Column="1" />
       <File FileName="Assets/AIBehaviours/Editor/AIBehavioursEditor.boo" Line="1" Column="1" />
       <File FileName="Assets/AIBehavior/Plugins/AIBehaviorsMadeEasy/Triggers/WithinDistanceTrigger.cs" Line="1" Column="1" />
       <File FileName="Assets/AIBehavior/Plugins/AIBehaviorsMadeEasy/Triggers/BaseTrigger.cs" Line="1" Column="1" />
       <File FileName="Assets/AIBehavior/Plugins/AIBehaviorsMadeEasy/States/BaseState.cs" Line="1" Column="1" />
       <File FileName="Assets/AIBehavior/ExampleScripts/ExampleAttackComponent.cs" Line="1" Column="1" />
-      <File FileName="Assets/AIBehaviours/States/AIAttackState.boo" Line="8" Column="1" />
+      <File FileName="Assets/AIBehaviours/States/AIAttackState.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Weapon.boo" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Ship.boo" Line="64" Column="1" />
+      <File FileName="Assets/Scripts/Ship.boo" Line="1" Column="1" />
+      <File FileName="Assets/AIBehaviours/States/AIMoveState.boo" Line="30" Column="38" />
+      <File FileName="Assets/Scripts/Controllers/MainCameraController.boo" Line="33" Column="1" />
+      <File FileName="Assets/Scripts/CommandLayer.boo" Line="31" Column="43" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

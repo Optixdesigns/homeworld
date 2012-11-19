@@ -2,15 +2,22 @@ import UnityEngine
 /*=============================================================================
     Purpose : Logic for selecting ships and groups of ships.
 =============================================================================*/
-
+[System.Serializable]
 class Select(MonoBehaviour):
 
     private numSelectedShips as int
-    #public selectedShips as List[of GameObject] = List[of GameObject]()
-    public selectedShips as List[of Ship] = List[of Ship]() // Reference to the selected ships
+    #[SerializeField]
+    public selection as (GameObject) = array(GameObject, 0)
+    private selectionList as List[of GameObject] = List[of GameObject]()
+
+    #public selection as List[of GameObject] = List[of GameObject]()
+    #public selectedShips as List[of Ship] = List[of Ship]() // Reference to the selected ships
+    
+    #public selection as (GameObject) = array(GameObject, 0)
+    
     private _command as CommandLayer
     
-    def Start():
+    def Awake():
         _command = GetComponent(typeof(CommandLayer))
         #command = GameObject.Find("GameManager").GetComponent[of CommandLayer]()
 
@@ -47,7 +54,7 @@ class Select(MonoBehaviour):
         Debug.Log(target)
         // Send move command
         #_command.Move(selectedShips, target.transform.position)
-        _command.Attack(selectedShips, target)
+        _command.Attack(selection, target)
         print("Target selected")
 
     /*=============================================================================
@@ -69,7 +76,7 @@ class Select(MonoBehaviour):
             #return
         
         // We got a hit
-        SelectionSetSingleShip(obj.GetComponent[of Ship]())
+        SelectionSetSingleObject(obj)
         print("Ship selected")
 
     def CheckIfShip(obj as GameObject):
@@ -84,6 +91,13 @@ class Select(MonoBehaviour):
         Inputs      : ship - ship to select
         Outputs     :
     ----------------------------------------------------------------------------*/
-    def SelectionSetSingleShip(ship):
+    def SelectionSetSingleObject(obj as GameObject):
         numSelectedShips = 1
-        selectedShips.Push(ship)
+
+        selectionList.Clear()
+        selectionList.Add(obj as GameObject)
+        selection = selectionList.ToArray()
+
+    def SelectionAddObject(obj as GameObject):
+        pass
+
