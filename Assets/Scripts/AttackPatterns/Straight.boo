@@ -6,6 +6,9 @@ class Straight (AttackPattern):
         pass
     
     def Update():
-        #fsm.gameObject.transform.RotateAround(_ship.target.transform.position, Vector3.up, 10 * Time.deltaTime)
+        // Do a rerun
+
+        // Calculate distance
+        #dist as single = Vector3.Distance(other.position, transform.position)
         pass
 

@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scenes\Teaser\UI.boo" />
      <Compile Include="Assets\Scripts\Attack.boo" />
      <Compile Include="Assets\Scripts\AttackPatterns\AttackPattern.boo" />
+     <Compile Include="Assets\Scripts\AttackPatterns\Rotation.boo" />
      <Compile Include="Assets\Scripts\AttackPatterns\Straight.boo" />
      <Compile Include="Assets\Scripts\CommandLayer.boo" />
      <Compile Include="Assets\Scripts\Controllers\MainCameraController.boo" />
@@ -84,6 +85,7 @@
      <None Include="Assets\Packages\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\Packages\AIBehavior\_ReadMe.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
+     <None Include="Assets\Packages\Spacebox-4096-Nebula-Collision\readme.txt" />
      <None Include="Assets\Standard Assets\Detonator Explosion Framework\Resources\Detonator\Textures\HeatDistort.shader" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />

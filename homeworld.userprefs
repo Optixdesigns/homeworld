@@ -1,6 +1,6 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/AIBehaviours/EditorHelpers/AIBehavioursTriggersGUI.boo">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AttackPatterns/Straight.boo">
     <Files>
       <File FileName="Assets/Scenes/Teaser/PrintTextEvent.cs" Line="1" Column="1" />
       <File FileName="Assets/Packages/uSequencer/Sequencer Events/Fullscreen/USFadeScreenEvent.cs" Line="1" Column="1" />
@@ -13,6 +13,7 @@
       <File FileName="Assets/AIBehaviours/States/AIAttackState.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/WeaponsModule.boo" Line="1" Column="1" />
       <File FileName="Assets/AIBehaviours/EditorHelpers/AIBehavioursTriggersGUI.boo" Line="35" Column="11" />
+      <File FileName="Assets/Scripts/AttackPatterns/Straight.boo" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -10,6 +10,7 @@ obj/
 Output/
 *.svd
 Assets/Packages/Spacebox-4096-Nebula-Collision/
+Assets/Spacebox-4096-Nebula-Collision/
 
 !Library/*.asset
 !Library/AssetImportState
