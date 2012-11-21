@@ -56,8 +56,8 @@
      <Compile Include="Assets\Scenes\Teaser\UI.boo" />
      <Compile Include="Assets\Scripts\Attack.boo" />
      <Compile Include="Assets\Scripts\AttackPatterns\AttackPattern.boo" />
-     <Compile Include="Assets\Scripts\AttackPatterns\Rotation.boo" />
-     <Compile Include="Assets\Scripts\AttackPatterns\Straight.boo" />
+     <Compile Include="Assets\Scripts\AttackPatterns\RotationAttackPattern.boo" />
+     <Compile Include="Assets\Scripts\AttackPatterns\StraightAttackPattern.boo" />
      <Compile Include="Assets\Scripts\CommandLayer.boo" />
      <Compile Include="Assets\Scripts\Controllers\MainCameraController.boo" />
      <Compile Include="Assets\Scripts\GUI\UICursors.boo" />
