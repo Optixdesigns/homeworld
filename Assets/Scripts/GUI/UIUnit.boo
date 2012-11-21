@@ -36,14 +36,8 @@ class UIUnit(MonoBehaviour):
     def OnMouseEnter():
         #Debug.Log(unitController.isEnemy)
         if unitController.isEnemy:
-            uiMain = GameObject.Find("GameManager").GetComponent(UIMain)
-            #cursorData as CursorData = uiMain
-            #Debug.Log(Vector2(cursorAttackTexture.width / 2, cursorAttackTexture.height / 2))
-            #hotspot = Vector2(cursorAttackTexture.width / 2, cursorAttackTexture.height / 2)
-            #Debug.Log(hotspot)
-            Cursor.SetCursor(cursorAttackTexture, hotSpot, cursorMode)
-        #else:
-            #Cursor.SetCursor(null, hotSpot, cursorMode)
+            cursors = GameObject.Find("GameManager").GetComponent(UICursors)
+            Cursor.SetCursor(cursors.attackCursor.texture, cursors.attackCursor.hotSpot, cursors.attackCursor.cursorMode)
 
     def OnMouseExit():
         Cursor.SetCursor(null, Vector2.zero, cursorMode)

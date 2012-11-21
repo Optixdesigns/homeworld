@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+	<Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+	<ProductVersion>10.0.20506</ProductVersion>
+	<SchemaVersion>2.0</SchemaVersion>
+	<ProjectGuid>{5F9FCB8C-DC01-D4B7-072C-2FC262026962}</ProjectGuid>
+	<OutputType>Library</OutputType>
+	<AppDesignerFolder>Properties</AppDesignerFolder>
+	<RootNamespace></RootNamespace>
+	<AssemblyName>Assembly-Boo-firstpass</AssemblyName>
+	<TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+	<FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	<DebugSymbols>true</DebugSymbols>
+	<DebugType>full</DebugType>
+	<Optimize>false</Optimize>
+	<OutputPath>Temp\bin\Debug\</OutputPath>
+	<DefineConstants>DEBUG;TRACE;UNITY_STANDALONE;ENABLE_MICROPHONE;ENABLE_IMAGEEFFECTS;ENABLE_WEBCAM;ENABLE_AUDIO_FMOD;ENABLE_NETWORK;ENABLE_MONO;ENABLE_PHYSICS;ENABLE_TERRAIN;ENABLE_CACHING;ENABLE_SUBSTANCE;ENABLE_GENERICS;ENABLE_CLOTH;ENABLE_MOVIES;ENABLE_AUDIO;ENABLE_WWW;ENABLE_SHADOWS;ENABLE_DUCK_TYPING;UNITY_4_0_0;UNITY_4_0;UNITY_STANDALONE_OSX;ENABLE_PROFILER;UNITY_EDITOR</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+	<DebugType>pdbonly</DebugType>
+	<Optimize>true</Optimize>
+	<OutputPath>Temp\bin\Release\</OutputPath>
+	<DefineConstants>TRACE</DefineConstants>
+	<ErrorReport>prompt</ErrorReport>
+	<WarningLevel>4</WarningLevel>
+	<NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+	<Reference Include="System" />
+    <Reference Include="System.XML" />
+	<Reference Include="System.Core" />
+	<Reference Include="UnityEngine">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
+	</Reference>
+	<Reference Include="UnityEditor">
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
+	</Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Plugins\BooInspector-Samples\Ragetools\Editor\RageCanvasAlignEditor.boo" />
+     <Compile Include="Assets\Plugins\BooInspector-Samples\Ragetools\Editor\RageEdgetuneEditor.boo" />
+     <Compile Include="Assets\Plugins\BooInspector-Samples\Ragetools\Editor\RageGroupEditor.boo" />
+     <Compile Include="Assets\Plugins\BooInspector-Samples\Ragetools\Editor\RageMagnetEditor.boo" />
+     <Compile Include="Assets\Plugins\BooInspector-Samples\Ragetools\Editor\RagePivotoolsEditor.boo" />
+     <Compile Include="Assets\Plugins\BooInspector-Samples\Ragetools\Editor\RageSvgInEditor.boo" />
+     <None Include="Assets\Plugins\NGUI\Resources\Shaders\Depth.shader" />
+     <None Include="Assets\Plugins\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
+     <None Include="Assets\Plugins\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
+     <None Include="Assets\Plugins\NGUI\Resources\Shaders\Unlit - Masked Colored.shader" />
+     <None Include="Assets\Plugins\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
+     <None Include="Assets\Plugins\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\Plugins\AIBehavior\_ReadMe.txt" />
+     <None Include="Assets\Plugins\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
+     <None Include="Assets\Plugins\Spacebox-4096-Nebula-Collision\readme.txt" />
+     <None Include="Assets\Plugins\Detonator Explosion Framework\Resources\Detonator\Textures\HeatDistort.shader" />
+     <None Include="Assets\Plugins\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
+     <None Include="Assets\Plugins\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
+     <None Include="Assets\Plugins\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
+     <None Include="Assets\Plugins\NGUI\ReadMe.txt" />
+     <None Include="Assets\Plugins\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
+     <None Include="Assets\Plugins\NGUI\Resources\Shaders\Unlit - Transparent Colored (HardClip).shader" />
+     <None Include="Assets\Plugins\NGUI\Resources\Shaders\Unlit - Transparent Colored Overlay.shader" />
+     <None Include="Assets\Plugins\NGUI\Examples\Other\English.txt" />
+     <None Include="Assets\Plugins\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed).shader" />
+     <None Include="Assets\Plugins\Debugger\READ ME.txt" />
+     <None Include="Assets\Plugins\NGUI\Resources\Shaders\Unlit - Additive Colored.shader" />
+     <None Include="Assets\Plugins\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
+     <None Include="Assets\Plugins\NGUI\Examples\Shaders\Refractive.shader" />
+     <None Include="Assets\Plugins\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
+     <None Include="Assets\Plugins\BooInspector-Samples\readme-booinspector.txt" />
+     <None Include="Assets\Plugins\NGUI\Resources\Shaders\Unlit - Transparent Colored (SoftClip).shader" />
+     <None Include="Assets\Plugins\AIBehavior\_Setup.txt" />
+     <None Include="Assets\Plugins\AIBehavior\_ReleaseNotes.txt" />
+ <Reference Include="Assets\Plugins\NGUI\DLLs\NGUI">
+ <HintPath>Assets\Plugins\NGUI\DLLs\NGUI.dll</HintPath>
+ </Reference>
+ <Reference Include="Assets\Plugins\uSequencer\Sequencer\uSequencerRuntime">
+ <HintPath>Assets\Plugins\uSequencer\Sequencer\uSequencerRuntime.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>

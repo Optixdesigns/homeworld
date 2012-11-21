@@ -13,14 +13,9 @@ CursorSets[0] = test
     #ATTACK as CursorSet = CursorSet()
 
 class UIMain (MonoBehaviour):
-    public cursors as (CursorData) = array(CursorData, 0)
+    pass
+    #public cursors as (CursorData) = array(CursorData, 0)
 
 /// A Cursor set
-[System.Serializable]
-class CursorData():
-    public name as string
-    public cursorAttackTexture as Texture2D
-    public cursorMode as CursorMode = CursorMode.Auto
-    public hotSpot as Vector2
 
 

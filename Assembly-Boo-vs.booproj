@@ -52,26 +52,29 @@
      <Compile Include="Assets\AIBehaviours\States\AIMoveState.boo" />
      <Compile Include="Assets\AIBehaviours\Triggers\AIKeyUpTrigger.boo" />
      <Compile Include="Assets\AIBehaviours\Triggers\TestTrigger.boo" />
+     <Compile Include="Assets\Scenes\Teaser\Explosions.boo" />
+     <Compile Include="Assets\Scenes\Teaser\UI.boo" />
      <Compile Include="Assets\Scripts\Attack.boo" />
      <Compile Include="Assets\Scripts\CommandLayer.boo" />
      <Compile Include="Assets\Scripts\Controllers\MainCameraController.boo" />
-     <Compile Include="Assets\Scripts\DamageAttribute.boo" />
      <Compile Include="Assets\Scripts\FSMSystem.boo" />
+     <Compile Include="Assets\Scripts\GUI\UICursors.boo" />
      <Compile Include="Assets\Scripts\GUI\UIDebug.boo" />
      <Compile Include="Assets\Scripts\GUI\UIHealthBar.boo" />
      <Compile Include="Assets\Scripts\GUI\UIMain.boo" />
      <Compile Include="Assets\Scripts\GUI\UIUnit.boo" />
-     <Compile Include="Assets\Scripts\HealthAttribute.boo" />
+     <Compile Include="Assets\Scripts\HealthModule.boo" />
      <Compile Include="Assets\Scripts\Main.boo" />
      <Compile Include="Assets\Scripts\Managers\AITeamManager.boo" />
      <Compile Include="Assets\Scripts\Managers\ShipManager.boo" />
+     <Compile Include="Assets\Scripts\Projectile.boo" />
      <Compile Include="Assets\Scripts\Select.boo" />
      <Compile Include="Assets\Scripts\SelectController.boo" />
      <Compile Include="Assets\Scripts\Ship.boo" />
      <Compile Include="Assets\Scripts\ShipProperties.boo" />
      <Compile Include="Assets\Scripts\ShipSelect.boo" />
      <Compile Include="Assets\Scripts\Universe\Player.boo" />
-     <Compile Include="Assets\Scripts\Weapon.boo" />
+     <Compile Include="Assets\Scripts\WeaponsModule.boo" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Depth.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
@@ -80,6 +83,8 @@
      <None Include="Assets\Packages\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\Packages\AIBehavior\_ReadMe.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
+     <None Include="Assets\Packages\Spacebox-4096-Nebula-Collision\readme.txt" />
+     <None Include="Assets\Standard Assets\Detonator Explosion Framework\Resources\Detonator\Textures\HeatDistort.shader" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
@@ -94,13 +99,22 @@
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Shaders\Refractive.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
-     <None Include="Assets\Packages\BooInspector-Samples\readme-booinspector.txt" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (SoftClip).shader" />
      <None Include="Assets\Packages\AIBehavior\_Setup.txt" />
      <None Include="Assets\Packages\AIBehavior\_ReleaseNotes.txt" />
+ <Reference Include="Library\ScriptAssemblies\Assembly-UnityScript-firstpass">
+ <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
+ </Reference>
  <Reference Include="Assets\Packages\NGUI\DLLs\NGUI">
  <HintPath>Assets\Packages\NGUI\DLLs\NGUI.dll</HintPath>
  </Reference>
+ <Reference Include="Assets\Packages\uSequencer\Sequencer\uSequencerRuntime">
+ <HintPath>Assets\Packages\uSequencer\Sequencer\uSequencerRuntime.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
+      <Project>{46BF560C-45D2-0CFC-8AA5-E9D5A2B1770F}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

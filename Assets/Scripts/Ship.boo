@@ -1,9 +1,9 @@
 import UnityEngine
 import System
 
-#[RequireComponent(typeof(AIShipBehaviours))]
-#[RequireComponent(typeof(HealthAttribute))]
-[RequireComponent(typeof(DamageAttribute))]
+[RequireComponent(typeof(AIBehaviours))]
+[RequireComponent(typeof(HealthModule))]
+[RequireComponent(typeof(WeaponsModule))]
 [RequireComponent(typeof(Rigidbody))]
 [AddComponentMenu('Neworld/Ship')]
 class Ship(MonoBehaviour):
@@ -17,20 +17,22 @@ class Ship(MonoBehaviour):
 
     [HideInInspector]
     public fsm as AIBehaviours
-    #[HideInInspector]
-    public baseProperties as ShipProperties
-    public health as HealthAttribute
-    public select as SelectController
     [HideInInspector]
-    public damageAttribute as DamageAttribute
+    public baseProperties as ShipProperties
+    [HideInInspector]
+    public health as HealthModule
+    [HideInInspector]
+    public weapons as WeaponsModule
+
+    public select as SelectController
 
     #private _collisionSphere as SphereCollider // Collision Sphere, used as trigger
 
     def Awake():
         // Setup initial values and references
         fsm = gameObject.GetComponent[of AIBehaviours]() // REQUIRED
-        #health = gameObject.GetComponent[of HealthAttribute]() // REQUIRED
-        damageAttribute = gameObject.GetComponent[of DamageAttribute]() // REQUIRED
+        health = gameObject.GetComponent[of HealthModule]() // REQUIRED
+        weapons = gameObject.GetComponent[of WeaponsModule]() // REQUIRED
         
         // Set rigibody
         gameObject.rigidbody.mass = baseProperties.mass
@@ -52,6 +54,9 @@ class Ship(MonoBehaviour):
         pass
         #print("update")
 
+    #def Attack():
+
+
     def setTarget(t as GameObject):
         target = t
 
@@ -63,9 +68,9 @@ class Ship(MonoBehaviour):
     */
 
     /// Shoot receiver
-    def Shoot():
+    #def Shoot():
         # VALIDATE TARGET
-        damageAttribute.Shoot(target)
+        #weapons.Shoot(target)
 
     /// Selected state receiver
     def IsSelected(s as bool):

@@ -59,6 +59,8 @@
      <None Include="Assets\Packages\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\Packages\AIBehavior\_ReadMe.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
+     <None Include="Assets\Packages\Spacebox-4096-Nebula-Collision\readme.txt" />
+     <None Include="Assets\Standard Assets\Detonator Explosion Framework\Resources\Detonator\Textures\HeatDistort.shader" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
@@ -73,13 +75,22 @@
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Shaders\Refractive.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
-     <None Include="Assets\Packages\BooInspector-Samples\readme-booinspector.txt" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (SoftClip).shader" />
      <None Include="Assets\Packages\AIBehavior\_Setup.txt" />
      <None Include="Assets\Packages\AIBehavior\_ReleaseNotes.txt" />
+ <Reference Include="Library\ScriptAssemblies\Assembly-UnityScript-firstpass">
+ <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
+ </Reference>
  <Reference Include="Assets\Packages\NGUI\DLLs\NGUI">
  <HintPath>Assets\Packages\NGUI\DLLs\NGUI.dll</HintPath>
  </Reference>
+ <Reference Include="Assets\Packages\uSequencer\Sequencer\uSequencerRuntime">
+ <HintPath>Assets\Packages\uSequencer\Sequencer\uSequencerRuntime.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
+      <Project>{46BF560C-45D2-0CFC-8AA5-E9D5A2B1770F}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
