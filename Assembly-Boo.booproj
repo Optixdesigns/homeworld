@@ -55,9 +55,10 @@
      <Compile Include="Assets\Scenes\Teaser\Explosions.boo" />
      <Compile Include="Assets\Scenes\Teaser\UI.boo" />
      <Compile Include="Assets\Scripts\Attack.boo" />
+     <Compile Include="Assets\Scripts\AttackPatterns\AttackPattern.boo" />
+     <Compile Include="Assets\Scripts\AttackPatterns\Straight.boo" />
      <Compile Include="Assets\Scripts\CommandLayer.boo" />
      <Compile Include="Assets\Scripts\Controllers\MainCameraController.boo" />
-     <Compile Include="Assets\Scripts\FSMSystem.boo" />
      <Compile Include="Assets\Scripts\GUI\UICursors.boo" />
      <Compile Include="Assets\Scripts\GUI\UIDebug.boo" />
      <Compile Include="Assets\Scripts\GUI\UIHealthBar.boo" />

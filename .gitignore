@@ -9,6 +9,7 @@ Library/
 obj/
 Output/
 *.svd
+Assets/Packages/Spacebox-4096-Nebula-Collision/
 
 !Library/*.asset
 !Library/AssetImportState
@@ -35,3 +36,4 @@ Output/
 /Project/Assembly-UnityScript-firstpass.unityproj
 /Project/Assembly-UnityScript-firstpass-vs.unityproj
 /Project/Project.suo
+

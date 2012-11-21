@@ -9,12 +9,12 @@ public class AIBehavioursTriggersGUI:
     #toggle as Dictionary[of int, bool] = Dictionary[of int, bool]()
 
     public static def InitNewTriggers(state as AIState, fsm as AIBehaviours):
-        triggersDictionary as Dictionary[of string, Type] = Dictionary[of string, Type]()
+        #triggersDictionary as Dictionary[of string, Type] = Dictionary[of string, Type]()
         triggersList as List[of AITrigger] = List[of AITrigger]()
    
         // Setup a dictionary of the default triggers
-        triggersDictionary['Test'] = typeof(TestTrigger)
-        
+        #triggersDictionary['Test'] = typeof(TestTrigger)
+        /*
         for triggerName as string in triggersDictionary.Keys:
 
             triggerClassName as string = triggersDictionary[triggerName].ToString()
@@ -32,7 +32,7 @@ public class AIBehavioursTriggersGUI:
             except :
                 Debug.LogError((((('Type "' + triggerClassName) + '" does not exist.  You must have a class named "') + triggerClassName) + '" that derives from "AITrigger".'))
                 inittedSuccessfully = false 
-        
+        */
         state.ReplaceAllTriggers(triggersList.ToArray())
 
     public static def Draw(state as AIState, fsm as AIBehaviours):

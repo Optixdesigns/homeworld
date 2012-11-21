@@ -18,7 +18,8 @@ class AIAttackState(AIState):
         fsm.gameObject.transform.RotateAround(_ship.target.transform.position, Vector3.up, 10 * Time.deltaTime)
 
         // Shoot
-        _ship.weapons.Shoot()
+        if _ship.weapons:   // Check if have a weapon system
+            _ship.weapons.Shoot()
 
     protected override def StateEnded(fsm as AIBehaviours):
         pass

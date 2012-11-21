@@ -17,14 +17,14 @@ class Ship(MonoBehaviour):
 
     [HideInInspector]
     public fsm as AIBehaviours
-    [HideInInspector]
-    public baseProperties as ShipProperties
+    
     [HideInInspector]
     public health as HealthModule
     [HideInInspector]
     public weapons as WeaponsModule
 
     public select as SelectController
+    public baseProperties as ShipProperties
 
     #private _collisionSphere as SphereCollider // Collision Sphere, used as trigger
 

@@ -1,15 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Projectile.boo">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/AIBehaviours/EditorHelpers/AIBehavioursTriggersGUI.boo">
     <Files>
-      <File FileName="Assets/Scenes/Teaser/PrintTextEvent.cs" Line="4" Column="47" />
+      <File FileName="Assets/Scenes/Teaser/PrintTextEvent.cs" Line="1" Column="1" />
       <File FileName="Assets/Packages/uSequencer/Sequencer Events/Fullscreen/USFadeScreenEvent.cs" Line="1" Column="1" />
-      <File FileName="Assets/Packages/uSequencer/Sequencer Events/Fullscreen/PrintText.cs" Line="7" Column="35" />
-      <File FileName="Assets/Scenes/Teaser/Explosions.boo" Line="27" Column="29" />
-      <File FileName="Assets/Standard Assets/Detonator Explosion Framework/TestScene/DetonatorTest.js" Line="1" Column="30" />
+      <File FileName="Assets/Packages/uSequencer/Sequencer Events/Fullscreen/PrintText.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scenes/Teaser/Explosions.boo" Line="1" Column="1" />
+      <File FileName="Assets/Standard Assets/Detonator Explosion Framework/TestScene/DetonatorTest.js" Line="1" Column="1" />
       <File FileName="Assets/Scripts/GUI/UICursors.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/GUI/UIUnit.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Projectile.boo" Line="1" Column="1" />
+      <File FileName="Assets/AIBehaviours/States/AIAttackState.boo" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/WeaponsModule.boo" Line="1" Column="1" />
+      <File FileName="Assets/AIBehaviours/EditorHelpers/AIBehavioursTriggersGUI.boo" Line="35" Column="11" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
