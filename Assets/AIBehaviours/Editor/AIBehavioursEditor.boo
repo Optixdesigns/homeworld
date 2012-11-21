@@ -24,6 +24,7 @@ public class AIBehavioursEditor(Editor):
     /// Toggle states for each state foldout
     statesToggle as Dictionary[of int, bool] = Dictionary[of int, bool]()
     
+    foldoutGUIStyle as GUIStyle = GUIStyle(EditorStyles.foldout)
     #m_InitialState as SerializedProperty
 
     def OnEnable():
@@ -53,8 +54,12 @@ public class AIBehavioursEditor(Editor):
             GUILayout.BeginHorizontal(GUILayout.Height(20))
             #guiWidths = 90
             
-            #GUILayout.Label(states[i].name, GUILayout.MaxWidth(guiWidths))
-            statesToggle[i] = EditorGUILayout.Foldout(statesToggle[i], states[i].name)
+            #foldoutGUIStyle.normal.textColor = Color.green if not states[i].isEnabled else Color.grey
+            foldoutGUIStyle.normal.textColor = Color.black
+            if states[i] is fsm.currentState:
+               foldoutGUIStyle.normal.textColor = Color.green 
+
+            statesToggle[i] = EditorGUILayout.Foldout(statesToggle[i], states[i].name, foldoutGUIStyle)
             if EditorGUILayout.Toggle(states[i].isEnabled, GUILayout.Height(20)) != states[i].isEnabled:
                 states[i].isEnabled = (not states[i].isEnabled)
             
@@ -74,17 +79,7 @@ public class AIBehavioursEditor(Editor):
 
         SO.ApplyModifiedProperties()
 
-    #def OnInspectorUpdate():
-        #Repaint()
-
     private def InitStates():
-        #serializedObject.Update()
-        
-        
-        #Debug.Log(statesGameObjectProp.objectReferenceValue)
-    
-        #m_Prop as SerializedProperty = SerializedObject.FindProperty('statesGameObject')
-        #Debug.Log(statesGameObjectProp)
         if statesGameObjectProp.objectReferenceValue is null:
             statesGameObject = GameObject('AIStates')
             statesGameObjectProp.objectReferenceValue = statesGameObject
@@ -102,11 +97,6 @@ public class AIBehavioursEditor(Editor):
             Debug.Log("Existing")
 
         states = fsm.GetAllStates()
-        #Debug.Log(states.Length)
-
-        #serializedObject.ApplyModifiedProperties()
-
-        #Debug.Log(initialStateProp.objectReferenceValue)
 
     private def InitNewStates():
         statesDictionary as Dictionary[of string, Type] = Dictionary[of string, Type]()
