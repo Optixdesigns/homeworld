@@ -1,11 +1,10 @@
 import UnityEngine
 
-class RotationAttackPattern(AttackPattern): 
 
-    def Start():
+class RotationAttackPattern(AttackPattern): 
+    override def Start(unit as Unit):
         pass
     
-    def Update():
-        #fsm.gameObject.transform.RotateAround(_ship.target.transform.position, Vector3.up, 10 * Time.deltaTime)
-        pass
+    override def Update(unit as Unit):
+        unit.transform.RotateAround(unit.target.transform.position, Vector3.up, 10 * Time.deltaTime)
 

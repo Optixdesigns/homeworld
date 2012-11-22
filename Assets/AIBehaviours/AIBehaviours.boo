@@ -31,8 +31,7 @@ public class AIBehaviours(MonoBehaviour):
     def Awake():
         pass
 
-    def Update():
-        #if isActive:       
+    def Update():     
         // If the state remained the same, do the action
         if currentState.HandleReason(self):
             currentState.HandleAction(self)

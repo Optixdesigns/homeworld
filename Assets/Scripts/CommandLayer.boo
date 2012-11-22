@@ -14,8 +14,9 @@ class CommandLayer(MonoBehaviour):
         pass
 
     def Attack(selection as (GameObject), target as GameObject):
+        #Debug.Log("Attack")
         for obj in selection:
-            ship = obj.GetComponent[of Ship]()
+            ship = obj.GetComponent[of Unit]()
             ship.target = target
             ship.fsm.ChangeActiveStateByIndex(2)
 
@@ -27,17 +28,9 @@ class CommandLayer(MonoBehaviour):
     def Move(selection as (GameObject), targetPosition as Vector3):
         // Move commando
         # USE SENDMESSAGES
-        #pass
         for obj in selection:
-            ship = obj.GetComponent[of Ship]()
+            ship = obj.GetComponent[of Unit]()
             ship.fsm.ChangeActiveStateByIndex(1)
-        #pass
-        #for ship in selection: # should wrap selection into a gameobject
-            #print(targetPosition) 
-            #ship.moveToPosition = targetPosition
-            #ship.behaviours.ChangeState(ship.behaviours.behaviourOnMove)
-        #for ship in ships:  
-            #ship.Move(targetVector)
 
     def CancelMove():
         // Cancel move commando

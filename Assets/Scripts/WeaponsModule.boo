@@ -23,7 +23,7 @@ public class WeaponsModule(MonoBehaviour):
         coolDownTimer = 0
 
     def Update():
-        Debug.Log(coolDownTimer)
+        #Debug.Log(coolDownTimer)
         if coolDownTimer > 0:
             #Debug.Log(coolDownTimer)
             coolDownTimer = coolDownTimer - 1

@@ -1,13 +1,14 @@
 import UnityEngine
 import System
 
+
 [RequireComponent(typeof(AIBehaviours))]
 [RequireComponent(typeof(HealthModule))]
 [RequireComponent(typeof(WeaponsModule))]
+[RequireComponent(typeof(MovementModule))]
 [RequireComponent(typeof(Rigidbody))]
-[AddComponentMenu('Neworld/Ship')]
-class Ship(MonoBehaviour):
-    public shipName as string
+[AddComponentMenu('Neworld/Space Unit')]
+class Unit(SpaceObject):
     private speed as single                // Current speed/velocity
 
     public target as GameObject // target
@@ -16,7 +17,7 @@ class Ship(MonoBehaviour):
     public isEnemy as bool = false // Is this an enemy?
 
     [HideInInspector]
-    public fsm as AIBehaviours
+    public fsm as AIBehaviours  /// Relation to the attached FSM
     
     [HideInInspector]
     public health as HealthModule
@@ -24,7 +25,7 @@ class Ship(MonoBehaviour):
     public weapons as WeaponsModule
 
     public select as SelectController
-    public baseProperties as ShipProperties
+    public baseProperties as UnitProperties
 
     #private _collisionSphere as SphereCollider // Collision Sphere, used as trigger
 

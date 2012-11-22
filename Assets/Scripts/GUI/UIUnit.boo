@@ -4,7 +4,7 @@ import UnityEngine
 [AddComponentMenu("Neworld/Unit UI")]
 class UIUnit(MonoBehaviour):
     public unit as GameObject
-    public unitController as Ship
+    public unitController as Unit
 
     /// MAKE THIS SEPERATE CURSOR CLASS
     public cursor as Texture2D
@@ -16,7 +16,7 @@ class UIUnit(MonoBehaviour):
 
     def Awake():
         unit = gameObject
-        unitController = unit.GetComponent[of Ship]()
+        unitController = unit.GetComponent[of Unit]()
     
     def Update():
         if unitController.select and unitController.select.isSelected:

@@ -2,7 +2,7 @@ import UnityEngine
 
 [System.Serializable]
 class AIMoveState(AIState): 
-    private _ship as Ship
+    private _unit as Unit
 
     protected override def StateEnded(fsm as AIBehaviours):
         pass

@@ -79,7 +79,7 @@ class Select(MonoBehaviour):
         print("Ship selected")
 
     def CheckIfShip(obj as GameObject):
-        if obj.GetComponent[of Ship]():
+        if obj.GetComponent[of Unit]():
             return true
 
         return false
