@@ -77,12 +77,12 @@
      <Compile Include="Assets\Scripts\Unit.boo" />
      <Compile Include="Assets\Scripts\UnitProperties.boo" />
      <Compile Include="Assets\Scripts\WeaponsModule.boo" />
+     <Compile Include="Assets\Scripts\test\testmove.boo" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Depth.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Masked Colored.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
-     <None Include="Assets\Packages\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\Packages\AIBehavior\_ReadMe.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
      <None Include="Assets\Standard Assets\Detonator Explosion Framework\Resources\Detonator\Textures\HeatDistort.shader" />

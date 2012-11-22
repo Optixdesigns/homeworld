@@ -8,7 +8,8 @@ class MovementModule (MonoBehaviour):
 		pass
 
 	def MoveTo():
-		gameobject.transform.position = Vector3.MoveTowards(gameObject.transform.position, unit.target.transform.position, unit.baseProperties.maxVelocity / 5)
+		#gameobject.transform.position = Vector3.MoveTowards(gameObject.transform.position, unit.target.transform.position, unit.baseProperties.maxVelocity / 5)
+		pass
 
 	def Stop():
 		pass
