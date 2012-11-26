@@ -69,7 +69,8 @@
      <Compile Include="Assets\Scripts\Managers\ShipManager.boo" />
      <Compile Include="Assets\Scripts\MovementModule.boo" />
      <Compile Include="Assets\Scripts\Player.boo" />
-     <Compile Include="Assets\Scripts\Projectile.boo" />
+     <Compile Include="Assets\Scripts\Projectiles\Projectile.boo" />
+     <Compile Include="Assets\Scripts\Projectiles\ProjectileDefault.boo" />
      <Compile Include="Assets\Scripts\Select.boo" />
      <Compile Include="Assets\Scripts\SelectController.boo" />
      <Compile Include="Assets\Scripts\ShipSelect.boo" />
@@ -85,6 +86,7 @@
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
      <None Include="Assets\Packages\AIBehavior\_ReadMe.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
+     <None Include="Assets\Packages\Spacebox-4096-Nebula-Collision\readme.txt" />
      <None Include="Assets\Standard Assets\Detonator Explosion Framework\Resources\Detonator\Textures\HeatDistort.shader" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />

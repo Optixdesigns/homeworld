@@ -12,6 +12,9 @@ class Unit(SpaceObject):
     private speed as single                // Current speed/velocity
 
     public target as GameObject // target
+    [HideInInspector]
+    public targetDistance as single // Distance to target
+    
     public moveToPosition as Vector3 // move to position
     public player as Player // Owner of this ship
     public isEnemy as bool = false // Is this an enemy?
@@ -23,6 +26,8 @@ class Unit(SpaceObject):
     public health as HealthModule
     [HideInInspector]
     public weapons as WeaponsModule
+    [HideInInspector]
+    public movement as MovementModule
 
     public select as SelectController
     public baseProperties as UnitProperties
@@ -34,6 +39,7 @@ class Unit(SpaceObject):
         fsm = gameObject.GetComponent[of AIBehaviours]() // REQUIRED
         health = gameObject.GetComponent[of HealthModule]() // REQUIRED
         weapons = gameObject.GetComponent[of WeaponsModule]() // REQUIRED
+        movement = gameObject.GetComponent[of MovementModule]() // REQUIRED
         
         // Set rigibody
         gameObject.rigidbody.mass = baseProperties.mass
@@ -48,15 +54,12 @@ class Unit(SpaceObject):
         #print(collider)
 
         // Check our setup
-        if baseProperties.maxVelocity == 0.0:
+        if movement.maxVelocity == 0.0:
             Debug.Log("WARNING: Ships maximum velocity is zero")
 
     def Update():
-        pass
-        #print("update")
-
-    #def Attack():
-
+        if target:  // Keep distance in the unit object for different systems
+            targetDistance = Vector3.Distance(target.transform.position, transform.position)
 
     def setTarget(t as GameObject):
         target = t

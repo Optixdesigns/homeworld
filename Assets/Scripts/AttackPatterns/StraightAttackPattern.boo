@@ -22,32 +22,35 @@ class StraightAttackPattern(AttackPattern):
 
         // Calculate distance
         dist as single = GetDistance(unit.target.transform.position, unit.transform.position)
-        Debug.Log(dist)
+        unit.movement.Move()
+
+        #Debug.Log(dist)
         
         if onRun:
+            // lookat target
+            unit.movement.SmoothLookAt(unit.target.transform.position)
+            #unit.movement.Move()
             // Only move when on a safe distance and a run is active
             if dist > runEndDistance: 
-                unit.transform.position = Vector3.MoveTowards(unit.transform.position, unit.target.transform.position, unit.baseProperties.maxVelocity / 5)
-                #unit.rigidbody.AddRelativeForce(Vector3.forward * 10)
+                #unit.transform.position = Vector3.MoveTowards(unit.transform.position, unit.target.transform.position, unit.movement.maxVelocity / 5)
                 onRun = true
-                Debug.Log("running")
+
             // Cancel run and create a start run point in space
             elif dist < runEndDistance:
                 rerunPosition = GetNewRerunPosition(unit)
                 onRun = false
-                Debug.Log("Cancel onrun")
+
         
         // Move away for a new run
         if not onRun:
+            unit.movement.SmoothLookAt(rerunPosition)
             if dist < runStartDistance:
                 #Vector3.MoveTowards(unit.transform.position, rerunPosition, unit.baseProperties.maxVelocity)
-                unit.transform.Translate(Vector3.forward * unit.baseProperties.maxVelocity / 5)
+                #unit.transform.Translate(Vector3.forward * unit.movement.maxVelocity / 5)
                 onRun = false
-                Debug.Log("move away to: " + rerunPosition)
             // Time todo a run again
             elif dist > runStartDistance:
                 onRun = true
-                Debug.Log("start rerun")
             
 
     def GetNewRerunPosition(unit as Unit):
