@@ -42,8 +42,8 @@ class Unit(SpaceObject):
         movement = gameObject.GetComponent[of MovementModule]() // REQUIRED
         
         // Set rigibody
-        gameObject.rigidbody.mass = baseProperties.mass
-        gameObject.rigidbody.detectCollisions = false // For now
+        rigidbody.mass = baseProperties.mass
+        rigidbody.detectCollisions = false // For now
 
         // Setup collision sphere
         #_collisionSphere = gameObject.AddComponent("SphereCollider")

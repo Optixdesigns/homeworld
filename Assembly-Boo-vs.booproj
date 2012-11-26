@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\Projectiles\ProjectileDefault.boo" />
      <Compile Include="Assets\Scripts\Select.boo" />
      <Compile Include="Assets\Scripts\SelectController.boo" />
+     <Compile Include="Assets\Scripts\ShipControls.boo" />
      <Compile Include="Assets\Scripts\ShipSelect.boo" />
      <Compile Include="Assets\Scripts\SpaceObject.boo" />
      <Compile Include="Assets\Scripts\Unit.boo" />

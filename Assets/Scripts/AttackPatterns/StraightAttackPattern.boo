@@ -2,12 +2,12 @@ import UnityEngine
 
 class StraightAttackPattern(AttackPattern):
     private onRun as bool = false
-    private runStartDistance = 20 /// Distance needed to start a attack run
-    private runEndDistance = 4 /// Distance to target wich ends a run
-    private rerunPosition as Vector3 /// position to start a new run
+    private runStartDistance = 25 /// Distance needed to start a attack run
+    private runEndDistance = 6 /// Distance to target wich ends a run
+    private runStartPosition as Vector3 /// position to start a new run
 
     override def Start(unit as Unit):
-        rerunPosition = GetNewRerunPosition(unit)
+        runStartPosition = GetNewRerunPosition(unit)
         #pass
         /*
         dist as single = GetDistance(unit.target.transform.position, unit.transform.position)
@@ -22,40 +22,38 @@ class StraightAttackPattern(AttackPattern):
 
         // Calculate distance
         dist as single = GetDistance(unit.target.transform.position, unit.transform.position)
-        unit.movement.Move()
 
-        #Debug.Log(dist)
+        #Debug.Log(rerunPosition)
         
         if onRun:
             // lookat target
-            unit.movement.SmoothLookAt(unit.target.transform.position)
-            #unit.movement.Move()
-            // Only move when on a safe distance and a run is active
-            if dist > runEndDistance: 
-                #unit.transform.position = Vector3.MoveTowards(unit.transform.position, unit.target.transform.position, unit.movement.maxVelocity / 5)
-                onRun = true
+            #unit.movement.SmoothLookAt(unit.target.transform.position)
+            // Move our unit
+            unit.movement.MoveTo(unit.target.transform.position)
+ 
+            #if dist > runEndDistance: 
+                #onRun = true
 
             // Cancel run and create a start run point in space
-            elif dist < runEndDistance:
-                rerunPosition = GetNewRerunPosition(unit)
+            if dist < runEndDistance:
+                runStartPosition = GetNewRerunPosition(unit)
                 onRun = false
 
         
         // Move away for a new run
         if not onRun:
-            unit.movement.SmoothLookAt(rerunPosition)
-            if dist < runStartDistance:
-                #Vector3.MoveTowards(unit.transform.position, rerunPosition, unit.baseProperties.maxVelocity)
-                #unit.transform.Translate(Vector3.forward * unit.movement.maxVelocity / 5)
-                onRun = false
+            unit.movement.MoveTo(runStartPosition)
+            #unit.movement.SmoothLookAt(rerunPosition)
+            #if dist < runStartDistance:
+                #onRun = false
+            
             // Time todo a run again
-            elif dist > runStartDistance:
+            if dist >= runStartDistance:
                 onRun = true
             
 
     def GetNewRerunPosition(unit as Unit):
-        #Debug.Log("Creating new rerun position:" + unit.transform.position + Vector3(0, 0, runStartDistance))
-        return unit.transform.position + Vector3(0, 0, runStartDistance)
+        return unit.target.transform.position + Vector3(Random.Range(runStartDistance, runStartDistance + 20), Random.Range(runStartDistance, runStartDistance + 20), Random.Range(runStartDistance, runStartDistance + 20))
 
 
 

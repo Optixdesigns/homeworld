@@ -7,8 +7,8 @@ import System
 public class WeaponsModule(MonoBehaviour):
     public damage as single
     public minShootDistance as single = 5.0    // Attack range minum
-    public maxShootDistance as single = 10.0   // Attack range maximum
-    public projectileSpeed as single = 10.0
+    public maxShootDistance as single = 20.0   // Attack range maximum
+    #public projectileSpeed as single = 10.0
     public RateOfFire as single = 1.0
     public fieldOfViewRange as single = 50
 
@@ -39,9 +39,7 @@ public class WeaponsModule(MonoBehaviour):
 
     public def Shoot():
         if Time.time > fireTimer and TargetInRange(unit.target):
-            Debug.DrawLine(transform.position, transform.position + transform.forward, Color.red)
             clone as GameObject = Instantiate(projectilePrefab, transform.position, transform.rotation)
-            clone.rigidbody.velocity = transform.TransformDirection(Vector3( 0, 0, projectileSpeed))
             fireTimer = Time.time + RateOfFire
 
     def OnDrawGizmosSelected():

@@ -8,7 +8,8 @@ class AIAttackState(AIState):
     private unit as Unit
 
     protected override def Init(fsm as AIBehaviours):
-        Debug.Log("Attack state called")
+        #Debug.Log("Attack state called")
+        unit = fsm.gameObject.GetComponent(typeof(Unit))
         attackPattern.Start(unit)
 
     protected override def Reason(fsm as AIBehaviours):
@@ -16,7 +17,7 @@ class AIAttackState(AIState):
 
     protected override def Action(fsm as AIBehaviours):
         // Get the unit
-        unit = fsm.gameObject.GetComponent(typeof(Unit))
+        #unit = fsm.gameObject.GetComponent(typeof(Unit))
         // Execute attack pattern
         #Debug.Log(attackPattern)
         if attackPattern: 
