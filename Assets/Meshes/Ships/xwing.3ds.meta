@@ -1,0 +1,402 @@
+fileFormatVersion: 2
+guid: 8385645fef8364adf8b1e62d2b1f2131
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: blubuttons
+    100002: bodyback
+    100004: Box01
+    100006: cabin lt g
+    100008: cabinblue
+    100010: cabincream
+    100012: cabindkgre
+    100014: cabingreen
+    100016: cabinred
+    100018: Camera.Tar.target
+    100020: camera1
+    100022: eng1
+    100024: eng2
+    100026: eng3
+    100028: eng4
+    100030: fan1
+    100032: fan2
+    100034: fan3
+    100036: fan4
+    100038: junction1
+    100040: junction2
+    100042: junction3
+    100044: junction4
+    100046: lance1
+    100048: lance2
+    100050: lance3
+    100052: lance4
+    100054: lancebase1
+    100056: lancebase2
+    100058: lancebase3
+    100060: lancebase4
+    100062: Object01
+    100064: Object02
+    100066: Object03
+    100068: Object04
+    100070: pilotbody
+    100072: pilotbrown
+    100074: pilotdkbro
+    100076: pilotdkgre
+    100078: pilotface
+    100080: pilotred
+    100082: pilotvisor
+    100084: pilotwhite
+    100086: r2black
+    100088: r2blue
+    100090: r2red
+    100092: screen1
+    100094: screen3
+    100096: screen4
+    100098: screen5
+    100100: screen6
+    100102: screen7
+    100104: screen8
+    100106: thruster1
+    100108: thruster2
+    100110: thruster3
+    100112: thruster4
+    100114: wind1
+    100116: wind2
+    100118: wind3
+    100120: wind4
+    100122: wind5
+    100124: wingdown
+    100126: wingup
+    100128: //RootNode
+    100130: xwing body
+    100132: xwing cano
+    100134: xwing inte
+    100136: xwing nose
+    100138: xwing R2D2
+    100140: xwing rebe
+    400000: blubuttons
+    400002: bodyback
+    400004: Box01
+    400006: cabin lt g
+    400008: cabinblue
+    400010: cabincream
+    400012: cabindkgre
+    400014: cabingreen
+    400016: cabinred
+    400018: Camera.Tar.target
+    400020: camera1
+    400022: eng1
+    400024: eng2
+    400026: eng3
+    400028: eng4
+    400030: fan1
+    400032: fan2
+    400034: fan3
+    400036: fan4
+    400038: junction1
+    400040: junction2
+    400042: junction3
+    400044: junction4
+    400046: lance1
+    400048: lance2
+    400050: lance3
+    400052: lance4
+    400054: lancebase1
+    400056: lancebase2
+    400058: lancebase3
+    400060: lancebase4
+    400062: Object01
+    400064: Object02
+    400066: Object03
+    400068: Object04
+    400070: pilotbody
+    400072: pilotbrown
+    400074: pilotdkbro
+    400076: pilotdkgre
+    400078: pilotface
+    400080: pilotred
+    400082: pilotvisor
+    400084: pilotwhite
+    400086: r2black
+    400088: r2blue
+    400090: r2red
+    400092: screen1
+    400094: screen3
+    400096: screen4
+    400098: screen5
+    400100: screen6
+    400102: screen7
+    400104: screen8
+    400106: thruster1
+    400108: thruster2
+    400110: thruster3
+    400112: thruster4
+    400114: wind1
+    400116: wind2
+    400118: wind3
+    400120: wind4
+    400122: wind5
+    400124: wingdown
+    400126: wingup
+    400128: //RootNode
+    400130: xwing body
+    400132: xwing cano
+    400134: xwing inte
+    400136: xwing nose
+    400138: xwing R2D2
+    400140: xwing rebe
+    2300000: blubuttons
+    2300002: bodyback
+    2300004: Box01
+    2300006: cabin lt g
+    2300008: cabinblue
+    2300010: cabincream
+    2300012: cabindkgre
+    2300014: cabingreen
+    2300016: cabinred
+    2300018: eng1
+    2300020: eng2
+    2300022: eng3
+    2300024: eng4
+    2300026: fan1
+    2300028: fan2
+    2300030: fan3
+    2300032: fan4
+    2300034: junction1
+    2300036: junction2
+    2300038: junction3
+    2300040: junction4
+    2300042: lance1
+    2300044: lance2
+    2300046: lance3
+    2300048: lance4
+    2300050: lancebase1
+    2300052: lancebase2
+    2300054: lancebase3
+    2300056: lancebase4
+    2300058: Object01
+    2300060: Object02
+    2300062: Object03
+    2300064: Object04
+    2300066: pilotbody
+    2300068: pilotbrown
+    2300070: pilotdkbro
+    2300072: pilotdkgre
+    2300074: pilotface
+    2300076: pilotred
+    2300078: pilotvisor
+    2300080: pilotwhite
+    2300082: r2black
+    2300084: r2blue
+    2300086: r2red
+    2300088: screen1
+    2300090: screen3
+    2300092: screen4
+    2300094: screen5
+    2300096: screen6
+    2300098: screen7
+    2300100: screen8
+    2300102: thruster1
+    2300104: thruster2
+    2300106: thruster3
+    2300108: thruster4
+    2300110: wind1
+    2300112: wind2
+    2300114: wind3
+    2300116: wind4
+    2300118: wind5
+    2300120: wingdown
+    2300122: wingup
+    2300124: xwing body
+    2300126: xwing cano
+    2300128: xwing inte
+    2300130: xwing nose
+    2300132: xwing R2D2
+    2300134: xwing rebe
+    3300000: blubuttons
+    3300002: bodyback
+    3300004: Box01
+    3300006: cabin lt g
+    3300008: cabinblue
+    3300010: cabincream
+    3300012: cabindkgre
+    3300014: cabingreen
+    3300016: cabinred
+    3300018: eng1
+    3300020: eng2
+    3300022: eng3
+    3300024: eng4
+    3300026: fan1
+    3300028: fan2
+    3300030: fan3
+    3300032: fan4
+    3300034: junction1
+    3300036: junction2
+    3300038: junction3
+    3300040: junction4
+    3300042: lance1
+    3300044: lance2
+    3300046: lance3
+    3300048: lance4
+    3300050: lancebase1
+    3300052: lancebase2
+    3300054: lancebase3
+    3300056: lancebase4
+    3300058: Object01
+    3300060: Object02
+    3300062: Object03
+    3300064: Object04
+    3300066: pilotbody
+    3300068: pilotbrown
+    3300070: pilotdkbro
+    3300072: pilotdkgre
+    3300074: pilotface
+    3300076: pilotred
+    3300078: pilotvisor
+    3300080: pilotwhite
+    3300082: r2black
+    3300084: r2blue
+    3300086: r2red
+    3300088: screen1
+    3300090: screen3
+    3300092: screen4
+    3300094: screen5
+    3300096: screen6
+    3300098: screen7
+    3300100: screen8
+    3300102: thruster1
+    3300104: thruster2
+    3300106: thruster3
+    3300108: thruster4
+    3300110: wind1
+    3300112: wind2
+    3300114: wind3
+    3300116: wind4
+    3300118: wind5
+    3300120: wingdown
+    3300122: wingup
+    3300124: xwing body
+    3300126: xwing cano
+    3300128: xwing inte
+    3300130: xwing nose
+    3300132: xwing R2D2
+    3300134: xwing rebe
+    4300000: xwing body
+    4300002: xwing nose
+    4300004: xwing cano
+    4300006: xwing inte
+    4300008: xwing rebe
+    4300010: xwing R2D2
+    4300012: bodyback
+    4300014: thruster1
+    4300016: eng1
+    4300018: eng2
+    4300020: thruster2
+    4300022: lancebase1
+    4300024: thruster3
+    4300026: eng3
+    4300028: lance3
+    4300030: lancebase2
+    4300032: lancebase3
+    4300034: lance2
+    4300036: lance1
+    4300038: lance4
+    4300040: lancebase4
+    4300042: thruster4
+    4300044: eng4
+    4300046: junction4
+    4300048: fan4
+    4300050: fan3
+    4300052: junction3
+    4300054: fan1
+    4300056: junction1
+    4300058: fan2
+    4300060: junction2
+    4300062: wingup
+    4300064: wingdown
+    4300066: Box01
+    4300068: Object01
+    4300070: Object02
+    4300072: Object03
+    4300074: Object04
+    4300076: r2blue
+    4300078: r2red
+    4300080: r2black
+    4300082: pilotbody
+    4300084: blubuttons
+    4300086: pilotdkgre
+    4300088: pilotred
+    4300090: pilotwhite
+    4300092: pilotbrown
+    4300094: pilotdkbro
+    4300096: pilotvisor
+    4300098: pilotface
+    4300100: cabindkgre
+    4300102: cabinblue
+    4300104: cabinred
+    4300106: cabingreen
+    4300108: cabincream
+    4300110: cabin lt g
+    4300112: wind1
+    4300114: wind2
+    4300116: wind3
+    4300118: wind4
+    4300120: wind5
+    4300122: screen1
+    4300124: screen5
+    4300126: screen6
+    4300128: screen3
+    4300130: screen4
+    4300132: screen7
+    4300134: screen8
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .100000001
+    meshCompression: 0
+    addColliders: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 2
+  userData: 

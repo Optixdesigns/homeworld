@@ -57,8 +57,6 @@ public class AIBehaviorsEditor : Editor
 		curStateSelection = 0;
 		prevStateSelection = 0;
 
-		AIBehaviorsLegacy.UpgradeTriggers(fsm);
-
 		// Sorts old states and initializes new states
 		InitStates();
 		states = fsm.GetAllStates();
@@ -85,21 +83,6 @@ public class AIBehaviorsEditor : Editor
 					prevStateSelection = i;
 				}
 			}
-		}
-
-		MarkStatesAsUpgraded();
-	}
-
-
-	void MarkStatesAsUpgraded()
-	{
-		foreach ( BaseState state in fsm.states )
-		{
-			SerializedObject sObject = new SerializedObject(state);
-
-			sObject.FindProperty("isUpgraded").boolValue = true;
-
-			sObject.ApplyModifiedProperties();
 		}
 	}
 
@@ -236,8 +219,17 @@ public class AIBehaviorsEditor : Editor
 						GUI.enabled = states.Length > 1;
 						if ( GUILayout.Button(styles.blankContent, styles.removeStyle, GUILayout.MaxWidth(styles.addRemoveButtonWidths)) )
 						{
+							BaseState state = m_Object.FindProperty(string.Format(kStatesArrayData, i)).objectReferenceValue as BaseState;
+
 							Undo.RegisterSceneUndo("Remove a State");
-							DestroyImmediate(m_Object.FindProperty(string.Format(kStatesArrayData, i)).objectReferenceValue);
+
+							foreach ( BaseTrigger trigger in state.triggers )
+							{
+								DestroyImmediate(trigger, true);
+							}
+
+							DestroyImmediate(state, true);
+
 							AIBehaviorsAssignableObjectArray.RemoveObjectAtIndex(m_Object, i, "states");
 							m_Object.ApplyModifiedProperties();
 							return;
@@ -425,7 +417,7 @@ public class AIBehaviorsEditor : Editor
 	{
 		SerializedProperty m_property;
 
-		GUILayout.Label("General AI properties:", EditorStyles.boldLabel);
+		GUILayout.Label("General AI Properties:", EditorStyles.boldLabel);
 
 		const string raycastLayersText = "Visual Obstruction Layers";
 		const string raycastLayersTooltip = "These are the layers that block the AI's view between them and the player. This would include items such as the general level geometry, walls, boxes or any other objects with colliders that are included in this layer mask.";

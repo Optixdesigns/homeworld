@@ -4,6 +4,9 @@ import UnityEngine
 class AIMoveState(AIState): 
     private _unit as Unit
 
+    protected override def Reason(fsm as AIBehaviours):
+        return true
+
     protected override def StateEnded(fsm as AIBehaviours):
         pass
 

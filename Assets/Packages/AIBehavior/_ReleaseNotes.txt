@@ -1,6 +1,23 @@
 
 Release Notes for AI Behaviors Made Easy
 
+=====================================================
+Version 1.3.6
+=====================================================
+
+Fixes:
+-----------
+
+Fixed a null reference bug when a nav mesh agent is not present in the GotHit method.
+
+Fixed a bug where triggers were not being deleted when a state was deleted.
+
+
+Changes:
+-----------
+
+Removed Legacy Upgrade system
+
 
 =====================================================
 Version 1.3.5

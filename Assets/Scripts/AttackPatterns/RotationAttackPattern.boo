@@ -2,9 +2,9 @@ import UnityEngine
 
 
 class RotationAttackPattern(AttackPattern): 
-    override def Start(unit as Unit):
+    def Start():
         pass
     
-    override def Update(unit as Unit):
+    def Update():
         unit.transform.RotateAround(unit.target.transform.position, Vector3.up, 10 * Time.deltaTime)
 

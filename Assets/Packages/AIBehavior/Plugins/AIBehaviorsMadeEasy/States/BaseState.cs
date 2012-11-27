@@ -155,46 +155,6 @@ public abstract class BaseState : MonoBehaviour
 	}
 
 
-	// === Deprecated Trigger Properties === //
-
-	public bool isUpgraded = false;
-
-	public bool usesLineOfSightTrigger = false;
-	public BaseState lineOfSightState;
-
-	public bool usesNoPlayerInSightTrigger = false;
-	public BaseState noPlayerInSightState;
-
-	public bool usesWithinDistanceTrigger = false;
-	public BaseState withinDistanceState;
-	public float withinDistance = 1.0f;
-
-	public bool usesBeyondDistanceTrigger = false;
-	public BaseState beyondDistanceState;
-	public float beyondDistance = 1.0f;
-
-	public bool usesTimerTrigger = false;
-	public BaseState timerExpiredState;
-	public float timerDuration = 1.0f;
-	public float plusOrMinusDuration = 0.0f;
-
-	public bool usesLowHealthTrigger = false;
-	public float lowHealthAmount = 50.0f;
-	public BaseState lowHealthState;
-
-	public bool usesHighHealthTrigger = false;
-	public float highHealthAmount = 50.0f;
-	public BaseState highHealthState;
-
-	public bool usesInPlayerViewTrigger = false;
-	public BaseState inPlayerViewState;
-
-	public bool usesVelocityTrigger = false;
-	public float minimumVelocity = 1.0f;
-	public string velocityObjectsTag = "Untagged";
-	public BaseState velocityExceededState;
-
-
 	public override string ToString ()
 	{
 		return name;

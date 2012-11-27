@@ -51,10 +51,12 @@
      <Compile Include="Assets\AIBehaviours\States\AIMoveState.boo" />
      <Compile Include="Assets\AIBehaviours\Triggers\AIKeyUpTrigger.boo" />
      <Compile Include="Assets\AIBehaviours\Triggers\TestTrigger.boo" />
+     <Compile Include="Assets\AIBehaviours\Utils\utils.boo" />
      <Compile Include="Assets\Scenes\Teaser\Explosions.boo" />
      <Compile Include="Assets\Scenes\Teaser\UI.boo" />
      <Compile Include="Assets\Scripts\AttackPatterns\AttackPattern.boo" />
      <Compile Include="Assets\Scripts\AttackPatterns\RotationAttackPattern.boo" />
+     <Compile Include="Assets\Scripts\AttackPatterns\SidewayAttackPattern.boo" />
      <Compile Include="Assets\Scripts\AttackPatterns\StraightAttackPattern.boo" />
      <Compile Include="Assets\Scripts\CommandLayer.boo" />
      <Compile Include="Assets\Scripts\Controllers\MainCameraController.boo" />

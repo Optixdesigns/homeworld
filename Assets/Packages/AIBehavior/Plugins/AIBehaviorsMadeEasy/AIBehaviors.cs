@@ -116,7 +116,6 @@ public class AIBehaviors : MonoBehaviour
 
 	void Start()
 	{
-		AIBehaviorsLegacy.UpgradeTriggers(this);
 		ChangeActiveState(initialState);
 
 		if ( checkForNewPlayersInterval > 0 )
@@ -227,7 +226,6 @@ public class AIBehaviors : MonoBehaviour
 
 			SubtractHealthValue(damage);
 
-			navMeshAgent.destination = transform.position;
 			ChangeActiveState(gotHitState);
 		}
 	}

@@ -11,6 +11,7 @@ public class WeaponsModule(MonoBehaviour):
     #public projectileSpeed as single = 10.0
     public RateOfFire as single = 1.0
     public fieldOfViewRange as single = 50
+    #public fieldOfViewSide as Vector3 = transform.forward
 
     public projectilePrefab as GameObject
     #public weapons as (Weapon) = array(Weapon, 0)

@@ -4,11 +4,16 @@ import UnityEngine
 * Handles the attack pattern of an Unit
 */
 
-public abstract class AttackPattern:
-    abstract def Start(unit as Unit):
-        pass
+[Serializable]
+public abstract class AttackPattern(MonoBehaviour):
+    [HideInInspector]
+    public unit as Unit
     
-    abstract def Update(unit as Unit):
+    def Start():
+        pass
+        #unit = gameObject.GetComponent(typeof(Unit))
+    
+    def Update():
         pass
 
     /// Shortcut for getting the distance between positions

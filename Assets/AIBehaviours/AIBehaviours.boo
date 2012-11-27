@@ -1,6 +1,8 @@
 #ifdef UNITY_EDITOR:
-import UnityEditor
+import System.Collections
+import System.Collections.Generic
 import UnityEngine
+import UnityEditor
 #ifdef not UNITY_EDITOR:
 #    import UnityEngine
 
@@ -28,11 +30,16 @@ public class AIBehaviours(MonoBehaviour):
     public callable StateChangedDelegate(newState as AIState, previousState as AIState)
     public onStateChanged as StateChangedDelegate = null
 
+    def Start():
+        if not currentState:
+            currentState = initialState
+
     def Awake():
         pass
 
     def Update():     
         // If the state remained the same, do the action
+        #Debug.Log(currentState)
         if currentState.HandleReason(self):
             currentState.HandleAction(self)
 
@@ -63,6 +70,8 @@ public class AIBehaviours(MonoBehaviour):
         
         if currentState is not null:
             currentState.InitState(self)
+
+
 
         #Debug.Log(previousState)    
         #onStateChanged(newState, previousState)
@@ -137,7 +146,7 @@ public abstract class AIState(MonoBehaviour):
         AIBehavioursTriggersGUI.Draw(self, fsm)
         EditorGUILayout.Separator()
 
-        #DrawProperties(m_Object, stateMachine)
+        DrawStateInspectorEditor(m_Object, fsm)
         EditorGUILayout.Separator()
 
         m_Object.ApplyModifiedProperties()

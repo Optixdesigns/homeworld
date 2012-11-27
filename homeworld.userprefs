@@ -1,7 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Standard Assets/Scripts/Camera Scripts/SmoothFollow.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Packages/AIBehavior/ExampleScripts/ExampleAttackComponent.cs">
     <Files>
+      <File FileName="../../Downloads/LaserBeam.cs" Line="1" Column="1" />
       <File FileName="Assets/Scenes/Teaser/PrintTextEvent.cs" Line="1" Column="1" />
       <File FileName="Assets/Packages/uSequencer/Sequencer Events/Fullscreen/USFadeScreenEvent.cs" Line="1" Column="1" />
       <File FileName="Assets/Packages/uSequencer/Sequencer Events/Fullscreen/PrintText.cs" Line="1" Column="1" />
@@ -18,7 +19,16 @@
       <File FileName="Assets/Scripts/test/testmove.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/MovementModule.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/ShipControls.boo" Line="1" Column="1" />
-      <File FileName="Assets/Standard Assets/Scripts/Camera Scripts/SmoothFollow.js" Line="45" Column="6" />
+      <File FileName="Assets/Standard Assets/Scripts/Camera Scripts/SmoothFollow.js" Line="1" Column="1" />
+      <File FileName="Assets/Standard Assets/Scripts/Camera Scripts/SmoothLookAt.js" Line="1" Column="1" />
+      <File FileName="Assets/AIBehaviours/Utils/utils.boo" Line="1" Column="1" />
+      <File FileName="Assets/Packages/AIBehavior/Plugins/AIBehaviorsMadeEasy/States/AttackState.cs" Line="1" Column="1" />
+      <File FileName="Assets/Packages/AIBehavior/Plugins/AIBehaviorsMadeEasy/States/ChangeState.cs" Line="1" Column="1" />
+      <File FileName="Assets/Packages/AIBehavior/Plugins/AIBehaviorsMadeEasy/States/RangedAttackState.cs" Line="1" Column="1" />
+      <File FileName="Assets/Packages/AIBehavior/Plugins/AIBehaviorsMadeEasy/States/FollowState.cs" Line="63" Column="5" />
+      <File FileName="Assets/Packages/AIBehavior/Plugins/AIBehaviorsMadeEasy/States/MeleeAttackState.cs" Line="1" Column="1" />
+      <File FileName="Assets/Packages/AIBehavior/Plugins/AIBehaviorsMadeEasy/AIBehaviors.cs" Line="393" Column="3" />
+      <File FileName="Assets/Packages/AIBehavior/ExampleScripts/ExampleAttackComponent.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

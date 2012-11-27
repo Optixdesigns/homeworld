@@ -29,7 +29,7 @@ public class IdleState : BaseState
 
 	protected override void StateEnded(AIBehaviors fsm)
 	{
-		Destroy (targetRotationObject);
+		DestroyImmediate (targetRotationObject);
 	}
 
 
