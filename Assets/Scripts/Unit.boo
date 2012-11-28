@@ -30,7 +30,11 @@ class Unit(SpaceObject):
     public movement as MovementModule
 
     public select as SelectController
-    public baseProperties as UnitProperties
+    #public baseProperties as UnitProperties
+
+    public mass as single = 500 // in tons, must between 1 and 10.000
+    public collisionRadius as single = 2.0 // Collision Radius
+    public centerOfMass as Transform
 
     #private _collisionSphere as SphereCollider // Collision Sphere, used as trigger
 
@@ -42,8 +46,14 @@ class Unit(SpaceObject):
         movement = gameObject.GetComponent[of MovementModule]() // REQUIRED
         
         // Set rigibody
-        rigidbody.mass = baseProperties.mass
         rigidbody.detectCollisions = false // For now
+
+        // Setup center of mass
+        if centerOfMass != null:
+            rigidbody.centerOfMass = centerOfMass.localPosition
+
+        // Set mass of rigidbody
+        rigidbody.mass = mass / 1000
 
         // Setup collision sphere
         #_collisionSphere = gameObject.AddComponent("SphereCollider")

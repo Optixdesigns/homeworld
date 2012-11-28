@@ -16,7 +16,7 @@ class SidewayAttackPattern(AttackPattern):
         if dist < attackMaxDistance and dist > attackMinDistance:
             isInAttackDistance = true
         else:
-            isInAttackDistance = false    
+            isInAttackDistance = false
 
         #Debug.Log("Attackdistance: " + isInAttackDistance)
         

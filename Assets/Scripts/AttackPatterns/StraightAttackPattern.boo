@@ -3,8 +3,8 @@ import UnityEngine
 [Serializable]
 class StraightAttackPattern(AttackPattern):
     private onRun as bool = false
-    private runStartDistance = 25 /// Distance needed to start a attack run
-    private runEndDistance = 6 /// Distance to target wich ends a run
+    public runStartDistance = 25 /// Distance needed to start a attack run
+    public runEndDistance = 6 /// Distance to target wich ends a run
     private runStartPosition as Vector3 /// position to start a new run
 
     def OnEnable():

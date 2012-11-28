@@ -1,18 +1,13 @@
 import UnityEngine
 
 class testmove (MonoBehaviour): 
-	public maxspeed as single = 10 // Max speed/velocity
-	public acceleration as single = 2 // Acceleration / seconds
+    movement as MovementModule
 
-	def Start ():
-		pass
-	
-	def Update ():
-		pass
+    def Start():
+        movement = GetComponent(typeof(MovementModule))
 
-	def FixedUpdate():
-		// Add speed
-        rigidbody.AddRelativeForce(Vector3.forward * acceleration)
-        // Limit velocity to maxspeed
-        rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxspeed)
-        Debug.Log(rigidbody.velocity)
+    def FixedUpdate():
+        movement.moveDirection = Vector3(10, 100, 10)
+
+    def OnDrawGizmos():
+        Gizmos.DrawLine(transform.position, movement.moveDirection)

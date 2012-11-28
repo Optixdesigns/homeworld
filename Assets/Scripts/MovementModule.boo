@@ -3,107 +3,70 @@ import UnityEngine
 class MovementModule(MonoBehaviour): 
     public maxVelocity as single = 5.0              // // maximum velocity
     public accelerationSpeed as single = 2.0        // Acceleration speed
-    public turningSpeed as single = 3.0            // maximum rotate speed
+    private turningSpeed as single = 3.0            // maximum rotate speed
     public turningSnappyness as single = 3.0
     public bankingAmount as single = 1.0
-    public centerOfMass as Transform
     
     private unit as Unit
     [HideInInspector]
     public moveDirection as Vector3 // The direction the character wants to move in, in world space.
     [HideInInspector]
-    public facingDirection as Vector3
-    #private move as bool = false
-    #private targetAngle
+    public facingDirection as Vector3   // The direction to face
+
 
     def Start():
         unit = gameObject.GetComponent(typeof(Unit))
 
         moveDirection = Vector3.zero
         facingDirection = Vector3.zero
+        turningSpeed = 1 / rigidbody.mass
 
-        // Setup center of mass
-        if centerOfMass != null:
-            rigidbody.centerOfMass = centerOfMass.localPosition
-    
-    #def FixedUpdate():
-        #if move:
-            #Move()
-    
-    #def MoveTo(v as Vector3):
-        #MoveToPosition = v
-        #move = true
-
-    def MoveToWaypoint():
+    def SetWaypoint():
         pass
     
     def Stop():
         moveDirection = Vector3.zero
         rigidbody.velocity = Vector3(0, 0, 0)
-        #gameobject.transform.position = Vector3.MoveTowards(gameObject.transform.position, unit.target.transform.position, unit.baseProperties.maxVelocity / 5)
+
+    private def Move():
+        // Add speed
+        rigidbody.AddRelativeForce(Vector3.forward * accelerationSpeed * Time.deltaTime)
+        // Limit velocity to maxspeed
+        rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxVelocity)
+
+    private def RotateTo(p as Vector3):
+        #distance as single = Math.Abs(Vector3.Distance(vector3s[0],vector3s[1]))
+        #time = distance/turningSpeed
+        
+        #time = turningSpeed
+        #transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(p), time * Time.deltaTime)
+
+        // make zTilt slowly get bigger:
+        #zTilt = zTilt + Time.deltaTime * turningSpeed;
+        #if(zTilt > 90) zTilt = 90;
+
+        #transform.rotation = Quaternion.Euler(0, 0, zTilt)
+
+        #turnAngle as single = Mathf.Atan2(p.z, p.x) * Mathf.Rad2Deg
+        #smoothAngle as single = Mathf.LerpAngle(transform.eulerAngles.y, -turnAngle, rigidbody.velocity.magnitude * Time.deltaTime)
+        #rigidbody.MoveRotation(Quaternion.Euler(0, smoothAngle, transform.eulerAngles.z))
     
     def FixedUpdate():
-        // Handle movement
-        #targetVelocity as Vector3 = moveDirection * maxVelocity
-        #deltaVelocity as Vector3 = targetVelocity - rigidbody.velocity
-        #rigidbody.AddForce(deltaVelocity * accelerationSpeed, ForceMode.Acceleration)
-
-        // Limit velocity to maxspeed
-        #rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxVelocity)
-        #Debug.Log(moveDirection)
         if moveDirection != Vector3.zero:
-            // Add force to move
-            rigidbody.AddRelativeForce(Vector3.forward * accelerationSpeed * Time.deltaTime)
-            // Limit velocity to maxspeed
-            rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxVelocity)
+            Move()
+        else: // No movement, straithen out
+            pass
+            # on the z axis    
 
-        // Rotate unit
- 
         facingDir as Vector3
         if facingDirection != Vector3.zero:
             facingDir = facingDirection
         else:
             facingDir = moveDirection
-
+        
         if facingDir != Vector3.zero:
-            rotation = Quaternion.LookRotation(facingDir - transform.position)
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * turningSpeed)
-
-        // Rotate unit
-        /*
-        facingDir as Vector3
-        if facingDirection != Vector3.zero:
-            facingDir = facingDirection
+            RotateTo(facingDir)
         else:
-            facingDir = moveDirection
+            pass
+            # straighten out on z axis
 
-        if facingDir != Vector3.zero:
-            targetRotation = Quaternion.LookRotation(facingDir, Vector3.up)
-            deltaRotation = targetRotation * Quaternion.Inverse(transform.rotation)
-            axis as Vector3
-            angle as single
-            deltaRotation.ToAngleAxis(angle, axis)
-            deltaAngularVelocity as Vector3 = axis * Mathf.Clamp (angle, -turningSpeed, turningSpeed) - rigidbody.angularVelocity
-            
-            banking as single = Vector3.Dot(moveDirection, -transform.right)
-            
-            rigidbody.AddTorque(deltaAngularVelocity * turningSnappyness + transform.forward * banking * bankingAmount)
-        */    
-
-    /*
-    def FixedUpdate():
-        if MoveToPosition is not Vector3.zero:
-            // Rotate in the right direction
-            rotation = Quaternion.LookRotation(MoveToPosition - transform.position)
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed)
-
-            // Add force to move
-            rigidbody.AddRelativeForce(Vector3.forward * accelerationSpeed * Time.deltaTime)
-            // Limit velocity to maxspeed
-            rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxVelocity)
-
-            // Stop when we are there
-            distance = Vector3.Distance(MoveToPosition, transform.position)
-            #if distance <= 5:
-                #Stop()
-    */

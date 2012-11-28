@@ -54,6 +54,7 @@
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Masked Colored.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
+     <None Include="Assets\Plugins\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\Packages\AIBehavior\_ReadMe.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
      <None Include="Assets\Packages\Spacebox-4096-Nebula-Collision\readme.txt" />
@@ -67,6 +68,7 @@
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored Overlay.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Other\English.txt" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed).shader" />
+     <None Include="Assets\TransformUtilities\README.txt" />
      <None Include="Assets\Packages\Debugger\READ ME.txt" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Additive Colored.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
@@ -89,6 +91,9 @@
  </Reference>
  <Reference Include="\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs">
  <HintPath>\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+ <Reference Include="Assets\Packages\Turrets\Scripts\UnityExtender">
+ <HintPath>Assets\Packages\Turrets\Scripts\UnityExtender.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

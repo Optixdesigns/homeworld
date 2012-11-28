@@ -1,0 +1,117 @@
+fileFormatVersion: 2
+guid: 6ba3566f67c30b44b89c46eafd742b50
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: RHBarrel4
+    100002: LHBarrel3
+    100004: LHBarrel4
+    100006: LHBarrel2
+    100008: RHBarrel2
+    100010: RHBarrel3
+    100012: RHBarrel1
+    100014: LHBarrel1
+    100016: Torso 1
+    100018: MissileLauncher
+    100020: MissileLauncher 1
+    100022: //RootNode
+    100024: Base
+    100026: Torso
+    400000: RHBarrel4
+    400002: LHBarrel3
+    400004: LHBarrel4
+    400006: LHBarrel2
+    400008: RHBarrel2
+    400010: RHBarrel3
+    400012: RHBarrel1
+    400014: LHBarrel1
+    400016: Torso 1
+    400018: MissileLauncher
+    400020: MissileLauncher 1
+    400022: //RootNode
+    400024: Base
+    400026: Torso
+    2300000: RHBarrel4
+    2300002: LHBarrel3
+    2300004: LHBarrel4
+    2300006: LHBarrel2
+    2300008: RHBarrel2
+    2300010: RHBarrel3
+    2300012: RHBarrel1
+    2300014: LHBarrel1
+    2300016: Torso 1
+    2300018: MissileLauncher 1
+    2300020: Base
+    3300000: RHBarrel4
+    3300002: LHBarrel3
+    3300004: LHBarrel4
+    3300006: LHBarrel2
+    3300008: RHBarrel2
+    3300010: RHBarrel3
+    3300012: RHBarrel1
+    3300014: LHBarrel1
+    3300016: Torso 1
+    3300018: MissileLauncher 1
+    3300020: Base
+    4300000: Base
+    4300002: Torso
+    4300004: MissileLauncher
+    4300006: RHBarrel1
+    4300008: LHBarrel1
+    4300010: RHBarrel2
+    4300012: LHBarrel2
+    4300014: RHBarrel3
+    4300016: LHBarrel3
+    4300018: RHBarrel4
+    4300020: LHBarrel4
+    11100000: //RootNode
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 0
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 1
+  userData: 
