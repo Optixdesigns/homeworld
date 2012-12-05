@@ -9,6 +9,7 @@ class MainCameraController(MonoBehaviour):
     public target as Transform
     public navPlane as Transform	# Plain used for navigation
     public distance = 10
+    public minDistance = 3 // Minum distance to boject
 
     public mouseSens = 200    # Mouse sensitivity
 
@@ -87,7 +88,7 @@ class MainCameraController(MonoBehaviour):
      *   return description
      */
     def Zoom(direction as string, speed as int):
-        if direction == 'back':
+        if direction == 'back' and distance >= minDistance:
             distance = distance - speed * 0.02
 
         elif direction == 'forward':

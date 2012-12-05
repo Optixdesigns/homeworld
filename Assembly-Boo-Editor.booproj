@@ -83,6 +83,9 @@
  <Reference Include="Assets\Packages\NGUI\DLLs\Editor\NGUI_Editor">
  <HintPath>Assets\Packages\NGUI\DLLs\Editor\NGUI_Editor.dll</HintPath>
  </Reference>
+ <Reference Include="Assets\Packages\Turrets\Scripts\UnityExtender">
+ <HintPath>Assets\Packages\Turrets\Scripts\UnityExtender.dll</HintPath>
+ </Reference>
  <Reference Include="Assets\Packages\uSequencer\Sequencer\uSequencerRuntime">
  <HintPath>Assets\Packages\uSequencer\Sequencer\uSequencerRuntime.dll</HintPath>
  </Reference>
@@ -91,9 +94,6 @@
  </Reference>
  <Reference Include="\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs">
  <HintPath>\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs.dll</HintPath>
- </Reference>
- <Reference Include="Assets\Packages\Turrets\Scripts\UnityExtender">
- <HintPath>Assets\Packages\Turrets\Scripts\UnityExtender.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,7 @@ import UnityEngine
 [System.Serializable]
 class Select(MonoBehaviour):
 
-    public numSelectedShips as int
+    public numSelected as int
 
     /// Holds the object selection
     #public selection as (GameObject) = array(GameObject, 0)
@@ -94,7 +94,7 @@ class Select(MonoBehaviour):
         // Unset current selection first
         SelectionUnset(gameObjects)
 
-        numSelectedShips = 1
+        numSelected = 1
         gameObjectsAsList.Clear()
         gameObjectsAsList.Add(obj as GameObject)
         gameObjects = gameObjectsAsList.ToArray()

@@ -1,39 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Plugins/iTween/Sample/MoveSample.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Select.boo">
     <Files>
       <File FileName="../../Downloads/LaserBeam.cs" Line="1" Column="1" />
-      <File FileName="../../New Unity Project 3/Assets/TDTK_Free/Scripts/C#/UnitTower.cs" Line="389" Column="58" />
-      <File FileName="../../New Unity Project 3/Assets/TDTK_Free/Scripts/C#/Unit.cs" Line="1" Column="1" />
-      <File FileName="Assets/Packages/AIBehavior/Plugins/AIBehaviorsMadeEasy/States/AttackState.cs" Line="1" Column="1" />
-      <File FileName="Assets/Packages/AIBehavior/Plugins/AIBehaviorsMadeEasy/States/ChangeState.cs" Line="1" Column="1" />
-      <File FileName="Assets/Packages/AIBehavior/Plugins/AIBehaviorsMadeEasy/States/RangedAttackState.cs" Line="1" Column="1" />
-      <File FileName="Assets/Packages/AIBehavior/Plugins/AIBehaviorsMadeEasy/States/FollowState.cs" Line="1" Column="1" />
-      <File FileName="Assets/Packages/AIBehavior/Plugins/AIBehaviorsMadeEasy/States/MeleeAttackState.cs" Line="1" Column="1" />
-      <File FileName="Assets/Packages/AIBehavior/Plugins/AIBehaviorsMadeEasy/AIBehaviors.cs" Line="1" Column="1" />
-      <File FileName="Assets/Packages/AIBehavior/ExampleScripts/ExampleAttackComponent.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scenes/Teaser/PrintTextEvent.cs" Line="1" Column="1" />
-      <File FileName="Assets/Packages/uSequencer/Sequencer Events/Fullscreen/USFadeScreenEvent.cs" Line="1" Column="1" />
-      <File FileName="Assets/Packages/uSequencer/Sequencer Events/Fullscreen/PrintText.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scenes/Teaser/Explosions.boo" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/GUI/UICursors.boo" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/GUI/UIUnit.boo" Line="1" Column="1" />
-      <File FileName="Assets/AIBehaviours/States/AIAttackState.boo" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/WeaponsModule.boo" Line="1" Column="1" />
-      <File FileName="Assets/AIBehaviours/EditorHelpers/AIBehavioursTriggersGUI.boo" Line="1" Column="1" />
-      <File FileName="Assets/Standard Assets/Detonator Explosion Framework/TestScene/DetonatorTest.js" Line="1" Column="1" />
-      <File FileName="Assets/AIBehaviours/AIBehaviours.boo" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Projectiles/Projectile.boo" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Unit.boo" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/test/testmove.boo" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/MovementModule.boo" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ShipControls.boo" Line="1" Column="1" />
-      <File FileName="Assets/Standard Assets/Scripts/Camera Scripts/SmoothFollow.js" Line="1" Column="1" />
-      <File FileName="Assets/Standard Assets/Scripts/Camera Scripts/SmoothLookAt.js" Line="1" Column="1" />
-      <File FileName="Assets/AIBehaviours/Utils/utils.boo" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/AttackPatterns/SidewayAttackPattern.boo" Line="1" Column="1" />
-      <File FileName="Assets/Packages/Turrets/Scripts/Turret.cs" Line="145" Column="130" />
-      <File FileName="Assets/Plugins/iTween/Sample/MoveSample.cs" Line="7" Column="29" />
+      <File FileName="Assets/Scripts/GUI/UIUnit.boo" Line="24" Column="2" />
+      <File FileName="Assets/Scripts/Select.boo" Line="100" Column="50" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
