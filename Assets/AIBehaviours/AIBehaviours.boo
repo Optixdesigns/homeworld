@@ -72,7 +72,11 @@ public class AIBehaviours(MonoBehaviour):
             currentState.InitState(self)
 
 
-
+    #def OnDrawGizmosSelected():
+        // Debug attack field of view
+        #currentState.OnDrawGizmosSelected()
+        #Gizmos.color = Color.red
+        #Gizmos.DrawLine(gameObject.transform.position, unit.target.transform.position)
         #Debug.Log(previousState)    
         #onStateChanged(newState, previousState)
         
@@ -128,6 +132,9 @@ public abstract class AIState(MonoBehaviour):
                 return true
 
         return false
+
+    #protected abstract def OnDrawGizmosSelected():
+        #pass
 
     /*
         Editor methods

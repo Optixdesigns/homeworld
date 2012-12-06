@@ -2,7 +2,7 @@ import UnityEngine
 
 [Serializable]
 class StraightAttackPattern(AttackPattern):
-    private onRun as bool = false
+    public onRun as bool = false
     public runStartDistance = 25 /// Distance needed to start a attack run
     public runEndDistance = 6 /// Distance to target wich ends a run
     private runStartPosition as Vector3 /// position to start a new run
@@ -18,15 +18,23 @@ class StraightAttackPattern(AttackPattern):
             onRun = false
         */
     
-    def Update():
-        // Do a rerun
+    def FixedUpdate():
+        // Do nothing if no target
+        if not unit.target:
+            return
+
+        // Always face movement direction
+        unit.movement.facingDirection = Vector3.zero
 
         // Calculate distance
         dist as single = GetDistance(unit.target.transform.position, unit.transform.position)
 
-        #Debug.Log(onRun)
+
+
+        #Debug.Log(unit.movement.moveDirection)
         
         if onRun:
+            Debug.Log(unit.target.transform.position)
             unit.movement.moveDirection = unit.target.transform.position
             // lookat target
             #unit.movement.SmoothLookAt(unit.target.transform.position)

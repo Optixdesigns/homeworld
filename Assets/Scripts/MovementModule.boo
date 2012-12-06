@@ -9,9 +9,9 @@ class MovementModule(MonoBehaviour):
     
     private unit as Unit
     [HideInInspector]
-    public moveDirection as Vector3 // The direction the character wants to move in, in world space.
+    public moveDirection as Vector3 = Vector3.zero // The direction the character wants to move in, in world space.
     [HideInInspector]
-    public facingDirection as Vector3   // The direction to face
+    public facingDirection as Vector3 = Vector3.zero  // The direction to face
 
     private mass as single // Mass in tons
     private thrust as single // current engine thrust
@@ -20,23 +20,19 @@ class MovementModule(MonoBehaviour):
     private ay as single = 0
 
 
-
-    def Start():
+    def Awake():
         // Setup some stuff
         unit = gameObject.GetComponent(typeof(Unit))
 
-        // Needed vars
-        moveDirection = Vector3.zero
-        facingDirection = Vector3.zero
         turningSpeed = 1 / rigidbody.mass
         mass = unit.mass
 
     def SetWaypoint():
         pass
     
-    def Stop():
-        moveDirection = Vector3.zero
-        rigidbody.velocity = Vector3(0, 0, 0)
+    #def Stop():
+        #moveDirection = Vector3.zero
+        #rigidbody.velocity = Vector3(0, 0, 0)
 
     private def Move():
         // Add speed
@@ -76,13 +72,14 @@ class MovementModule(MonoBehaviour):
         #rigidbody.MoveRotation(Quaternion.Euler(0, smoothAngle, transform.eulerAngles.z))
     
     def FixedUpdate():
+        #Debug.Log(moveDirection)
         if moveDirection != Vector3.zero:
             Move()
         else: // No movement, straithen out
             pass
             # on the z axis    
 
-        facingDir as Vector3
+        facingDir as Vector3 = Vector3.zero
         if facingDirection != Vector3.zero:
             facingDir = facingDirection
         else:
@@ -93,4 +90,7 @@ class MovementModule(MonoBehaviour):
         else:
             pass
             # straighten out on z axis
+
+        #Debug.Log("facind dir:" + facingDir)
+
 

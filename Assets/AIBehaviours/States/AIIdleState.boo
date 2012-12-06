@@ -10,3 +10,7 @@ class AIIdleState(AIState):
 
     protected override def StateEnded(fsm as AIBehaviours):
         pass
+
+    #protected override def OnDrawGizmosSelected(fsm as AIBehaviours):
+        #pass
+

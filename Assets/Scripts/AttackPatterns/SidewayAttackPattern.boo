@@ -27,7 +27,7 @@ class SidewayAttackPattern(AttackPattern):
         
         // Move away for a new run
         elif isInAttackDistance:
-            unit.movement.Stop()
+            #unit.movement.Stop()
             // Rotate unit in attack position (on it side, like pirates...raarrrr)
             #dir = unit.target.transform.rotation
             #dir = Quaternion.Euler(unit.transform.rotation.x, unit.transform.rotation.y + 90, unit.target.transform.rotation.z)
@@ -36,6 +36,7 @@ class SidewayAttackPattern(AttackPattern):
             #Debug.Log(dir)
             #rot = Quaternion.Euler(unit.transform.rotation.x, unit.transform.rotation.y, unit.transform.rotation.z)
             #Debug.Log(rot * Vector3.forward)
+            unit.movement.moveDirection = Vector3.zero
             unit.movement.facingDirection = unit.transform.position + Vector3(0, 0, 90)
 
 

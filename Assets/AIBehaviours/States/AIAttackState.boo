@@ -10,12 +10,11 @@ class AIAttackState(AIState):
     private unit as Unit
 
     protected override def Init(fsm as AIBehaviours):
-        #Debug.Log("Attack state called")
+        // Setup attack pattern
         unit = fsm.gameObject.GetComponent(typeof(Unit))
         attackPattern = unit.GetComponent(typeof(AttackPattern))
         attackPattern.unit = unit
         attackPattern.enabled = false
-        #attackPattern.Start(unit)
 
     protected override def Reason(fsm as AIBehaviours):
         if not unit.target:
@@ -25,6 +24,9 @@ class AIAttackState(AIState):
 
     protected override def Action(fsm as AIBehaviours):
         attackPattern.enabled = true
+
+        #Gizmos.color = Color.red
+        #Gizmos.DrawLine(unit.transform.position, unit.transform.position)
         // Get the unit
         #unit = fsm.gameObject.GetComponent(typeof(Unit))
         // Execute attack pattern
