@@ -10,8 +10,7 @@ public abstract class AttackPattern(MonoBehaviour):
     public unit as Unit
     
     def Start():
-        pass
-        #unit = gameObject.GetComponent(typeof(Unit))
+        unit = gameObject.GetComponent(typeof(Unit))
     
     def Update():
         pass

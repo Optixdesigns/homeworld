@@ -46,6 +46,14 @@ class AIAttackState(AIState):
         #if _ship.weapons:   // Check if have a weapon system
             #_ship.weapons.Shoot()
 
+    public override def DrawGizmosSelected(fsm as AIBehaviours):
+        // Debug attack field of view
+        #currentState.OnDrawGizmosSelected()
+        #unit = gameObject.GetComponent(typeof(Unit))
+        unit = fsm.gameObject.GetComponent(typeof(Unit))
+        Gizmos.color = Color.red
+        Gizmos.DrawLine(gameObject.transform.position, unit.target.transform.position)
+
     protected override def StateEnded(fsm as AIBehaviours):
         attackPattern.enabled = false
 

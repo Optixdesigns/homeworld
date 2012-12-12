@@ -91,6 +91,7 @@
      <None Include="Assets\Plugins\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\Packages\AIBehavior\_ReadMe.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
+     <None Include="Assets\Packages\Spacebox-4096-Nebula-Collision\readme.txt" />
      <None Include="Assets\Standard Assets\Detonator Explosion Framework\Resources\Detonator\Textures\HeatDistort.shader" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
@@ -113,11 +114,11 @@
  <Reference Include="Assets\Packages\NGUI\DLLs\NGUI">
  <HintPath>Assets\Packages\NGUI\DLLs\NGUI.dll</HintPath>
  </Reference>
- <Reference Include="Assets\Packages\uSequencer\Sequencer\uSequencerRuntime">
- <HintPath>Assets\Packages\uSequencer\Sequencer\uSequencerRuntime.dll</HintPath>
- </Reference>
  <Reference Include="Assets\Packages\Turrets\Scripts\UnityExtender">
  <HintPath>Assets\Packages\Turrets\Scripts\UnityExtender.dll</HintPath>
+ </Reference>
+ <Reference Include="Assets\Packages\uSequencer\Sequencer\uSequencerRuntime">
+ <HintPath>Assets\Packages\uSequencer\Sequencer\uSequencerRuntime.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

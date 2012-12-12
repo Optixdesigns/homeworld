@@ -71,15 +71,10 @@ public class AIBehaviours(MonoBehaviour):
         if currentState is not null:
             currentState.InitState(self)
 
+    def OnDrawGizmosSelected():
+        if currentState is not null:
+            currentState.DrawGizmosSelected(self)
 
-    #def OnDrawGizmosSelected():
-        // Debug attack field of view
-        #currentState.OnDrawGizmosSelected()
-        #Gizmos.color = Color.red
-        #Gizmos.DrawLine(gameObject.transform.position, unit.target.transform.position)
-        #Debug.Log(previousState)    
-        #onStateChanged(newState, previousState)
-        
 
 #[System.Serializable]
 public abstract class AIState(MonoBehaviour):
@@ -108,6 +103,9 @@ public abstract class AIState(MonoBehaviour):
         pass
 
     protected abstract def Action(fsm as AIBehaviours):
+        pass
+
+    public abstract def DrawGizmosSelected(fsm as AIBehaviours):
         pass
 
     public def InitState(fsm as AIBehaviours):        

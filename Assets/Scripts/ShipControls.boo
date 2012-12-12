@@ -1,20 +1,20 @@
 import UnityEngine
 import System.Collections
  
-[RequireComponent (Rigidbody)]
-class ShipControls (MonoBehaviour):
+[RequireComponent(Rigidbody)]
+class ShipControls(MonoBehaviour):
     public hoverHeight = 3F
     public hoverHeightStrictness = 1F
     public forwardThrust = 5000F
     public backwardThrust = 2500F
     public bankAmount = 0.1F
     public bankSpeed = 0.2F
-    public bankAxis = Vector3(-1F, 0F, 0F)
+    public bankAxis = Vector3(0F, 0F, -1F)
     public turnSpeed = 8000F
  
-    public forwardDirection = Vector3(1F, 0F, 0F)
+    public forwardDirection = Vector3(0F, 0F, 1F)
  
-    public mass = 5F
+    #public mass = 5F
  
     // positional drag
     public sqrdSpeedThresholdForDrag = 25F
@@ -35,8 +35,8 @@ class ShipControls (MonoBehaviour):
     def SetPlayerControl(control as bool):
         playerControl = control
  
-    def Start():
-        rigidbody.mass = mass
+    #def Start():
+        #rigidbody.mass = mass
  
     def FixedUpdate():
         if Mathf.Abs(thrust) > 0.01:
@@ -71,7 +71,7 @@ class ShipControls (MonoBehaviour):
     turn = 0F
  
     def Thrust(t as single):
-        turn = Mathf.Clamp(t, -1F, 1F) * turnSpeed
+        thrust = Mathf.Clamp(t, -1F, 1F)
  
     def Turn(t as single):
         turn = Mathf.Clamp(t, -1F, 1F) * turnSpeed

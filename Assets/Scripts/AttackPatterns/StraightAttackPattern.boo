@@ -4,7 +4,7 @@ import UnityEngine
 class StraightAttackPattern(AttackPattern):
     public onRun as bool = false
     public runStartDistance = 25 /// Distance needed to start a attack run
-    public runEndDistance = 6 /// Distance to target wich ends a run
+    public runEndDistance = 5 /// Distance to target wich ends a run
     private runStartPosition as Vector3 /// position to start a new run
 
     def OnEnable():
@@ -18,7 +18,7 @@ class StraightAttackPattern(AttackPattern):
             onRun = false
         */
     
-    def FixedUpdate():
+    def Update():
         // Do nothing if no target
         if not unit.target:
             return
@@ -29,12 +29,13 @@ class StraightAttackPattern(AttackPattern):
         // Calculate distance
         dist as single = GetDistance(unit.target.transform.position, unit.transform.position)
 
-
+        #controls = fsm.gameObject.GetComponent(typeof(ShipControls))
+        #controls.Thrust(0.1)
 
         #Debug.Log(unit.movement.moveDirection)
         
         if onRun:
-            Debug.Log(unit.target.transform.position)
+            #Debug.Log(unit.target.transform.position)
             unit.movement.moveDirection = unit.target.transform.position
             // lookat target
             #unit.movement.SmoothLookAt(unit.target.transform.position)
@@ -64,7 +65,8 @@ class StraightAttackPattern(AttackPattern):
             
 
     def GetNewRerunPosition():
-        return unit.target.transform.position + Vector3(Random.Range(runStartDistance, runStartDistance + 20), Random.Range(runStartDistance, runStartDistance + 20), Random.Range(runStartDistance, runStartDistance + 20))
+        return unit.target.transform.position + Random.onUnitSphere * Random.Range(runStartDistance, runStartDistance + 20)
+        #return unit.target.transform.position + Vector3(Random.Range(runStartDistance, runStartDistance + 20), Random.Range(runStartDistance, runStartDistance + 20), Random.Range(runStartDistance, runStartDistance + 20))
 
 
 

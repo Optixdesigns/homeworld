@@ -11,6 +11,7 @@ class UIUnit(MonoBehaviour):
     public cursorAttackTexture as Texture2D
     public cursorMode as CursorMode = CursorMode.Auto
     public hotSpot as Vector2
+    public showHealthbar as bool = true
 
     private draw as bool = false
     private selectBox as GameObject
@@ -45,7 +46,7 @@ class UIUnit(MonoBehaviour):
         Destroy(selectBox.collider)
 
     def OnGUI():
-        if draw and unit.health:
+        if draw and unit.health and showHealthbar:
             DrawHealthBar()
 
         DrawSelectionBox()

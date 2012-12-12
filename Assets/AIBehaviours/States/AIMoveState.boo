@@ -12,6 +12,9 @@ class AIMoveState(AIState):
 
     protected override def Action(fsm as AIBehaviours):
         pass
+
+    public override def DrawGizmosSelected(fsm as AIBehaviours):
+        pass
         /*
         #moveToPosition = ship.moveToPosition + ship.damageAttribute.range // Stay at perfect damage range
         moveDir as Vector3 = (_ship.moveToPosition - _ship.gameObject.transform.position)

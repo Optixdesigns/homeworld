@@ -9,9 +9,9 @@ class MovementModule(MonoBehaviour):
     
     private unit as Unit
     [HideInInspector]
-    public moveDirection as Vector3 = Vector3.zero // The direction the character wants to move in, in world space.
+    public moveDirection as Vector3 // The direction the character wants to move in, in world space.
     [HideInInspector]
-    public facingDirection as Vector3 = Vector3.zero  // The direction to face
+    public facingDirection as Vector3  // The direction to face
 
     private mass as single // Mass in tons
     private thrust as single // current engine thrust
@@ -26,6 +26,8 @@ class MovementModule(MonoBehaviour):
 
         turningSpeed = 1 / rigidbody.mass
         mass = unit.mass
+        #moveDirection = Vector3.zero
+        #facingDirection = Vector3.zero
 
     def SetWaypoint():
         pass
@@ -37,8 +39,7 @@ class MovementModule(MonoBehaviour):
     private def Move():
         // Add speed
         rigidbody.AddRelativeForce(Vector3.forward * accelerationSpeed * Time.deltaTime)
-        #thrust += accelerationSpeed * Time.deltaTime
-        // Limit velocity to maxspeed
+        // Limit velocity to maximum
         rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxVelocity)
 
     private def RotateTo(p as Vector3):
@@ -57,9 +58,9 @@ class MovementModule(MonoBehaviour):
         //pass
         #distance as single = Math.Abs(Vector3.Distance(vector3s[0],vector3s[1]))
         #time = distance/turningSpeed
-        
-        time = turningSpeed
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(p), time * Time.deltaTime)
+        transform.LookAt(p)
+        #time = turningSpeed
+        #transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(p), time * Time.deltaTime)
 
         // make zTilt slowly get bigger:
         #zTilt = zTilt + Time.deltaTime * turningSpeed;
@@ -79,18 +80,26 @@ class MovementModule(MonoBehaviour):
             pass
             # on the z axis    
 
+
+    def LateUpdate():
+
         facingDir as Vector3 = Vector3.zero
+
         if facingDirection != Vector3.zero:
             facingDir = facingDirection
         else:
             facingDir = moveDirection
         
         if facingDir != Vector3.zero:
+            #Debug.Log("Rotating")
             RotateTo(facingDir)
         else:
             pass
             # straighten out on z axis
 
-        #Debug.Log("facind dir:" + facingDir)
+        Debug.Log("facing direction:" + facingDir)
+        Debug.Log("move direction:" + moveDirection)
+
+       
 
 
