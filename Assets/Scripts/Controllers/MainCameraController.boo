@@ -22,7 +22,7 @@ class MainCameraController(MonoBehaviour):
 
     private focusPosition as Vector3 = Vector3(0, 0, 0)     // Position to focus on
 
-    public boundary as int = 50
+    public boundary as int = 20
     private screenWidth as int
     private screenHeight as int
 
@@ -43,6 +43,11 @@ class MainCameraController(MonoBehaviour):
             rigidbody.freezeRotation = true
 
     def LateUpdate():
+        if target:
+            focusPosition = target.position
+        else:
+            focusPosition = GetRaycast()
+
         BoundaryMovemement()
 
         if Input.GetMouseButton(1):
@@ -68,23 +73,30 @@ class MainCameraController(MonoBehaviour):
         transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, transform.eulerAngles.z)
         
         if Input.mousePosition.x > screenWidth - boundary:
-           transform.Translate(Vector3.right * Time.deltaTime * mouseSens * 0.4, Space.Self)
+           transform.Translate(Vector3.right * Time.deltaTime * mouseSens * 0.2, Space.Self)
            LooseFocus()
 
         if Input.mousePosition.x < 0 + boundary:
-           transform.Translate(Vector3.left * Time.deltaTime * mouseSens * 0.4, Space.Self)
+           transform.Translate(Vector3.left * Time.deltaTime * mouseSens * 0.2, Space.Self)
            LooseFocus()
 
         if Input.mousePosition.y > screenHeight - boundary:
-           transform.Translate(Vector3.forward * Time.deltaTime * mouseSens * 0.4, Space.Self)
+           transform.Translate(Vector3.forward * Time.deltaTime * mouseSens * 0.2, Space.Self)
            LooseFocus()
 
         if Input.mousePosition.y < 0 + boundary:
-           transform.Translate(Vector3.back * Time.deltaTime * mouseSens * 0.4, Space.Self)
+           transform.Translate(Vector3.back * Time.deltaTime * mouseSens * 0.2, Space.Self)
            LooseFocus()
 
         transform.rotation = Quaternion.Euler(thiseulerX, transform.eulerAngles.y, transform.eulerAngles.z)
 
+    def GetRaycast():
+        ray as Ray = camera.ViewportPointToRay(Vector3(0.5,0.5,0))
+        hit as RaycastHit
+        if Physics.Raycast(ray, hit):
+            if hit.transform.name == "NavigationPlane":
+                return hit.point
+            #print ("I'm looking at " + hit.transform.name)
 
     /**
      * Function: Focus
@@ -94,10 +106,11 @@ class MainCameraController(MonoBehaviour):
      */
     def Focus():
         focusPosition = target.position
+        _updateTransform()
 
     // Loose target focus
     def LooseFocus():
-        target as Transform
+        target = null
 
     /**
      * Function: Rotate
@@ -166,8 +179,8 @@ class MainCameraController(MonoBehaviour):
         y = _clampAngle(y, yMinLimit, yMaxLimit)
 
         rotation = Quaternion.Euler(y, x, z)
-        #position = rotation * Vector3(0.0, 0.0, -distance) + target.position
-        position = rotation * Vector3(0.0, 0.0, -distance)
+        position = rotation * Vector3(0.0, 0.0, -distance) + focusPosition
+        #position = rotation * Vector3(0.0, 0.0, -distance)
 
         transform.rotation = rotation
         transform.position = position
