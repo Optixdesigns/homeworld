@@ -97,8 +97,8 @@ class MovementModule(MonoBehaviour):
             pass
             # straighten out on z axis
 
-        Debug.Log("facing direction:" + facingDir)
-        Debug.Log("move direction:" + moveDirection)
+        #Debug.Log("facing direction:" + facingDir)
+        #Debug.Log("move direction:" + moveDirection)
 
        
 

@@ -1,10 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GUI/UIUnit.boo">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/AIBehaviours/Editor/AIBehavioursEditor.boo">
     <Files>
       <File FileName="Assets/Scripts/GUI/UIUnit.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Select.boo" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/AttackPatterns/StraightAttackPattern.boo" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/AttackPatterns/StraightAttackPattern.boo" Line="23" Column="1" />
+      <File FileName="Assets/AIBehaviours/AIBehaviours.boo" Line="74" Column="3" />
+      <File FileName="Assets/AIBehaviours/States/AIAttackState.boo" Line="49" Column="11" />
+      <File FileName="Assets/AIBehaviours/States/AIIdleState.boo" Line="26" Column="11" />
+      <File FileName="Assets/Scripts/AttackPatterns/AttackPattern.boo" Line="13" Column="9" />
+      <File FileName="Assets/AIBehaviours/Editor/AIBehavioursEditor.boo" Line="58" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
