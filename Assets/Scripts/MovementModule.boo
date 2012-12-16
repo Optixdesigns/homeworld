@@ -7,6 +7,8 @@ class MovementModule(MonoBehaviour):
     public turningSnappyness as single = 3.0
     public bankingAmount as single = 1.0
     
+    public engine as GameObject
+
     private unit as Unit
     [HideInInspector]
     public moveDirection as Vector3 // The direction the character wants to move in, in world space.
@@ -35,6 +37,10 @@ class MovementModule(MonoBehaviour):
     #def Stop():
         #moveDirection = Vector3.zero
         #rigidbody.velocity = Vector3(0, 0, 0)
+    def Update():
+        pass
+        #if engine:
+            #engine.particleEmitter.worldVelocity = rigidbody.velocity
 
     private def Move():
         // Add speed

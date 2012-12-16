@@ -20,7 +20,7 @@ class MainCameraController(MonoBehaviour):
     private y = 0.0
     private z = 0.0
 
-    private focusPosition as Vector3 = Vector3(0, 0, 0)     // Position to focus on
+    private focusPosition as Vector3     // Position to focus on
 
     public boundary as int = 20
     private screenWidth as int
@@ -38,6 +38,8 @@ class MainCameraController(MonoBehaviour):
         y = angles.x
         z = angles.x
 
+        focusPosition = Vector3(0, 0, 0)
+
         # Make the rigid body not change rotation
         if rigidbody:
             rigidbody.freezeRotation = true
@@ -48,10 +50,10 @@ class MainCameraController(MonoBehaviour):
         else:
             focusPosition = GetRaycast()
 
-        BoundaryMovemement()
-
         if Input.GetMouseButton(1):
             Rotate()
+        else:
+            BoundaryMovemement()
 
         if target: /// If we have a target, stay focused on it
             Focus()
@@ -179,7 +181,11 @@ class MainCameraController(MonoBehaviour):
         y = _clampAngle(y, yMinLimit, yMaxLimit)
 
         rotation = Quaternion.Euler(y, x, z)
-        position = rotation * Vector3(0.0, 0.0, -distance) + focusPosition
+        if target:
+            position = rotation * Vector3(0.0, 0.0, -distance) + target.position
+        else:
+            position = rotation * Vector3(0.0, 0.0, -distance) 
+
         #position = rotation * Vector3(0.0, 0.0, -distance)
 
         transform.rotation = rotation

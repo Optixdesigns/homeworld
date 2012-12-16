@@ -52,8 +52,13 @@ class UIUnit(MonoBehaviour):
         DrawSelectionBox()
 
     def DrawHealthBar():
-        screenPosition as Vector3 = Camera.main.WorldToScreenPoint(unit.transform.position) // gets screen position.
-        screenPosition.y = Screen.height - (screenPosition.y + 1) // inverts y
+        y = 20
+        #Debug.Log(y)
+        #x = transform.localScale.x
+
+        screenPosition as Vector3 = Camera.main.WorldToScreenPoint(transform.position) // gets screen position.
+        #screenPosition as Vector3 = Camera.main.WorldToScreenPoint(unit.transform.position) // gets screen position.
+        screenPosition.y = Screen.height - (screenPosition.y + 1) - y // inverts y
         GUI.HorizontalScrollbar(Rect(screenPosition.x - 50, screenPosition.y - 12, 100, 24), 0, unit.health.health, 0, 100)
 
     def DrawSelectionBox():
