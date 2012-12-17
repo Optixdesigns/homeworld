@@ -56,7 +56,7 @@ class MovementModule(MonoBehaviour):
         #Debug.Log(p)
         targetDelta as Vector3 = p - transform.position
  
-        //get the angle between transform.forward and target delta
+        // get the angle between transform.forward and target delta
         angleDiff as single = Vector3.Angle(transform.forward, targetDelta)
  
         // get its cross product, which is the axis of rotation to
@@ -66,9 +66,9 @@ class MovementModule(MonoBehaviour):
         // apply torque along that axis according to the magnitude of the angle.
         rigidbody.AddTorque(cross * angleDiff * force)
 
-    
-        stability = 0.3
-        speed = 2.0
+    private def StabilizeRotation():
+        stability = 0.3f
+        speed = 2.0f
 
         // Stabilze to z axis
         predictedUp as Vector3 = Quaternion.AngleAxis(
@@ -81,7 +81,6 @@ class MovementModule(MonoBehaviour):
         torqueVector = Vector3.Project(torqueVector, transform.forward)
         rigidbody.AddTorque(torqueVector * speed)
 
-
     def FixedUpdate():
 
         facingDir as Vector3 = Vector3.zero
@@ -92,7 +91,6 @@ class MovementModule(MonoBehaviour):
             facingDir = moveDirection
         
         if facingDir != Vector3.zero:
-            #Debug.Log("Rotating")
             RotateTo(facingDir)
         else:
             pass
@@ -102,7 +100,10 @@ class MovementModule(MonoBehaviour):
             Move()
         else: // No movement, straithen out
             pass
-            # on the z axis 
+            # on the z axis
+
+        // Stabilize
+        StabilizeRotation()
 
        
 

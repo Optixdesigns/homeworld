@@ -16,7 +16,7 @@ class Unit(SpaceObject):
     public targetDistance as single // Distance to target
     
     public moveToPosition as Vector3 // move to position
-    public player as Player // Owner of this ship, should also hold stuff like color, alliance etc
+    public player as GameObject // Owner of this ship, should also hold stuff like color, alliance etc
     public isEnemy as bool = false // Is this an enemy?
 
     [HideInInspector]
