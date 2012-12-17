@@ -1,5 +1,6 @@
 import UnityEngine
 
+# TODO CALCULATE ANGULAR DRAG, STABILITY AND STABILITY SPEED
 class MovementModule(MonoBehaviour): 
     public maxVelocity as single = 5.0              // // maximum velocity
     public accelerationSpeed as single = 2.0        // Acceleration speed
@@ -28,8 +29,8 @@ class MovementModule(MonoBehaviour):
 
         turningSpeed = 1 / rigidbody.mass
         mass = unit.mass
-        #moveDirection = Vector3.zero
-        #facingDirection = Vector3.zero
+        moveDirection = Vector3.zero
+        facingDirection = Vector3.zero
 
     def SetWaypoint():
         pass
@@ -49,45 +50,39 @@ class MovementModule(MonoBehaviour):
         rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxVelocity)
 
     private def RotateTo(p as Vector3):
-        #maxang = 90
-        #rotX = Mathf.Abs(Mathf.Abs(transform.position.y-targetH)/maxDist) * (transform.position.y > targetH ? -1 : 1) * -maxAng
-        #angle = Vector3.Angle(transform.position, facingDirection)
-        #Debug.Log(angle)
-        #eulerAngleVelocity as Vector3 = Vector3(0, 100, 0)
-        #deltaRotation as Quaternion = Quaternion.Euler(eulerAngleVelocity * Time.deltaTime)
-        #rigidbody.MoveRotation(rigidbody.rotation * deltaRotation)
 
-        #fromRotation = transform.rotation; 
-        #toRotation = Quaternion.Euler(x,y,z);
-        #transform.rotation = Quaternion.Lerp(fromRotation,toRotation,Time.deltaTime * lerpSpeed);
+        #transform.LookAt(p)
+        force = 1
+        #Debug.Log(p)
+        targetDelta as Vector3 = p - transform.position
+ 
+        //get the angle between transform.forward and target delta
+        angleDiff as single = Vector3.Angle(transform.forward, targetDelta)
+ 
+        // get its cross product, which is the axis of rotation to
+        // get from one vector to the other
+        cross as Vector3 = Vector3.Cross(transform.forward, targetDelta)
+ 
+        // apply torque along that axis according to the magnitude of the angle.
+        rigidbody.AddTorque(cross * angleDiff * force)
 
-        //pass
-        #distance as single = Math.Abs(Vector3.Distance(vector3s[0],vector3s[1]))
-        #time = distance/turningSpeed
-        transform.LookAt(p)
-        #time = turningSpeed
-        #transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(p), time * Time.deltaTime)
-
-        // make zTilt slowly get bigger:
-        #zTilt = zTilt + Time.deltaTime * turningSpeed;
-        #if(zTilt > 90) zTilt = 90;
-
-        #transform.rotation = Quaternion.Euler(0, 0, zTilt)
-
-        #turnAngle as single = Mathf.Atan2(p.z, p.x) * Mathf.Rad2Deg
-        #smoothAngle as single = Mathf.LerpAngle(transform.eulerAngles.y, -turnAngle, rigidbody.velocity.magnitude * Time.deltaTime)
-        #rigidbody.MoveRotation(Quaternion.Euler(0, smoothAngle, transform.eulerAngles.z))
     
+        stability = 0.3
+        speed = 2.0
+
+        // Stabilze to z axis
+        predictedUp as Vector3 = Quaternion.AngleAxis(
+            rigidbody.angularVelocity.magnitude * Mathf.Rad2Deg * stability / speed,
+            rigidbody.angularVelocity
+        ) * transform.up
+ 
+        torqueVector as Vector3 = Vector3.Cross(predictedUp, Vector3.up)
+        // Uncomment the next line to stabilize on only 1 axis.
+        torqueVector = Vector3.Project(torqueVector, transform.forward)
+        rigidbody.AddTorque(torqueVector * speed)
+
+
     def FixedUpdate():
-        #Debug.Log(moveDirection)
-        if moveDirection != Vector3.zero:
-            Move()
-        else: // No movement, straithen out
-            pass
-            # on the z axis    
-
-
-    def LateUpdate():
 
         facingDir as Vector3 = Vector3.zero
 
@@ -103,8 +98,11 @@ class MovementModule(MonoBehaviour):
             pass
             # straighten out on z axis
 
-        #Debug.Log("facing direction:" + facingDir)
-        #Debug.Log("move direction:" + moveDirection)
+        if moveDirection != Vector3.zero:
+            Move()
+        else: // No movement, straithen out
+            pass
+            # on the z axis 
 
        
 
