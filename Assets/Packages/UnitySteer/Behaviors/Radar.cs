@@ -216,12 +216,9 @@ public class Radar: MonoBehaviour {
 	{
         Profiler.BeginSample("OnUpdateRadar");
 		_detectedColliders = Detect();
-
-		//Debug.Log(_detectedColliders.Length);
 		FilterDetected();
 		if (OnDetected != null)
 		{
-			//Debug.Log("DETECTED");
 			OnDetected(new SteeringEvent<Radar>(null, "detect", this));
 		}
 #if TRACEDETECTED
@@ -276,7 +273,6 @@ public class Radar: MonoBehaviour {
         _detectedObjects.Clear();
         
         foreach(var x in _detectedColliders) {
-        	//Debug.Log("yeah");
             if (!_cachedDetectableObjects.ContainsKey(x)) {
                 _cachedDetectableObjects[x] = x.transform.GetComponent<DetectableObject>();
             }
@@ -284,7 +280,6 @@ public class Radar: MonoBehaviour {
             if (detectable != null && !_ignoredObjects.Contains(detectable)) {
                 _detectedObjects.Add(detectable);
             }
-
         }
         
         for (int i = 0; i < _detectedObjects.Count; i++) {
@@ -297,7 +292,6 @@ public class Radar: MonoBehaviour {
                 _obstacles.Add(d);
             }
         }
-        //Debug.Log(_vehicles.Count);
 		Profiler.EndSample();
 	}
 	

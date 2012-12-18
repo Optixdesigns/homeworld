@@ -112,16 +112,14 @@ public abstract class SteerForNeighbors : Steering
 		// steering accumulator and count of neighbors, both initially zero
 		Vector3 steering = Vector3.zero;
 		int neighbors = 0;
-		//Debug.Log(Vehicle.Radar.Vehicles.Count);
-		//Debug.Log(Vehicle.Radar.Vehicles.Count);
+		
+		
         for (int i = 0; i < Vehicle.Radar.Vehicles.Count; i++) {
             var other  = Vehicle.Radar.Vehicles[i];
-            Debug.Log(Vehicle.IsInNeighborhood(other, MinRadius, MaxRadius, AngleCos));
 			if (!other.GameObject.Equals(null) &&
                 (1 << other.GameObject.layer & LayersChecked) != 0 &&
 				Vehicle.IsInNeighborhood(other, MinRadius, MaxRadius, AngleCos)) 
 			{
-				//Debug.Log("adding neighbour");
 				#if DEBUG_DRAWNEIGHBORS
 				Debug.DrawLine(Vehicle.Position, other.Position, Color.magenta);
 				#endif
@@ -135,8 +133,6 @@ public abstract class SteerForNeighbors : Steering
 			steering = (steering / (float)neighbors);
 			steering.Normalize();
 		}
-
-		//Debug.Log(neighbors);
 		
 		return steering;
 	}

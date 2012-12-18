@@ -30,7 +30,6 @@ public class SteerForCohesion : SteerForNeighbors
 	protected override Vector3 CalculateNeighborContribution(Vehicle other)
 	{
 		// accumulate sum of forces leading us towards neighbor's positions
-		//Debug.Log(other);
 		var distance = other.Position - Vehicle.Position;
 		if (distance.sqrMagnitude < _comfortDistanceSquared)
 		{
