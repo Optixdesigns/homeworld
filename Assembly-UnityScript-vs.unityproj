@@ -54,7 +54,7 @@
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Depth.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
-     <None Include="Assets\Packages\UnitySteer\License.txt" />
+     <None Include="Assets\Plugins\UnitySteer\License.txt" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Masked Colored.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
      <None Include="Assets\Plugins\iTween\ReadMe!\ReadMe!.txt" />
@@ -92,8 +92,8 @@
  <Reference Include="Assets\Packages\uSequencer\Sequencer\uSequencerRuntime">
  <HintPath>Assets\Packages\uSequencer\Sequencer\uSequencerRuntime.dll</HintPath>
  </Reference>
- <Reference Include="Assets\Packages\UnitySteer\TickedPriorityQueue\TickedPriorityQueue">
- <HintPath>Assets\Packages\UnitySteer\TickedPriorityQueue\TickedPriorityQueue.dll</HintPath>
+ <Reference Include="Assets\Plugins\UnitySteer\TickedPriorityQueue\TickedPriorityQueue">
+ <HintPath>Assets\Plugins\UnitySteer\TickedPriorityQueue\TickedPriorityQueue.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

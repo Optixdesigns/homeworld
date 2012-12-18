@@ -1,6 +1,102 @@
 import UnityEngine
 
+
+class MovementModule(Vehicle):
+    private _speed as single 
+    public OrientationVelocity as Vector3
+
+    public override Speed as single:
+        get:
+            return _speed
+        set:
+            _speed = Mathf.Clamp(value, 0, MaxSpeed)
+            DesiredSpeed = _speed
+
+    public override Velocity as Vector3:
+        get:
+            return Transform.forward * _speed
+        set:
+            raise System.NotSupportedException("Cannot set the velocity directly on Unit")
+
+    public def UpdateOrientationVelocity(velocity as Vector3):
+        Speed = velocity.magnitude
+        OrientationVelocity = ((velocity / _speed) if (_speed != 0) else Transform.forward)
+
+    protected def CalculatePositionDelta(deltaTime as single) as Vector3:
+        return (Velocity * deltaTime)
+
+    protected def ZeroVelocity():
+        Speed = 0
+
+    def ApplySteeringForce(elapsedTime as single):
+        // Euler integrate (per frame) velocity into position
+        Profiler.BeginSample("ApplySteeringForce.CalculatePositionDelta")
+        delta = CalculatePositionDelta(elapsedTime)
+        Profiler.EndSample()
+        
+        Profiler.BeginSample("ApplySteeringForce.Displace")
+        #if characterController:
+            #CharacterController.Move(delta);
+        if Rigidbody == null and Rigidbody.isKinematic:
+            Transform.position += delta
+        else:
+            Rigidbody.MovePosition(Rigidbody.position + delta)
+
+        Profiler.EndSample()
+
+    protected def AdjustOrientation(deltaTime as single):
+        Profiler.BeginSample("AdustOrientation")
+        /* 
+         * Avoid adjusting if we aren't applying any velocity. We also
+         * disregard very small velocities, to avoid jittery movement on
+         * rounding errors.
+         */
+        if DesiredSpeed > MinSpeedForTurning and Velocity != Vector3.zero:
+            newForward = OrientationVelocity
+            if IsPlanar:
+                newForward.y = 0;
+                newForward.Normalize()
+            
+            if TurnTime != 0:
+                newForward = Vector3.Slerp(Transform.forward, newForward, deltaTime / TurnTime)
+            #Debug.Log(newForward)
+            Transform.forward = newForward
+        Profiler.EndSample()
+
+    protected def CalculateForces():
+        if not CanMove or MaxForce == 0 or MaxSpeed == 0:
+            return
+
+        force = Vector3.zero
+        
+        i = 0
+        for steering in Steerings:
+            #var s = Steerings[i]
+            if steering.enabled:
+                force += steering.WeighedForce
+            i += 1
+        Debug.Log(force)
+        UpdateOrientationVelocity(force)
+        #return force
+
+    def Update():
+        // We still update the forces if the vehicle cannot move, as the
+        // calculations on those steering behaviors might be relevant for
+        // other methods, but we don't apply it.  
+        //
+        // If you don't want to have the forces calculated at all, simply
+        // disable the vehicle.
+
+        if CanMove:
+            //Debug.Log("Move")
+            CalculateForces()
+            ApplySteeringForce(Time.deltaTime)
+            AdjustOrientation(Time.deltaTime)
+        else:
+            ZeroVelocity()
+
 # TODO CALCULATE ANGULAR DRAG, STABILITY AND STABILITY SPEED
+/*
 class MovementModule(MonoBehaviour): 
     public maxVelocity as single = 5.0              // // maximum velocity
     public accelerationSpeed as single = 2.0        // Acceleration speed
@@ -104,6 +200,7 @@ class MovementModule(MonoBehaviour):
 
         // Stabilize
         StabilizeRotation()
+*/
 
        
 

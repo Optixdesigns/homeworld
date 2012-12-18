@@ -9,20 +9,12 @@ class StraightAttackPattern(AttackPattern):
 
     def OnEnable():
         runStartPosition = GetNewRerunPosition()
-        #pass
-        /*
-        dist as single = GetDistance(unit.target.transform.position, unit.transform.position)
-        if dist > runEndDistance:
-            onRun = true
-        elif dist < runEndDistance:
-            onRun = false
-        */
-    
+
     def Update():
         // Do nothing if no target
         if not unit.target:
             return
-
+        /*
         // Always face movement direction
         unit.movement.facingDirection = Vector3.zero
 
@@ -38,12 +30,6 @@ class StraightAttackPattern(AttackPattern):
             #Debug.Log(unit.target.transform.position)
             unit.movement.moveDirection = unit.target.transform.position
             // lookat target
-            #unit.movement.SmoothLookAt(unit.target.transform.position)
-            // Move our unit
-            #unit.movement.MoveTo(unit.target.transform.position)
- 
-            #if dist > runEndDistance: 
-                #onRun = true
 
             // Cancel run and create a start run point in space
             if dist < runEndDistance:
@@ -54,14 +40,11 @@ class StraightAttackPattern(AttackPattern):
         // Move away for a new run
         if not onRun:
             unit.movement.moveDirection = runStartPosition
-            #unit.movement.MoveTo(runStartPosition)
-            #unit.movement.SmoothLookAt(rerunPosition)
-            #if dist < runStartDistance:
-                #onRun = false
-            
+
             // Time todo a run again
             if dist >= runStartDistance:
                 onRun = true
+        */
             
 
     def GetNewRerunPosition():

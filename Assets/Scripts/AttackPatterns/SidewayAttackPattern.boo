@@ -10,8 +10,10 @@ class SidewayAttackPattern(AttackPattern):
         pass
     
     def Update():
+        pass
         #Debug.Log(isInAttackDistance)
         // Calculate distance to target
+        /*
         dist as single = GetDistance(unit.target.transform.position, unit.transform.position)
         if dist < attackMaxDistance and dist > attackMinDistance:
             isInAttackDistance = true
@@ -38,6 +40,7 @@ class SidewayAttackPattern(AttackPattern):
             #Debug.Log(rot * Vector3.forward)
             unit.movement.moveDirection = Vector3.zero
             unit.movement.facingDirection = unit.transform.position + Vector3(0, 0, 90)
+        */    
 
 
 

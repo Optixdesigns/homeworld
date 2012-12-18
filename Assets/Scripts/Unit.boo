@@ -9,13 +9,13 @@ import System
 [RequireComponent(typeof(Rigidbody))]
 [AddComponentMenu('Neworld/Space Unit')]
 class Unit(SpaceObject):
-    private speed as single                // Current speed/velocity
+    #private _speed as single                // Current speed/velocity
 
     public target as GameObject // target
     [HideInInspector]
     public targetDistance as single // Distance to target
     
-    public moveToPosition as Vector3 // move to position
+    #public moveToPosition as Vector3 // move to position
     public player as GameObject // Owner of this ship, should also hold stuff like color, alliance etc
     public isEnemy as bool = false // Is this an enemy?
 
@@ -35,6 +35,31 @@ class Unit(SpaceObject):
     public mass as single = 500 // in tons, must between 1 and 10.000
     public collisionRadius as single = 2.0 // Collision Radius
     public centerOfMass as Transform
+    
+    /*
+    public override Speed as single:
+        get:
+            return _speed
+        set:
+            _speed = Mathf.Clamp(value, 0, MaxSpeed)
+            DesiredSpeed = _speed
+
+    public override Velocity as Vector3:
+        get:
+            return Transform.forward * _speed
+        set:
+            raise System.NotSupportedException("Cannot set the velocity directly on Unit")
+
+    public override def UpdateOrientationVelocity(velocity as Vector3):
+        Speed = velocity.magnitude
+        OrientationVelocity = ((velocity / _speed) if (_speed != 0) else Transform.forward)
+
+    protected override def CalculatePositionDelta(deltaTime as single) as Vector3:
+        return (Velocity * deltaTime)
+
+    protected override def ZeroVelocity():
+        Speed = 0
+    */    
 
     #private _collisionSphere as SphereCollider // Collision Sphere, used as trigger
 
@@ -64,8 +89,8 @@ class Unit(SpaceObject):
         #print(collider)
 
         // Check our setup
-        if movement.maxVelocity == 0.0:
-            Debug.Log("WARNING: Ships maximum velocity is zero")
+        #if movement.maxVelocity == 0.0:
+            #Debug.Log("WARNING: Ships maximum velocity is zero")
 
     def Update():
         if target:  // Keep distance in the unit object for different systems
