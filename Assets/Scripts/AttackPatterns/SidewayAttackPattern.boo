@@ -10,7 +10,11 @@ class SidewayAttackPattern(AttackPattern):
         pass
     
     def Update():
-        pass
+        steer = GetComponent(typeof(SteerForTarget))
+        steer.Target = unit.target.transform
+        steer.enabled = true
+        #GetComponent(SteerForTarget)
+        #pass
         #Debug.Log(isInAttackDistance)
         // Calculate distance to target
         /*
