@@ -11,37 +11,50 @@ class StraightAttackPattern(AttackPattern):
     private steerForPoint as SteerForPoint
     private steerForEvasion as SteerForEvasion
 
+    private distanceToTarget as single
+
     def OnEnable():
         runStartPosition = GetNewRerunPosition()
         steerForTarget = GetComponent(typeof(SteerForTarget))
         steerForPoint = GetComponent(typeof(SteerForPoint))
         steerForEvasion = GetComponent(typeof(SteerForEvasion))
 
+        steerForTarget.Target = unit.target.transform
+
+    def ExecuteRun():
+        steerForTarget.enabled = true
+        steerForPoint.enabled = false
+        steerForEvasion.enabled = true
+
+        if distanceToTarget < runEndDistance:
+            runStartPosition = GetNewRerunPosition()
+            onRun = false
+
+    def ExecuteReRun():
+        steerForPoint.TargetPoint = runStartPosition
+        steerForTarget.enabled = false
+        steerForPoint.enabled = true
+        steerForEvasion.enabled = true
+        
+        if distanceToTarget >= runStartDistance:
+            onRun = true 
+
     def Update():
         // Do nothing if no target
         if not unit.target:
             return
 
-        # = GetComponent(typeof(SteerForTarget))
         steerForTarget.Target = unit.target.transform
-        #steerForTarget.enabled = true
-        
-        #if unit.radar
-        distance = Vector3.Distance(unit.transform.position, unit.target.transform.position)
-        if steerForTarget.enabled:
-            if distance < runEndDistance:
-                runStartPosition = GetNewRerunPosition()
-                steerForTarget.enabled = false
-                steerForPoint.enabled = true
-                steerForEvasion.enabled = true
-        else:
-            #Debug.Log(runStartPosition)
-            steerForPoint.TargetPoint = runStartPosition
-            if distance >= runStartDistance:
-                steerForTarget.enabled = true
-                steerForPoint.enabled = false
-                steerForEvasion.enabled = false
+        distanceToTarget = Vector3.Distance(unit.transform.position, unit.target.transform.position)
 
+        if onRun:
+            ExecuteRun()
+        else:
+            ExecuteReRun()
+            #Debug.Log(runStartPosition)
+
+    def GetNewRerunPosition():
+        return unit.target.transform.position + Random.onUnitSphere * Random.Range(runStartDistance + 10, runStartDistance + 30)
 
         /*
         // Always face movement direction
@@ -76,8 +89,6 @@ class StraightAttackPattern(AttackPattern):
         */
             
 
-    def GetNewRerunPosition():
-        return unit.target.transform.position + Random.onUnitSphere * Random.Range(runStartDistance, runStartDistance + 20)
         #return unit.target.transform.position + Vector3(Random.Range(runStartDistance, runStartDistance + 20), Random.Range(runStartDistance, runStartDistance + 20), Random.Range(runStartDistance, runStartDistance + 20))
 
 

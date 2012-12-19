@@ -2,7 +2,9 @@ import UnityEngine
 
 abstract class Projectile(MonoBehaviour):
     public TTL as single = 10   // time to life
+    public damage as single = 5
     public muzzleVelocity as Vector3
+    public explosionPrefab as GameObject
     #public size as Vector3
 
     def Start ():
@@ -20,8 +22,13 @@ abstract class Projectile(MonoBehaviour):
         #pos as Vector3 = contact.point
         #(Instantiate(explosionPrefab, pos, rot) as Transform)
         
+        #collision.gameObject.SendMessage("ApplyDamage", damage, SendMessageOptions.DontRequireReceiver)
+        #if collision.gameObject.health:
+           #collision.gameObject.health.ApplyDamage(damage) 
+        
+        
+        Debug.Log(collision.gameObject.name + ": Collision yes")
         Destroy(gameObject)
-        Debug.Log("Collision yes")
 
    # def OnTriggerEnter(other as Collider):
         #Destroy(gameObject)

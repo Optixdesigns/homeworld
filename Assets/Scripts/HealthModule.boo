@@ -27,3 +27,10 @@ class HealthModule(MonoBehaviour):
 
     def Start():
         pass
+
+    def ApplyDamage(damage as single):
+        Debug.Log("apply damage")
+        health -= damage
+
+        if health <= 0:
+            Destroy(gameObject)

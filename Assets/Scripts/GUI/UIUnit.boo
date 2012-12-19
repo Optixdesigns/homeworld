@@ -20,7 +20,7 @@ class UIUnit(MonoBehaviour):
         unit = gameObject.GetComponent[of Unit]()
 
         // Setup selectionbox
-        _CreateSelectBox()
+        //_CreateSelectBox()
     
     def Update():
         #select = true
@@ -49,7 +49,7 @@ class UIUnit(MonoBehaviour):
         if draw and unit.health and showHealthbar:
             DrawHealthBar()
 
-        DrawSelectionBox()
+        //DrawSelectionBox()
 
     def DrawHealthBar():
         y = 20
