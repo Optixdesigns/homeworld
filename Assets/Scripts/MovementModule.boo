@@ -75,7 +75,7 @@ class MovementModule(Vehicle):
             if steering.enabled:
                 force += steering.WeighedForce
             i += 1
-        Debug.Log(force)
+        #Debug.Log(force)
         UpdateOrientationVelocity(force)
         #return force
 

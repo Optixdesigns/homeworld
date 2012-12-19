@@ -2,16 +2,20 @@ import UnityEngine
 
 [Serializable]
 class StraightAttackPattern(AttackPattern):
-    public runStartDistance = 25 /// Distance needed to start a attack run
-    public runEndDistance = 5 /// Distance to target wich ends a run
+    public runStartDistance = 70 /// Distance needed to start a attack run
+    public runEndDistance = 10 /// Distance to target wich ends a run
     private runStartPosition as Vector3 /// position to start a new run
     private onRun as bool = false
 
     private steerForTarget as SteerForTarget
+    private steerForPoint as SteerForPoint
+    private steerForEvasion as SteerForEvasion
 
     def OnEnable():
         runStartPosition = GetNewRerunPosition()
         steerForTarget = GetComponent(typeof(SteerForTarget))
+        steerForPoint = GetComponent(typeof(SteerForPoint))
+        steerForEvasion = GetComponent(typeof(SteerForEvasion))
 
     def Update():
         // Do nothing if no target
@@ -20,15 +24,25 @@ class StraightAttackPattern(AttackPattern):
 
         # = GetComponent(typeof(SteerForTarget))
         steerForTarget.Target = unit.target.transform
-        steerForTarget.enabled = true
+        #steerForTarget.enabled = true
         
         #if unit.radar
+        distance = Vector3.Distance(unit.transform.position, unit.target.transform.position)
         if steerForTarget.enabled:
-            distance = Vector3.Distance(unit.transform.position, unit.target.transform.position)
-            #Debug.Log(distance)
-            
-            if distance < runStartDistance and distance > runEndDistance:
+            if distance < runEndDistance:
+                runStartPosition = GetNewRerunPosition()
                 steerForTarget.enabled = false
+                steerForPoint.enabled = true
+                steerForEvasion.enabled = true
+        else:
+            #Debug.Log(runStartPosition)
+            steerForPoint.TargetPoint = runStartPosition
+            if distance >= runStartDistance:
+                steerForTarget.enabled = true
+                steerForPoint.enabled = false
+                steerForEvasion.enabled = false
+
+
         /*
         // Always face movement direction
         unit.movement.facingDirection = Vector3.zero
