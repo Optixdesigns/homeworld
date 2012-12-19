@@ -2,18 +2,33 @@ import UnityEngine
 
 [Serializable]
 class StraightAttackPattern(AttackPattern):
-    public onRun as bool = false
     public runStartDistance = 25 /// Distance needed to start a attack run
     public runEndDistance = 5 /// Distance to target wich ends a run
     private runStartPosition as Vector3 /// position to start a new run
+    private onRun as bool = false
+
+    private steerForTarget as SteerForTarget
 
     def OnEnable():
         runStartPosition = GetNewRerunPosition()
+        steerForTarget = GetComponent(typeof(SteerForTarget))
 
     def Update():
         // Do nothing if no target
         if not unit.target:
             return
+
+        # = GetComponent(typeof(SteerForTarget))
+        steerForTarget.Target = unit.target.transform
+        steerForTarget.enabled = true
+        
+        #if unit.radar
+        if steerForTarget.enabled:
+            distance = Vector3.Distance(unit.transform.position, unit.target.transform.position)
+            #Debug.Log(distance)
+            
+            if distance < runStartDistance and distance > runEndDistance:
+                steerForTarget.enabled = false
         /*
         // Always face movement direction
         unit.movement.facingDirection = Vector3.zero

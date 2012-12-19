@@ -2,8 +2,8 @@ import UnityEngine
 
 
 class SidewayAttackPattern(AttackPattern):
-    private attackMaxDistance = 25 /// Distance needed to start a attack run
-    private attackMinDistance = 10 /// Distance to target wich ends a run
+    public attackMaxDistance = 25 /// Distance needed to start a attack run
+    public attackMinDistance = 10 /// Distance to target wich ends a run
     private isInAttackDistance = false
 
     def Start():
@@ -13,6 +13,16 @@ class SidewayAttackPattern(AttackPattern):
         steer = GetComponent(typeof(SteerForTarget))
         steer.Target = unit.target.transform
         steer.enabled = true
+        
+        #if unit.radar
+        if steer.enabled:
+            distance = Vector3.Distance(unit.transform.position, unit.target.transform.position)
+            Debug.Log(distance)
+            
+            if distance < attackMaxDistance and distance > attackMinDistance:
+                steer.enabled = false
+        
+        
         #GetComponent(SteerForTarget)
         #pass
         #Debug.Log(isInAttackDistance)
