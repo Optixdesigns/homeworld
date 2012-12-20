@@ -3,18 +3,18 @@ import UnityEngine
 abstract class Projectile(MonoBehaviour):
     public TTL as single = 10   // time to life
     public damage as single = 5
-    public muzzleVelocity as Vector3
+    public speed as single = 200  // current speed
     public explosionPrefab as GameObject
-    #public size as Vector3
 
     def Start ():
         #transform.localScale = Vector3(0.1,0,0)
         Destroy(gameObject, TTL)
     
-    def Update ():
-        rigidbody.velocity = transform.TransformDirection(muzzleVelocity)
+    def Update():
+        #speed = Mathf.Clamp(speed + acceleration, 0, maxSpeed)
+        transform.position += transform.forward * speed * Time.deltaTime
+        #rigidbody.velocity = transform.TransformDirection(muzzleVelocity)
         #Debug.DrawLine(transform.position, transform.position + muzzleVelocity.normalized, Color.red)
-
 
     def OnCollisionEnter(collision as Collision):
         #contact as ContactPoint = collision.contacts[0]

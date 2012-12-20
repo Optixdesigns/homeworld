@@ -24,7 +24,7 @@ class StraightAttackPattern(AttackPattern):
     def ExecuteRun():
         steerForTarget.enabled = true
         steerForPoint.enabled = false
-        steerForEvasion.enabled = true
+        #steerForEvasion.enabled = true
 
         if distanceToTarget < runEndDistance:
             runStartPosition = GetNewRerunPosition()
@@ -34,7 +34,7 @@ class StraightAttackPattern(AttackPattern):
         steerForPoint.TargetPoint = runStartPosition
         steerForTarget.enabled = false
         steerForPoint.enabled = true
-        steerForEvasion.enabled = true
+        #steerForEvasion.enabled = true
         
         if distanceToTarget >= runStartDistance:
             onRun = true 
@@ -46,6 +46,11 @@ class StraightAttackPattern(AttackPattern):
 
         steerForTarget.Target = unit.target.transform
         distanceToTarget = Vector3.Distance(unit.transform.position, unit.target.transform.position)
+
+        #distanceToTarget = unit.collider.bounds.SqrDistance(unit.target.collider.ClosestPointOnBounds(unit.transform.position))
+
+        #var closestPoint : Vector3 = collider.ClosestPointOnBounds(explosionPos)
+        #var distance : float = Vector3.Distance(closestPoint, explosionPos)
 
         if onRun:
             ExecuteRun()

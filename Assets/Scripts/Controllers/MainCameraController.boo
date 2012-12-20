@@ -10,6 +10,7 @@ class MainCameraController(MonoBehaviour):
     public navPlane as Transform	# Plain used for navigation
     public distance = 10
     public minDistance = 3 // Minum distance to boject
+    public boundaryMovemement as bool = true
 
     public mouseSens = 200    # Mouse sensitivity
 
@@ -52,8 +53,8 @@ class MainCameraController(MonoBehaviour):
 
         if Input.GetMouseButton(1):
             Rotate()
-        else:
-            BoundaryMovemement()
+        elif boundaryMovemement:
+            DoBoundaryMovemement()
 
         if target: /// If we have a target, stay focused on it
             Focus()
@@ -68,9 +69,7 @@ class MainCameraController(MonoBehaviour):
             target = gameManager.GetComponent(Select).gameObjects[0].transform    /// First obj in selection
             Focus()
 
-        
-
-    def BoundaryMovemement():
+    def DoBoundaryMovemement():
         thiseulerX = transform.rotation.eulerAngles.x
         transform.rotation = Quaternion.Euler(0, transform.eulerAngles.y, transform.eulerAngles.z)
         
