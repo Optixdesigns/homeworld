@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\Controllers\MainCameraController.boo" />
      <Compile Include="Assets\Scripts\Controllers\PlayerController.boo" />
      <Compile Include="Assets\Scripts\DefensesModule.boo" />
+     <Compile Include="Assets\Scripts\Detectable.boo" />
      <Compile Include="Assets\Scripts\GUI\UICursors.boo" />
      <Compile Include="Assets\Scripts\GUI\UIDebug.boo" />
      <Compile Include="Assets\Scripts\GUI\UIHealthBar.boo" />
@@ -77,6 +78,7 @@
      <Compile Include="Assets\Scripts\MovementModule.boo" />
      <Compile Include="Assets\Scripts\Projectiles\Projectile.boo" />
      <Compile Include="Assets\Scripts\Projectiles\ProjectileDefault.boo" />
+     <Compile Include="Assets\Scripts\Radar.boo" />
      <Compile Include="Assets\Scripts\Select.boo" />
      <Compile Include="Assets\Scripts\SelectController.boo" />
      <Compile Include="Assets\Scripts\SpaceObject.boo" />
@@ -97,6 +99,7 @@
      <None Include="Assets\Packages\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
      <None Include="Assets\Standard Assets\Detonator Explosion Framework\Resources\Detonator\Textures\HeatDistort.shader" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
+     <None Include="Assets\Packages\Methodic\Read Me.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
      <None Include="Assets\Packages\NGUI\ReadMe.txt" />
@@ -105,7 +108,6 @@
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored Overlay.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Other\English.txt" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed).shader" />
-     <None Include="Assets\Packages\Debugger\READ ME.txt" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Additive Colored.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Shaders\Refractive.shader" />

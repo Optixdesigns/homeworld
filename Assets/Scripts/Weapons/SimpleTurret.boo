@@ -5,15 +5,6 @@ public class SimpleTurret(Weapon):
     def Update():
         pass
 
-    def TargetInRange(t as GameObject) as bool:
-        rayDirection as Vector3 = t.transform.position - transform.position
-        angle as single = Vector3.Angle(rayDirection, transform.forward)
-        if angle < fieldOfViewRange and (unit.targetDistance > minShootDistance and unit.targetDistance < maxShootDistance):
-            Debug.Log("target is in range")
-            return true
-        
-        return false
-
     public def Fire():
         if Time.time > fireTimer and TargetInRange(target):
             clone as GameObject = Instantiate(projectilePrefab, transform.position, transform.rotation)

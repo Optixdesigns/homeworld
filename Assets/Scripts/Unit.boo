@@ -21,7 +21,6 @@ class Unit(SpaceObject):
 
     [HideInInspector]
     public fsm as AIBehaviours  /// Relation to the attached FSM
-    
     [HideInInspector]
     public health as HealthModule
     [HideInInspector]

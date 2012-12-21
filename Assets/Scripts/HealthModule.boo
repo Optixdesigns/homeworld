@@ -1,8 +1,9 @@
 import UnityEngine
 import System
 
-[System.Serializable]
+
 [AddComponentMenu('Neworld/Unit Modules/Health Module')]
+[System.Serializable]
 class HealthModule(MonoBehaviour):
     public maxHealth as single = 100.0
     public regenerateSpeed as single = 0.0

@@ -57,6 +57,7 @@
      <None Include="Assets\Packages\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
      <None Include="Assets\Standard Assets\Detonator Explosion Framework\Resources\Detonator\Textures\HeatDistort.shader" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
+     <None Include="Assets\Packages\Methodic\Read Me.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
      <None Include="Assets\Packages\NGUI\ReadMe.txt" />
@@ -65,7 +66,6 @@
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored Overlay.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Other\English.txt" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed).shader" />
-     <None Include="Assets\Packages\Debugger\READ ME.txt" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Additive Colored.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Refractive\Refractive Font - Header.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Shaders\Refractive.shader" />

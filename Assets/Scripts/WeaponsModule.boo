@@ -6,8 +6,8 @@ import System
 [AddComponentMenu('Neworld/Unit Modules/Weapons Module')]
 public class WeaponsModule(MonoBehaviour):
     #public damage as single
-    public minShootDistance as single = 5.0    // Attack range minum
-    public maxShootDistance as single = 20.0   // Attack range maximum
+    #public minShootDistance as single = 5.0    // Attack range minum
+    #public maxShootDistance as single = 20.0   // Attack range maximum
     #public projectileSpeed as single = 10.0
     #public RateOfFire as single = 1.0
     #public fieldOfViewRange as single = 50
@@ -25,7 +25,7 @@ public class WeaponsModule(MonoBehaviour):
 
     def Awake():
         weapons = GetComponentsInChildren[of Weapon]()
-        Debug.Log(weapons.Lenght)
+        Debug.Log(weapons.Length)
 
     def Start():
         unit = gameObject.GetComponent(typeof(Unit))
@@ -33,7 +33,7 @@ public class WeaponsModule(MonoBehaviour):
 
     def Update():
         if unit.target:
-            Shoot()
+            Fire()
 
     def Fire():
         pass

@@ -1,12 +1,20 @@
 import UnityEngine
 
 public abstract class Weapon(MonoBehaviour):
-    public weaponPrefab as GameObject
+    public projectilePrefab as GameObject
     public RateOfFire as single = 1.0
-    private fireTimer as single // cooldown timer
+    
     public fieldOfViewRange as single = 50
     public target as Transform
     public modus as string
+
+    public minShootDistance as single = 5.0    // Attack range minum
+    public maxShootDistance as single = 20.0   // Attack range maximum
+
+    private unit as Unit
+
+    [HideInInspector]
+    public fireTimer as single // cooldown timer
 
     def Start():
         unit = gameObject.GetComponent(typeof(Unit))
@@ -18,8 +26,8 @@ public abstract class Weapon(MonoBehaviour):
     protected virtual def RecalculateScaledValues():
         pass
 
-    def TargetInRange(t as GameObject) as bool:
-        rayDirection as Vector3 = t.transform.position - transform.position
+    protected virtual def TargetInRange(t as Transform) as bool:
+        rayDirection as Vector3 = t.position - transform.position
         angle as single = Vector3.Angle(rayDirection, transform.forward)
         if angle < fieldOfViewRange and (unit.targetDistance > minShootDistance and unit.targetDistance < maxShootDistance):
             Debug.Log("target is in range")
