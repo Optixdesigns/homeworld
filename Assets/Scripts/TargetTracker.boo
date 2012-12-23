@@ -16,8 +16,10 @@ class Perimeter:
 	public range as single = 10
 	public drawGizmo as bool = false
 
-class Radar(MonoBehaviour): 
+
+class TargetTracker(MonoBehaviour):
 	public numberOfTargets as int = 1
+	private targets as (Targetable) = array(Targetable, 0)
 	#public targetLaters as int
 
 	#private static _cachedDetectableObjects as Dictionary[of Collider, Detectable] = Dictionary[of Collider, Detectable]()
@@ -27,15 +29,22 @@ class Radar(MonoBehaviour):
 	public perimeter as Perimeter
 
 	def Awake ():
-		pass
-		#p as Collider = Instantiate(SphereCollider, transform.position, transform.rotation)
-		#AddComponent(SphereCollider);
-		#p = SphereCollider
+		InitPerimeter()
 	
 	def Update ():
 		pass
 
+	def InitPerimeter():
+		// Setup the perimiter object
+		p = GameObject.CreatePrimitive(PrimitiveType.Sphere)
+		p.name = "Radar Perimeter"
+		p.tag = "Perimeter"
+		p.transform.parent = transform
+		p.renderer.enabled = false
+		return p
+
 	private def OnDrawGizmos():
+		// Draw perimiter in editor
 		if perimeter.drawGizmo:
 			pos = transform.position
 			Gizmos.color = Color.cyan

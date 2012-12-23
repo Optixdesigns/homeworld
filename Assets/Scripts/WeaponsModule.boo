@@ -17,23 +17,30 @@ public class WeaponsModule(MonoBehaviour):
     #public weapons as (Weapon) = array(Weapon, 0)
 
     #private fireTimer as single // cooldown timer
-    private unit as Unit
+    #private unit as Unit
 
     private hit as RaycastHit
 
     private weapons as (Weapon) = array(Weapon, 0)
 
     def Awake():
-        weapons = GetComponentsInChildren[of Weapon]()
-        Debug.Log(weapons.Length)
+        RecursiveWeaponLoad()
 
     def Start():
-        unit = gameObject.GetComponent(typeof(Unit))
+        #unit = gameObject.GetComponent(typeof(Unit))
         #fireTimer = Time.time + RateOfFire
 
     def Update():
-        if unit.target:
-            Fire()
+        //Fire()
 
     def Fire():
+        pass
+
+    def ReloadWeapons():
+        // load all weapons on this gameobject
+        weapons = GetComponentsInChildren[of Weapon]()
+        Debug.Log(weapons.Length)
+        return weapons
+
+    def AddWeapon(weapon as Weapon):
         pass

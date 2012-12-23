@@ -11,13 +11,18 @@ public abstract class Weapon(MonoBehaviour):
     public minShootDistance as single = 5.0    // Attack range minum
     public maxShootDistance as single = 20.0   // Attack range maximum
 
-    private unit as Unit
+    public targetTracker as TargetTracker
+    #private unit as Unit
 
     [HideInInspector]
     public fireTimer as single // cooldown timer
 
+    def Awake():
+        if not targetTracker:
+            targetTracker = gameObject.GetComponent(typeof(TargetTracker))
+
     def Start():
-        unit = gameObject.GetComponent(typeof(Unit))
+        #unit = gameObject.GetComponent(typeof(Unit))
         fireTimer = Time.time + RateOfFire
     
     def Update():

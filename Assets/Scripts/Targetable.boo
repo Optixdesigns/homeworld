@@ -1,6 +1,6 @@
 import UnityEngine
 
-class Detectable (MonoBehaviour):
+class Targetable(MonoBehaviour):
 
 	// Triggered once when this target is first detected by a TargetTracker.
 	// Argument: A reference back to the Radar component which triggered this event

@@ -54,18 +54,19 @@
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Depth.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
-     <None Include="Assets\Plugins\UnitySteer\License.txt" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Masked Colored.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo18.txt" />
-     <None Include="Assets\Plugins\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
+     <None Include="Assets\Plugins\UnitySteer\License.txt" />
      <None Include="Assets\Packages\AIBehavior\_ReadMe.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
+     <None Include="Assets\Packages\Spacebox-4096-Nebula-Collision\readme.txt" />
      <None Include="Assets\Standard Assets\Detonator Explosion Framework\Resources\Detonator\Textures\HeatDistort.shader" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
      <None Include="Assets\Packages\Methodic\Read Me.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Refractive\Refractive Font - Normal.txt" />
+     <None Include="Assets\Plugins\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\Packages\NGUI\ReadMe.txt" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (HardClip).shader" />
@@ -82,14 +83,14 @@
  <Reference Include="Assets\Packages\NGUI\DLLs\NGUI">
  <HintPath>Assets\Packages\NGUI\DLLs\NGUI.dll</HintPath>
  </Reference>
+ <Reference Include="Assets\Plugins\UnitySteer\TickedPriorityQueue\TickedPriorityQueue">
+ <HintPath>Assets\Plugins\UnitySteer\TickedPriorityQueue\TickedPriorityQueue.dll</HintPath>
+ </Reference>
  <Reference Include="Assets\Packages\Turrets\Scripts\UnityExtender">
  <HintPath>Assets\Packages\Turrets\Scripts\UnityExtender.dll</HintPath>
  </Reference>
  <Reference Include="Assets\Packages\uSequencer\Sequencer\uSequencerRuntime">
  <HintPath>Assets\Packages\uSequencer\Sequencer\uSequencerRuntime.dll</HintPath>
- </Reference>
- <Reference Include="Assets\Plugins\UnitySteer\TickedPriorityQueue\TickedPriorityQueue">
- <HintPath>Assets\Plugins\UnitySteer\TickedPriorityQueue\TickedPriorityQueue.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
