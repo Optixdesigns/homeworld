@@ -27,10 +27,12 @@ public class WeaponsModule(MonoBehaviour):
         RecursiveWeaponLoad()
 
     def Start():
+        pass
         #unit = gameObject.GetComponent(typeof(Unit))
         #fireTimer = Time.time + RateOfFire
 
     def Update():
+        pass
         //Fire()
 
     def Fire():

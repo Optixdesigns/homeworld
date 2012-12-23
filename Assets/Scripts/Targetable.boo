@@ -2,6 +2,8 @@ import UnityEngine
 
 class Targetable(MonoBehaviour):
 
+	public callable Onhit(target as Targetable)
+
 	// Triggered once when this target is first detected by a TargetTracker.
 	// Argument: A reference back to the Radar component which triggered this event
 	public callable OnDetected(source as Radar)

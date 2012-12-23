@@ -28,7 +28,7 @@ class Unit(SpaceObject):
     [HideInInspector]
     public movement as MovementModule
     [HideInInspector]
-    public radar as Radar
+    public targetTracker as TargetTracker
 
     public select as SelectController
     #public baseProperties as UnitProperties
@@ -70,7 +70,7 @@ class Unit(SpaceObject):
         health = gameObject.GetComponent[of HealthModule]() // REQUIRED
         weapons = gameObject.GetComponent[of WeaponsModule]() // REQUIRED
         movement = gameObject.GetComponent[of MovementModule]() // REQUIRED
-        radar = gameObject.GetComponent[of Radar]() // REQUIRED
+        targetTracker = gameObject.GetComponent[of TargetTracker]() // REQUIRED
         
         // Set rigibody
         rigidbody.detectCollisions = false // For now

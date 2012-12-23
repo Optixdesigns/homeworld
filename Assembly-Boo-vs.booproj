@@ -75,11 +75,13 @@
      <Compile Include="Assets\Scripts\Managers\PlayerManager.boo" />
      <Compile Include="Assets\Scripts\Managers\ShipManager.boo" />
      <Compile Include="Assets\Scripts\MovementModule.boo" />
+     <Compile Include="Assets\Scripts\Perimeter.boo" />
      <Compile Include="Assets\Scripts\Projectiles\Projectile.boo" />
      <Compile Include="Assets\Scripts\Projectiles\ProjectileDefault.boo" />
      <Compile Include="Assets\Scripts\Select.boo" />
      <Compile Include="Assets\Scripts\SelectController.boo" />
      <Compile Include="Assets\Scripts\SpaceObject.boo" />
+     <Compile Include="Assets\Scripts\Target.boo" />
      <Compile Include="Assets\Scripts\TargetTracker.boo" />
      <Compile Include="Assets\Scripts\Targetable.boo" />
      <Compile Include="Assets\Scripts\Unit.boo" />
@@ -96,8 +98,6 @@
      <None Include="Assets\Plugins\UnitySteer\License.txt" />
      <None Include="Assets\Packages\AIBehavior\_ReadMe.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\SciFi\SciFi Font - Header.txt" />
-     <None Include="Assets\Packages\Spacebox-4096-Nebula-Collision\readme.txt" />
-     <None Include="Assets\Standard Assets\Detonator Explosion Framework\Resources\Detonator\Textures\HeatDistort.shader" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />
      <None Include="Assets\Packages\Methodic\Read Me.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Fantasy\Fantasy Font - Normal.txt" />
@@ -107,6 +107,7 @@
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored.shader" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (HardClip).shader" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored Overlay.shader" />
+     <None Include="Assets\Plugins\PathologicalGames\readme.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Other\English.txt" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed).shader" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Additive Colored.shader" />
@@ -122,14 +123,14 @@
  <Reference Include="Assets\Packages\NGUI\DLLs\NGUI">
  <HintPath>Assets\Packages\NGUI\DLLs\NGUI.dll</HintPath>
  </Reference>
- <Reference Include="Assets\Plugins\UnitySteer\TickedPriorityQueue\TickedPriorityQueue">
- <HintPath>Assets\Plugins\UnitySteer\TickedPriorityQueue\TickedPriorityQueue.dll</HintPath>
- </Reference>
  <Reference Include="Assets\Packages\Turrets\Scripts\UnityExtender">
  <HintPath>Assets\Packages\Turrets\Scripts\UnityExtender.dll</HintPath>
  </Reference>
  <Reference Include="Assets\Packages\uSequencer\Sequencer\uSequencerRuntime">
  <HintPath>Assets\Packages\uSequencer\Sequencer\uSequencerRuntime.dll</HintPath>
+ </Reference>
+ <Reference Include="Assets\Plugins\UnitySteer\TickedPriorityQueue\TickedPriorityQueue">
+ <HintPath>Assets\Plugins\UnitySteer\TickedPriorityQueue\TickedPriorityQueue.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
