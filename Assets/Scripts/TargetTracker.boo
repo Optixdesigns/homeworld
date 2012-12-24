@@ -1,8 +1,8 @@
 import UnityEngine
 
 #enum radiusShape:
-
-
+# TODO SORT BY RANGE/NEAREST
+[AddComponentMenu('Newworld/TargetTracker')]
 class TargetTracker(MonoBehaviour):
     public numberOfTargets as int = 1
     #private targetList as (Targetable) = array(Targetable, 0)
@@ -32,6 +32,17 @@ class TargetTracker(MonoBehaviour):
             return self._perimeter
         private set:
             self._perimeter = value
+
+    #private _targets as List[of Target] = List[of Target]()
+    #public targetList as (Target) = array(Target, 0)
+    public targets as List[of Target]:
+        get:
+            if self.perimeter:
+                return self.perimeter.targets
+
+            return List[of Target]()
+        set:
+            pass
 
     def Awake():
         InitPerimeter()

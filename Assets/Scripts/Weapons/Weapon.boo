@@ -1,23 +1,18 @@
 import UnityEngine
 
+
 public abstract class Weapon(MonoBehaviour):
     public projectilePrefab as GameObject
     public RateOfFire as single = 1.0
-    
     public fieldOfViewRange as single = 50
-    public target as Transform
-    public modus as string
-
-    public minShootDistance as single = 5.0    // Attack range minum
-    public maxShootDistance as single = 20.0   // Attack range maximum
-
-    public targetTracker as TargetTracker
-    #private unit as Unit
-
-    [HideInInspector]
+    public target as Target // Current target
+    public autoFire as bool
+    public range as single = 50
+    private targetTracker as TargetTracker
     public fireTimer as single // cooldown timer
 
     def Awake():
+        // Get our target tracker
         if not targetTracker:
             targetTracker = gameObject.GetComponent(typeof(TargetTracker))
 
@@ -26,12 +21,24 @@ public abstract class Weapon(MonoBehaviour):
         fireTimer = Time.time + RateOfFire
     
     def Update():
-        pass
+        // Validate target and fire
+        if self.autoFire and ValidateTarget(self.target):
+            Fire()
+            
+        // Find target
+        #if self.autoFire and self.target:
+        if self.autoFire:
+            self.target = FindTarget()
 
     protected virtual def RecalculateScaledValues():
         pass
 
-    protected virtual def TargetInRange(t as Transform) as bool:
+    protected virtual def TargetInRange(target as Target) as bool:
+        distance as single = Vector3.Distance(self.target.transform.position, transform.position)
+        if distance >= self.range:
+            return true
+        
+        return false
         /*
         rayDirection as Vector3 = t.position - transform.position
         angle as single = Vector3.Angle(rayDirection, transform.forward)
@@ -41,8 +48,25 @@ public abstract class Weapon(MonoBehaviour):
         
         return false
         */
+
+
+    # TODO CREATE COROUTINE FOR A TIMOUT MAYBE IT FLIES BACK INTO RANGE
+    public def ValidateTarget(target as Target) as bool:
+        // Check distance and allignment
+        if TargetInRange(target):
+            return true
+
         return false
 
+    public def FindTarget():
+        // Find a target from the targettracker pool
+        if self.targetTracker:
+           if self.targetTracker.targets.Count != 0:
+                return self.targetTracker.targets[0]
+
+        return null
+
+    // Fire this weapon
     public def Fire():
         if Time.time > fireTimer and TargetInRange(target):
             clone as GameObject = Instantiate(projectilePrefab, transform.position, transform.rotation)

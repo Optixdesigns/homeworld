@@ -10,7 +10,7 @@ class Perimeter(MonoBehaviour):
     #public shape as int = 10
 
     #private targets as (Target) = array(Target, 0)
-    private targets as List[of Target] = List[of Target]()
+    public targets as List[of Target] = List[of Target]()
     internal targetTracker as TargetTracker
 
     def Awake ():
