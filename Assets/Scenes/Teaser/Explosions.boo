@@ -22,11 +22,14 @@ class Explosions (MonoBehaviour):
 
 
     def SpawnExplosion():
+        pass
+        /*
         curDetonator = detonatorPrefabs[Random.Range(0, detonatorPrefabs.Length)]
         curDetonator.GetComponent(Detonator).size = Random.Range(10, 1000)
         exp as GameObject = Instantiate(curDetonator, GetRandomPosition(), Quaternion.identity)
         exp.transform.parent = transform
         Destroy(exp, explosionLife)
+        */
 
     def GetRandomPosition() as Vector3:
         position as Vector3 = Vector3(Random.Range(spawnBounds.min.x, spawnBounds.max.x), Random.Range(spawnBounds.min.y, spawnBounds.max.y), Random.Range(spawnBounds.min.z, spawnBounds.max.z))

@@ -32,12 +32,15 @@ public abstract class Weapon(MonoBehaviour):
         pass
 
     protected virtual def TargetInRange(t as Transform) as bool:
+        /*
         rayDirection as Vector3 = t.position - transform.position
         angle as single = Vector3.Angle(rayDirection, transform.forward)
         if angle < fieldOfViewRange and (unit.targetDistance > minShootDistance and unit.targetDistance < maxShootDistance):
             Debug.Log("target is in range")
             return true
         
+        return false
+        */
         return false
 
     public def Fire():

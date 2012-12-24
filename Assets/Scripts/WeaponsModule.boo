@@ -24,7 +24,7 @@ public class WeaponsModule(MonoBehaviour):
     private weapons as (Weapon) = array(Weapon, 0)
 
     def Awake():
-        RecursiveWeaponLoad()
+        GetWeapons()
 
     def Start():
         pass
@@ -38,7 +38,7 @@ public class WeaponsModule(MonoBehaviour):
     def Fire():
         pass
 
-    def ReloadWeapons():
+    def GetWeapons():
         // load all weapons on this gameobject
         weapons = GetComponentsInChildren[of Weapon]()
         Debug.Log(weapons.Length)
