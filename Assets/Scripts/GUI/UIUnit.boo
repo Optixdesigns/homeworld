@@ -14,7 +14,7 @@ class UIUnit(MonoBehaviour):
     public showHealthbar as bool = true
 
     private draw as bool = false
-    private selectBox as GameObject
+    #private selectBox as GameObject
 
     def Awake():
         unit = gameObject.GetComponent[of Unit]()
@@ -23,7 +23,6 @@ class UIUnit(MonoBehaviour):
         //_CreateSelectBox()
     
     def Update():
-        #select = true
         if unit.select.isSelected:
             draw = true
         else:
@@ -60,12 +59,6 @@ class UIUnit(MonoBehaviour):
         #screenPosition as Vector3 = Camera.main.WorldToScreenPoint(unit.transform.position) // gets screen position.
         screenPosition.y = Screen.height - (screenPosition.y + 1) - y // inverts y
         GUI.HorizontalScrollbar(Rect(screenPosition.x - 50, screenPosition.y - 12, 100, 24), 0, unit.health.health, 0, 100)
-
-    def DrawSelectionBox():
-        if draw:
-            selectBox.renderer.enabled = true
-        else:
-            selectBox.renderer.enabled = false
 
     def OnMouseEnter():
         #Debug.Log(unitController.isEnemy)

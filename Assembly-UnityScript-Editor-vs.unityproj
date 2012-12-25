@@ -88,9 +88,6 @@
  <Reference Include="Assets\Packages\NGUI\DLLs\Editor\NGUI_Editor">
  <HintPath>Assets\Packages\NGUI\DLLs\Editor\NGUI_Editor.dll</HintPath>
  </Reference>
- <Reference Include="Assets\Plugins\UnitySteer\TickedPriorityQueue\TickedPriorityQueue">
- <HintPath>Assets\Plugins\UnitySteer\TickedPriorityQueue\TickedPriorityQueue.dll</HintPath>
- </Reference>
  <Reference Include="Assets\Packages\Turrets\Scripts\UnityExtender">
  <HintPath>Assets\Packages\Turrets\Scripts\UnityExtender.dll</HintPath>
  </Reference>
@@ -99,6 +96,9 @@
  </Reference>
  <Reference Include="Assets\Packages\uSequencer\Sequencer\Editor\uSequencerEditor">
  <HintPath>Assets\Packages\uSequencer\Sequencer\Editor\uSequencerEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="Assets\Plugins\UnitySteer\TickedPriorityQueue\TickedPriorityQueue">
+ <HintPath>Assets\Plugins\UnitySteer\TickedPriorityQueue\TickedPriorityQueue.dll</HintPath>
  </Reference>
  <Reference Include="\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs">
  <HintPath>\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.Graphs.dll</HintPath>

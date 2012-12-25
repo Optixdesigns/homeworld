@@ -15,6 +15,8 @@ class Select(MonoBehaviour):
     private gameObjectsAsList as List[of GameObject] = List[of GameObject]()
     
     private _command as CommandLayer
+
+    public layersChecked as LayerMask
     
     def Awake():
         _command = GetComponent(typeof(CommandLayer))
@@ -42,7 +44,7 @@ class Select(MonoBehaviour):
     def ObjectClick():
         // Only if we hit something, do we continue
         hit as RaycastHit
-        if not Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), hit):
+        if not Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), hit, Mathf.Infinity, layersChecked):
             return
 
         // Check if this is an ship
@@ -62,11 +64,12 @@ class Select(MonoBehaviour):
     def SelectionClick():
         // Only if we hit something, do we continue
         hit as RaycastHit
-        if not Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), hit):
+        if not Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), hit, Mathf.Infinity, layersChecked):
             return
 
         // Check if this is an ship
         obj = hit.collider.gameObject
+        Debug.Log(obj)
         if not CheckIfShip(obj):
             return
 

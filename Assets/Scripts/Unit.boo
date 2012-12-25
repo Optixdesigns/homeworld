@@ -29,8 +29,8 @@ class Unit(SpaceObject):
     public movement as MovementModule
     [HideInInspector]
     public targetTracker as TargetTracker
-
-    public select as SelectController
+    [HideInInspector]
+    public select as Selectable
     #public baseProperties as UnitProperties
 
     public mass as single = 500 // in tons, must between 1 and 10.000
@@ -71,6 +71,7 @@ class Unit(SpaceObject):
         weapons = gameObject.GetComponent[of WeaponsModule]() // REQUIRED
         movement = gameObject.GetComponent[of MovementModule]() // REQUIRED
         targetTracker = gameObject.GetComponent[of TargetTracker]() // REQUIRED
+        select = gameObject.GetComponent[of Selectable]() // REQUIRED
         
         // Set rigibody
         rigidbody.detectCollisions = false // For now
@@ -82,11 +83,7 @@ class Unit(SpaceObject):
         // Set mass of rigidbody
         rigidbody.mass = mass / 1000
 
-        // Setup collision sphere
-        #_collisionSphere = gameObject.AddComponent("SphereCollider")
-        #_collisionSphere.radius = baseProperties.collisionRadius
-        #_collisionSphere.isTrigger = true
-        #print(_collisionSphere.Rigidbody)
+
 
         #print(collider)
 
