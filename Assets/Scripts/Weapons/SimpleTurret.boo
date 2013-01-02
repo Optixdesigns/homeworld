@@ -7,12 +7,12 @@ public class SimpleTurret(Weapon):
     public barrels as (Transform)
     public target as Transform // Current target as Transform
 
-    public RateOfFire as single = 1.0
+    #public RateOfFire as single = 1.0
     public autoFire as bool // Weapon should autofire or not
     public range as single = 50 // Range of this gun
-    public coolDown as single = 2 // cooldown timer
+    public coolDownTime as single = 125 // cooldown timer
     public mustAllign as bool = true // Must the gun allign with target befor shooting
-    public accuracy as single = 0 // accuracy of the turret
+    public accuracy as single = 5 // accuracy of the turret
     public burst as single = 1
 
     public pitchMin as single = 5
@@ -54,6 +54,7 @@ public class SimpleTurret(Weapon):
             return ((A <= angle) and (angle <= B))
         return ((A <= angle) or (angle <= B))
 
+    // Can this turret yaw to target
     public def CanYawTarget(position as Vector3) as bool:
         if limitYaw:
             delta = (position - yaw.position)
@@ -61,22 +62,31 @@ public class SimpleTurret(Weapon):
             return AngleBetween(rot.y, -yawRange, yawRange)
         return true
     
+    // Can this turret pitch to target
     public def CanPitchTarget(position as Vector3) as bool:
         delta = (position - pitch.position)
         rot = Quaternion.FromToRotation(yaw.forward, delta).eulerAngles
         return AngleBetween(rot.x, pitchMin, pitchMax)
+
+    /// Check if target is alligned with gun
+    public def TargetAlligned(position as Vector3) as bool:
+        if not mustAllign:
+            return true
         
-    /*
-    def Update():
-        // Validate target and fire
-        if self.autoFire and CanTarget(self.target.transform.position):
-            Fire()
-            
-        // Find target
-        #if self.autoFire and self.target:
-        if self.autoFire:
-            self.target = FindTarget()
-    */
+        _accuracy = Vector3.Angle(pitch.forward, (target.transform.position - pitch.position))
+        if _accuracy <= accuracy:
+            return true
+
+        return false
+
+    /// Is target in range
+    public def TargetInRange(position as Vector3) as bool:
+        distance as single = Vector3.Distance(position, transform.position)
+        if distance >= self.range:
+            return true
+        
+        return false
+        
     private def Update():
         
         #heat -= (Time.deltaTime * fireRateFactor)
@@ -102,18 +112,9 @@ public class SimpleTurret(Weapon):
 
             #for i in range(0, barrels.Length):
                 #barrels[i].localPosition = Vector3.Lerp(barrels[i].localPosition, barrelPositions[i], (Time.deltaTime * speedRecoil))
-            
-            #accuracy = Vector3.Angle(pitch.forward, (target.transform.position - pitch.position))
         
-        if target:
+        if target and TargetAlligned(target.transform.position):
             Fire()
-
-    protected virtual def TargetInRange(position as Vector3) as bool:
-        distance as single = Vector3.Distance(position, transform.position)
-        if distance >= self.range:
-            return true
-        
-        return false
         /*
         rayDirection as Vector3 = t.position - transform.position
         angle as single = Vector3.Angle(rayDirection, transform.forward)
@@ -146,7 +147,7 @@ public class SimpleTurret(Weapon):
 
     public def Fire():
         if Time.time > fireTimer:
-            fireTimer = Time.time + coolDown
+            fireTimer = Time.time + (coolDownTime * Time.deltaTime)
             StartCoroutine('_Fire')
 
     def _Fire() as IEnumerator:
@@ -155,7 +156,7 @@ public class SimpleTurret(Weapon):
                 projectile as GameObject = Instantiate(projectilePrefab, (barrels[i].position + (projectilePrefab.transform.localScale.z * barrels[i].forward)), barrels[i].rotation)
                 #barrels[i].localPosition = (barrelPositions[i] - Vector3(0, 0, recoilLength))
             
-            yield WaitForSeconds(0.5)   // wait a second or burst fire TODO CREATE A RANDOM RANGE FOR BETTER LOOK
+            yield WaitForSeconds(0.3)   // wait a second or burst fire TODO CREATE A RANDOM RANGE FOR BETTER LOOK
         #clone as GameObject = Instantiate(projectilePrefab, transform.position, transform.rotation)
         
 
