@@ -3,7 +3,8 @@ import UnityEngine
 abstract class Projectile(MonoBehaviour):
     public TTL as single = 10   // time to life
     public damage as single = 5
-    public speed as single = 200  // current speed
+    public damageRadius as single = 5
+    public speed as single = 200
     public explosionPrefab as GameObject
 
     def Start ():

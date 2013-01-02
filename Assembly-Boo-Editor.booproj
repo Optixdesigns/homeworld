@@ -50,6 +50,7 @@
      <Compile Include="Assets\Editor\BooInspector\EasyStyles.boo" />
      <Compile Include="Assets\Editor\RageToolsEditor.boo" />
      <Compile Include="Assets\Packages\UnitBuilder\Editor\UnitBuilder.boo" />
+     <Compile Include="Assets\Scripts\Weapons\Editor\SimpleTurretEditor.boo" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Depth.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />

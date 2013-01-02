@@ -16,12 +16,6 @@ public struct Target(System.IComparable[of Target]):
         self.targetable = self.transform.GetComponent[of Targetable]()
         self.targetTracker = targetTracker
 
-    public static Null as Target:
-        get:
-            return _Null
-
-    private static _Null = Target()
-
     // These are required to shut the cimpiler up when == or != is overriden
     // This are implimented as recomended by the msdn documentation.
     public override def GetHashCode() as int:
