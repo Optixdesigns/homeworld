@@ -45,8 +45,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\AIBehaviours\Editor\AIBehavioursEditor.boo" />
+     <Compile Include="Assets\Editor\ProjectileInspector.boo" />
      <Compile Include="Assets\Packages\UnitBuilder\Editor\UnitBuilder.boo" />
-     <Compile Include="Assets\Scripts\Weapons\Editor\SimpleTurretEditor.boo" />
+     <Compile Include="Assets\Scripts\Weapons\Editor\TurretEditor.boo" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Depth.shader" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo20.txt" />
      <None Include="Assets\Packages\NGUI\Examples\Atlases\Wooden\Arimo14.txt" />
@@ -80,9 +81,6 @@
  </Reference>
  <Reference Include="Assets\Packages\NGUI\DLLs\Editor\NGUI_Editor">
  <HintPath>Assets\Packages\NGUI\DLLs\Editor\NGUI_Editor.dll</HintPath>
- </Reference>
- <Reference Include="Assets\Packages\Turrets\Scripts\UnityExtender">
- <HintPath>Assets\Packages\Turrets\Scripts\UnityExtender.dll</HintPath>
  </Reference>
  <Reference Include="Assets\Packages\uSequencer\Sequencer\uSequencerRuntime">
  <HintPath>Assets\Packages\uSequencer\Sequencer\uSequencerRuntime.dll</HintPath>

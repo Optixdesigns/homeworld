@@ -3,10 +3,10 @@ import UnityEditor
 import System.Collections
 
 
-[CustomEditor(typeof(SimpleTurret))]
-public class SimpleTurretEditor(Editor):
+[CustomEditor(typeof(Turret))]
+public class TurretEditor(Editor):
 	private def OnSceneGUI():
-		t = (target as SimpleTurret)
+		t = (target as Turret)
 		
 		Handles.color = Color.red
 		if t.yaw is not null:

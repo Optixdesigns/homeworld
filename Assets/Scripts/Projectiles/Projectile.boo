@@ -1,12 +1,29 @@
 import UnityEngine
+import System.Collections
+import System.Collections.Generic
 
-abstract class Projectile(MonoBehaviour):
+
+[AddComponentMenu('New World/Ammo/Projectile')]
+#[RequireComponent(typeof(Rigidbody))]
+class Projectile(MonoBehaviour):
     public TTL as single = 10   // time to life
     public damage as single = 5
     public damageRadius as single = 5
     public speed as single = 200
     public explosionPrefab as GameObject
     public target as Target
+
+    /// If true, more than just the primary target will be affected when this projectile
+    /// detonates. Use the range options to determine the behavior.
+    /*
+    public areaHit as bool = false
+
+    public detonationMode as DETONATION_MODES = DETONATION_MODES.HitLayers
+
+    public enum DETONATION_MODES:
+        TargetOnly
+        HitLayers
+    */
 
     public _effectsOnTarget as List[of HitEffectGUIBacker] = List[of HitEffectGUIBacker]()
 
@@ -30,6 +47,11 @@ abstract class Projectile(MonoBehaviour):
             for effect in value:
                 effectBacker = HitEffectGUIBacker(effect)
                 self._effectsOnTarget.Add(effectBacker)
+
+    public debugLevel as DEBUG_LEVELS = DEBUG_LEVELS.Off
+
+    /// Keeps the state of each individual foldout item during the editor session
+    public _editorListItemStates as Dictionary[of object, bool] = Dictionary[of object, bool]()
 
     def Start ():
         #transform.localScale = Vector3(0.1,0,0)

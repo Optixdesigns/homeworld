@@ -15,11 +15,11 @@ class Perimeter(MonoBehaviour, IList[of Target]):
     internal targetTracker as TargetTracker
     internal dirty as bool = true
 
-    def Awake ():
+    def Awake():
         self.rigidbody.isKinematic = true
         self.rigidbody.useGravity = false
     
-    def Update ():
+    def Update():
         pass
 
     def OnTriggerEnter(other as Collider):
@@ -37,6 +37,9 @@ class Perimeter(MonoBehaviour, IList[of Target]):
 
     #region List Interface
     public def Add(target as Target):
+        #if self.targetTracker.inLineOfSight:
+            #Physics.Linecast(transform.position, target.position)
+
         self.targets.Add(target)
         target.targetable.perimeters.Add(self)
 

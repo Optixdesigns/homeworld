@@ -80,9 +80,6 @@
  <Reference Include="Assets\Packages\NGUI\DLLs\NGUI">
  <HintPath>Assets\Packages\NGUI\DLLs\NGUI.dll</HintPath>
  </Reference>
- <Reference Include="Assets\Packages\Turrets\Scripts\UnityExtender">
- <HintPath>Assets\Packages\Turrets\Scripts\UnityExtender.dll</HintPath>
- </Reference>
  <Reference Include="Assets\Packages\uSequencer\Sequencer\uSequencerRuntime">
  <HintPath>Assets\Packages\uSequencer\Sequencer\uSequencerRuntime.dll</HintPath>
  </Reference>

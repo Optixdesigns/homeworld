@@ -1,3 +1,0 @@
-
-class ProjectileDefault(Projectile): 
-    pass

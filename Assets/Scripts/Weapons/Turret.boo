@@ -1,7 +1,7 @@
 import UnityEngine
 
 [AddComponentMenu('New World/Weapons/Turret')]
-public class SimpleTurret(Weapon):
+public class Turret(Weapon):
     public pivot as Transform
     public yaw as Transform
     public pitch as Transform
@@ -9,10 +9,10 @@ public class SimpleTurret(Weapon):
 
     #public RateOfFire as single = 1.0
     public autoFire as bool // Weapon should autofire or not
-    public range as single = 50 // Range of this gun
-    public coolDownTime as single = 125 // cooldown timer
-    public mustAllign as bool = true // Must the gun allign with target befor shooting
-    public accuracy as single = 5 // accuracy of the turret
+    public range as single = -1   // Range of this turret, if any. - 1 is ignore
+    public interval as single = 125 // fire interval
+    public waitForAlignment as bool = true // Must the gun allign with target befor shooting
+    public AlignmentTolerance as single = 5 // tollerance of the allignment
     public burst as single = 1
 
     public pitchMin as single = 5
@@ -26,18 +26,36 @@ public class SimpleTurret(Weapon):
     public dampSpeed as single = 0.10000000149F
     public speedFactor as single = 1
 
-    public projectilePrefab as GameObject
+    public ammoPrefab as GameObject
     
     #private targetTracker as TargetTracker
     private yawVelocity as single
     private pitchVelocity as single
-    private fireTimer as single
+    private fireIntervalCounter as single = 0
+
+    private fireController as FireController
 
     def Awake():
         fireTimer = Time.time
+
+        // Setup connection with the fire controller
+        #fireController = self.GetComponent[of FireController]()
+        #fireController.OnFireEvent += self.OnFireEv
+        #fireController.OnTargetUpdateEvent += self.OnTargetUpdateEv
+
         // Get our target tracker
         #if not targetTracker:
             #targetTracker = gameObject.GetComponent(typeof(TargetTracker))
+
+    /// React on firing
+    def OnFireEv(targets as TargetList):
+        Fire()
+
+    /// Validate and get our target
+    def OnTargetUpdateEv(targets as TargetList):
+        // TODO CHECK IF WE CAN TARGET
+        if targets.Count != 0:
+            self.target = targets[0].transform
 
     private def AngleInRange(A as single, D as single) as bool:
         if (A < (360 - D)) and (A > 180):
@@ -70,17 +88,20 @@ public class SimpleTurret(Weapon):
 
     /// Check if target is alligned with gun
     public def TargetAlligned(position as Vector3) as bool:
-        if not mustAllign:
+        if not waitForAlignment:
             return true
         
-        _accuracy = Vector3.Angle(pitch.forward, (target.transform.position - pitch.position))
-        if _accuracy <= accuracy:
+        _angle = Vector3.Angle(pitch.forward, (target.transform.position - pitch.position))
+        if _angle <= AlignmentTolerance:
             return true
 
         return false
 
     /// Is target in range
     public def TargetInRange(position as Vector3) as bool:
+        if range == (-1):
+            return true
+
         distance as single = Vector3.Distance(position, transform.position)
         if distance >= self.range:
             return true
@@ -90,6 +111,7 @@ public class SimpleTurret(Weapon):
     private def Update():
         
         #heat -= (Time.deltaTime * fireRateFactor)
+        self.fireIntervalCounter -= Time.deltaTime
 
         if target:
             E = yaw.localEulerAngles
@@ -132,7 +154,7 @@ public class SimpleTurret(Weapon):
     # TODO CREATE COROUTINE FOR A TIMOUT MAYBE IT FLIES BACK INTO RANGE
     public def CanTarget(position as Vector3) as bool:
         // Check distance and allignment
-        if CanPitchTarget(position) and CanYawTarget(position) and TargetInRange(position):
+        if CanPitchTarget(position) and CanYawTarget(position) and (TargetInRange(position)):
             return true
 
         return false
@@ -147,14 +169,15 @@ public class SimpleTurret(Weapon):
     */
 
     public def Fire():
-        if Time.time > fireTimer:
-            fireTimer = Time.time + (coolDownTime * Time.deltaTime)
+        if self.fireIntervalCounter <= 0:
+            #fireTimer = Time.time + (coolDownTime * Time.deltaTime)
+            self.fireIntervalCounter = self.interval
             StartCoroutine('_Fire')
 
     def _Fire() as IEnumerator:
         for b in range(0, burst):
             for i in range(0, barrels.Length):
-                Instantiate(projectilePrefab, (barrels[i].position + (projectilePrefab.transform.localScale.z * barrels[i].forward)), barrels[i].rotation)
+                Instantiate(ammoPrefab, (barrels[i].position + (ammoPrefab.transform.localScale.z * barrels[i].forward)), barrels[i].rotation)
                 #barrels[i].localPosition = (barrelPositions[i] - Vector3(0, 0, recoilLength))
             
             yield WaitForSeconds(0.3)   // wait a second or burst fire TODO CREATE A RANDOM RANGE FOR BETTER LOOK

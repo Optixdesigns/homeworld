@@ -44,6 +44,8 @@ class FireController(MonoBehaviour):
     public flatAngleCompare = false
     public emitter as Transform
     public lockOnAngleTolerance as single = 5
+    #public mustBeInRange = false
+    public barrels as (Transform)
     public debugLevel as DEBUG_LEVELS = DEBUG_LEVELS.Off
     public fireIntervalCounter as single = 99999
     // Keeps the state of each individual foldout item during the editor session
@@ -84,8 +86,31 @@ class FireController(MonoBehaviour):
                 names[i] = target.transform.name
                 i += 1
             return System.String.Join(', ', names)
+
+    #region events
+    #event OnFireEvent as callable(TargetList)
+    #public callable OnStartDelegate()
+    #public callable OnUpdateDelegate()
+    #public callable OnTargetUpdateDelegate(targets as TargetList)
+    #public callable OnIdleUpdateDelegate()
+    #public callable OnStopDelegate()
+    #public callable OnFireDelegate(targets as TargetList)
+
+    event OnTargetUpdateEvent as callable(TargetList)
+    event OnFireEvent as callable(TargetList)
+    #event OnTargetLockedOnCheckEvent as callable(TargetList)
+    #private onStartDelegates as OnStartDelegate
+    #private onUpdateDelegates as OnUpdateDelegate
+    #private onTargetUpdateDelegates as OnTargetUpdateDelegate
+    #private onIdleUpdateDelegates as OnIdleUpdateDelegate
+    #private onStopDelegates as OnStopDelegate
+    #private onFireDelegates as OnFireDelegate
+
+    #region OnFireDelegates Add/Set/Remove
+
+    #endregion OnFireDelegates Add/Set/Remove
     
-    #region Events
+    
     def Awake():
         // Emitter is optional
         if self.emitter is null:
@@ -116,15 +141,11 @@ class FireController(MonoBehaviour):
                 target.targetable.OnHit(self.effectsOnTarget, target)
                 self.SpawnAmmunition(target, false, false)
             elif converterGeneratedName1 == NOTIFY_TARGET_OPTIONS.PassToProjectile:
-            
                 self.SpawnAmmunition(target, true, true)
             elif converterGeneratedName1 == NOTIFY_TARGET_OPTIONS.UseProjectileEffects:
-            
                 self.SpawnAmmunition(target, true, false)
             
-            
             if self.notifyTargets > NOTIFY_TARGET_OPTIONS.Off:
-                
                 // Just for debug. Show a gizmo line when firing
                 if self.debugLevel > DEBUG_LEVELS.Off:
                     Debug.DrawLine(self.emitter.position, target.transform.position, Color.red)
@@ -133,13 +154,14 @@ class FireController(MonoBehaviour):
         //   which are handled at all by this target tracker are stamped with a 
         //   reference.
         self.targets = targetCopies
-        #onFireDelegates(self.targets)
+        #OnFireEvent(self.targets)
+        OnFireEvent(self.targets)
         
         // Trigger the delegates
 
     private def SpawnAmmunition(target as Target, passTarget as bool, passEffects as bool):
         // This is optional. If no ammo prefab is set, quit quietly
-        if self.ammoPrefab is null:
+        if not self.ammoPrefab:
             return
         
         #inst as Transform = TargetPro.InstanceManager.Spawn(self.ammoPrefab.transform, self.emitter.position, self.emitter.rotation)
@@ -187,14 +209,14 @@ class FireController(MonoBehaviour):
                     self.OnFire()
                     self.fireIntervalCounter = self.interval
                 elif self.debugLevel > DEBUG_LEVELS.Off:
-                // Reset
-                    // Just for debug. Show a gizmo line to each target being tracked
+                    //   Just for debug. Show a gizmo line to each target being tracked
                     //   OnFire() has another color, so keep this here where this 
                     //   won't overlay the OnFired line.
                     for target as Target in targets:
                         Debug.DrawLine(self.emitter.position, target.transform.position, Color.gray)
                 
                 // Update event while tracking a target
+                self.OnTargetUpdateEvent(targets)
                 #self.OnTargetUpdate(targets)
             else:
                 pass
@@ -210,6 +232,7 @@ class FireController(MonoBehaviour):
             // EVENT TRIGGER
             // Stager calls to get Target (the whole system actually)
             #yield null
+            yield
 
     public def FireImmediately(resetIntervalCounter as bool):
         if resetIntervalCounter:
@@ -218,7 +241,8 @@ class FireController(MonoBehaviour):
         self.OnFire()
 
     def OnEnable():
-        self.StartCoroutine(self.FiringSystem())
+        #pass
+        StartCoroutine("FiringSystem")
         // Start event is inside this
 
     def OnDisable():

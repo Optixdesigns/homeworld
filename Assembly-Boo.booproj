@@ -75,7 +75,6 @@
      <Compile Include="Assets\Scripts\Newworld.boo" />
      <Compile Include="Assets\Scripts\Perimeter.boo" />
      <Compile Include="Assets\Scripts\Projectiles\Projectile.boo" />
-     <Compile Include="Assets\Scripts\Projectiles\ProjectileDefault.boo" />
      <Compile Include="Assets\Scripts\Select.boo" />
      <Compile Include="Assets\Scripts\Selectable.boo" />
      <Compile Include="Assets\Scripts\SpaceObject.boo" />
@@ -84,7 +83,7 @@
      <Compile Include="Assets\Scripts\Targetable.boo" />
      <Compile Include="Assets\Scripts\Unit.boo" />
      <Compile Include="Assets\Scripts\UnitProperties.boo" />
-     <Compile Include="Assets\Scripts\Weapons\SimpleTurret.boo" />
+     <Compile Include="Assets\Scripts\Weapons\Turret.boo" />
      <Compile Include="Assets\Scripts\Weapons\Weapon.boo" />
      <Compile Include="Assets\Scripts\Weapons\WeaponAutomator.boo" />
      <Compile Include="Assets\Scripts\WeaponsModule.boo" />
@@ -118,9 +117,6 @@
      <None Include="Assets\Packages\AIBehavior\_ReleaseNotes.txt" />
  <Reference Include="Assets\Packages\NGUI\DLLs\NGUI">
  <HintPath>Assets\Packages\NGUI\DLLs\NGUI.dll</HintPath>
- </Reference>
- <Reference Include="Assets\Packages\Turrets\Scripts\UnityExtender">
- <HintPath>Assets\Packages\Turrets\Scripts\UnityExtender.dll</HintPath>
  </Reference>
  <Reference Include="Assets\Packages\uSequencer\Sequencer\uSequencerRuntime">
  <HintPath>Assets\Packages\uSequencer\Sequencer\uSequencerRuntime.dll</HintPath>

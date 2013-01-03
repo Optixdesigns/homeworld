@@ -11,6 +11,8 @@ class TargetTracker(MonoBehaviour):
     #private static _cachedDetectableObjects as Dictionary[of Collider, Detectable] = Dictionary[of Collider, Detectable]()
     
     public layersChecked as LayerMask
+    #public inLineOfSight as bool = false   // Should targets be in line of sight, should not be bstructed
+
 
     public range as single:
         get:
@@ -33,16 +35,40 @@ class TargetTracker(MonoBehaviour):
         private set:
             self._perimeter = value
 
-    #private _targets as List[of Target] = List[of Target]()
-    #public targetList as (Target) = array(Target, 0)
+    public debugLevel as DEBUG_LEVELS = DEBUG_LEVELS.Off
+
+    /// A list of sorted targets
     public targets as TargetList:
         get:
-            if self.perimeter:
-                return self.perimeter.targets
+            self._targets.Clear()
 
-            return TargetList()
+            // Perimeter needed
+            if not self.perimeter:
+                return self._targets
+
+            // No targets, quit
+            if self.numberOfTargets == 0 or self.perimeter.Count == 0:
+                return self._targets
+            
+            // Get Everything
+            if self.numberOfTargets == (-1):
+                self._targets.AddRange(self.perimeter)
+            else:
+                // Grab the first item(s)
+                num as int = Mathf.Clamp(self.numberOfTargets, 0, self.perimeter.Count)
+                for i in range(0, num):
+                    self._targets.Add(self.perimeter[i])
+            
+            if self.debugLevel > DEBUG_LEVELS.Normal:
+                // All higher than normal
+                msg as string = string.Format('returning targets: {0}', self._targets.ToString())
+                Debug.Log(string.Format('{0}: {1}', self, msg))
+
+            return self._targets
         set:
             pass
+
+     private _targets as TargetList = TargetList()
 
     def Awake():
         InitPerimeter()
