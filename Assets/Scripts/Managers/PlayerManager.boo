@@ -19,6 +19,7 @@ class PlayerManager(MonoBehaviour):
 
     # TODO CHECK IF VALUES EXIST IN OTHER PLAYER PROFILES
     def GenerateRandomPlayer():
-        obj = CreatePlayer()
+        pass
+        #obj = CreatePlayer()
         #player = obj.GetComponent("PlayerController")
         #player.SetPlayerName("jan")

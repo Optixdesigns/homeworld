@@ -3,7 +3,7 @@ import System
 
 
 #[System.Serializable]
-[AddComponentMenu('Neworld/Unit Modules/Weapons Module')]
+[AddComponentMenu('New World/Unit/Modules/Weapons Module')]
 public class WeaponsModule(MonoBehaviour):
     #public damage as single
     #public minShootDistance as single = 5.0    // Attack range minum

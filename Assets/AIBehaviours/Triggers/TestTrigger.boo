@@ -1,4 +1,3 @@
-import UnityEngine
 
 [System.Serializable]
 class TestTrigger(AITrigger):

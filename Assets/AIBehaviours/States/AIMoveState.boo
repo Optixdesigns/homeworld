@@ -1,8 +1,11 @@
-import UnityEngine
+
 
 [System.Serializable]
 class AIMoveState(AIState): 
     private _unit as Unit
+
+    protected override def Init(fsm as AIBehaviours):
+        pass
 
     protected override def Reason(fsm as AIBehaviours):
         return true
@@ -14,6 +17,9 @@ class AIMoveState(AIState):
         pass
 
     public override def DrawGizmosSelected(fsm as AIBehaviours):
+        pass
+
+    protected override def DrawStateInspectorEditor(m_Object as SerializedObject, fsm as AIBehaviours):
         pass
         /*
         #moveToPosition = ship.moveToPosition + ship.damageAttribute.range // Stay at perfect damage range

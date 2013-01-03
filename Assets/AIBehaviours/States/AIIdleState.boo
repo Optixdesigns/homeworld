@@ -1,4 +1,4 @@
-import UnityEngine
+
 
 [System.Serializable]
 class AIIdleState(AIState):
@@ -24,6 +24,9 @@ class AIIdleState(AIState):
         pass
 
     public override def DrawGizmosSelected(fsm as AIBehaviours):
+        pass
+
+    protected override def DrawStateInspectorEditor(m_Object as SerializedObject, fsm as AIBehaviours):
         pass
 
     #protected override def OnDrawGizmosSelected(fsm as AIBehaviours):

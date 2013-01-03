@@ -76,9 +76,6 @@
  <Reference Include="Library\ScriptAssemblies\Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
- <Reference Include="Library\ScriptAssemblies\Assembly-Boo">
- <HintPath>Library\ScriptAssemblies\Assembly-Boo.dll</HintPath>
- </Reference>
  <Reference Include="Library\ScriptAssemblies\Assembly-UnityScript">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
  </Reference>

@@ -2,7 +2,7 @@ import UnityEngine
 
 #enum radiusShape:
 # TODO SORT BY RANGE/NEAREST
-[AddComponentMenu('Newworld/TargetTracker')]
+[AddComponentMenu('New World/Target/TargetTracker')]
 class TargetTracker(MonoBehaviour):
     public numberOfTargets as int = 1
     #private targetList as (Targetable) = array(Targetable, 0)
@@ -35,12 +35,12 @@ class TargetTracker(MonoBehaviour):
 
     #private _targets as List[of Target] = List[of Target]()
     #public targetList as (Target) = array(Target, 0)
-    public targets as List[of Target]:
+    public targets as TargetList:
         get:
             if self.perimeter:
                 return self.perimeter.targets
 
-            return List[of Target]()
+            return TargetList()
         set:
             pass
 
@@ -66,8 +66,9 @@ class TargetTracker(MonoBehaviour):
 
     def UpdatePerimeterShape():
         (self.perimeter.collider as SphereCollider).radius = self._range
+        (self.perimeter.collider as SphereCollider).isTrigger = true // no colliders
 
-    private def OnDrawGizmos():
+    def OnDrawGizmos():
         // Draw perimiter in editor
         if self.drawGizmo:
             pos = transform.position

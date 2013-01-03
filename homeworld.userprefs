@@ -1,7 +1,14 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../PathologicalGames/TargetPro/TargetTracker.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../PathologicalGames/TargetPro/Projectile.cs">
     <Files>
+      <File FileName="../PathologicalGames/TargetPro/Perimeter.cs" Line="66" Column="38" />
+      <File FileName="../PathologicalGames/TargetPro/TargetTracker.cs" Line="1" Column="1" />
+      <File FileName="../PathologicalGames/TargetPro/TargetPro.cs" Line="320" Column="36" />
+      <File FileName="../PathologicalGames/TargetPro/Projectile.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/UnitySteer/Behaviors/Radar.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/UnitySteer/Behaviors/DetectableObjectCreator.cs" Line="1" Column="1" />
+      <File FileName="Assets/Plugins/UnitySteer/Behaviors/Vehicle.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/GUI/UIUnit.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Select.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/AttackPatterns/StraightAttackPattern.boo" Line="1" Column="1" />
@@ -9,14 +16,11 @@
       <File FileName="Assets/AIBehaviours/States/AIAttackState.boo" Line="1" Column="1" />
       <File FileName="Assets/AIBehaviours/States/AIIdleState.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/AttackPatterns/AttackPattern.boo" Line="1" Column="1" />
-      <File FileName="Assets/AIBehaviours/Editor/AIBehavioursEditor.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Controllers/MainCameraController.boo" Line="1" Column="1" />
       <File FileName="Assets/Scripts/Unit.boo" Line="1" Column="1" />
-      <File FileName="Assets/Plugins/UnitySteer/Behaviors/Radar.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/DefensesModule.boo" Line="1" Column="1" />
-      <File FileName="Assets/Plugins/UnitySteer/Behaviors/DetectableObjectCreator.cs" Line="1" Column="1" />
-      <File FileName="Assets/Plugins/UnitySteer/Behaviors/Vehicle.cs" Line="1" Column="1" />
-      <File FileName="../PathologicalGames/TargetPro/TargetTracker.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Weapons/SimpleTurret.boo" Line="1" Column="1" />
+      <File FileName="Assets/AIBehaviours/Editor/AIBehavioursEditor.boo" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

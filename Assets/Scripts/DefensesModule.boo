@@ -1,5 +1,6 @@
 import UnityEngine
 
+[AddComponentMenu('New World/Unit Modules/Defenses Module')]
 class DefensesModule(MonoBehaviour): 
     public MaxStructureHitPoints as single = 100
     private structureHitPoints as single

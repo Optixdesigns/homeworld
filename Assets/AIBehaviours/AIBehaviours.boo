@@ -61,8 +61,8 @@ public class AIBehaviours(MonoBehaviour):
         ChangeActiveState(states[index])
 
     public def ChangeActiveState(newState as AIState):
-        previousState as AIState = currentState
-        #Debug.Log(newState)
+        #previousState as AIState = currentState
+
         if currentState is not null:
             currentState.EndState(self)
         

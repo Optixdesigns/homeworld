@@ -6,9 +6,6 @@ class SidewayAttackPattern(AttackPattern):
     public attackMinDistance = 10 /// Distance to target wich ends a run
     private isInAttackDistance = false
 
-    def Start():
-        pass
-    
     def Update():
         steer = GetComponent(typeof(SteerForTarget))
         steer.Target = unit.target.transform

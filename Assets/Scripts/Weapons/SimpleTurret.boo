@@ -1,11 +1,11 @@
 import UnityEngine
 
+[AddComponentMenu('New World/Weapons/Turret')]
 public class SimpleTurret(Weapon):
     public pivot as Transform
     public yaw as Transform
     public pitch as Transform
     public barrels as (Transform)
-    public target as Transform // Current target as Transform
 
     #public RateOfFire as single = 1.0
     public autoFire as bool // Weapon should autofire or not
@@ -28,7 +28,7 @@ public class SimpleTurret(Weapon):
 
     public projectilePrefab as GameObject
     
-    private targetTracker as TargetTracker
+    #private targetTracker as TargetTracker
     private yawVelocity as single
     private pitchVelocity as single
     private fireTimer as single
@@ -36,8 +36,8 @@ public class SimpleTurret(Weapon):
     def Awake():
         fireTimer = Time.time
         // Get our target tracker
-        if not targetTracker:
-            targetTracker = gameObject.GetComponent(typeof(TargetTracker))
+        #if not targetTracker:
+            #targetTracker = gameObject.GetComponent(typeof(TargetTracker))
 
     private def AngleInRange(A as single, D as single) as bool:
         if (A < (360 - D)) and (A > 180):
@@ -136,7 +136,7 @@ public class SimpleTurret(Weapon):
             return true
 
         return false
-
+    /*
     public def FindTarget():
         // Find a target from the targettracker pool
         if self.targetTracker:
@@ -144,6 +144,7 @@ public class SimpleTurret(Weapon):
                 return self.targetTracker.targets[0]
 
         return null
+    */
 
     public def Fire():
         if Time.time > fireTimer:
@@ -153,7 +154,7 @@ public class SimpleTurret(Weapon):
     def _Fire() as IEnumerator:
         for b in range(0, burst):
             for i in range(0, barrels.Length):
-                projectile as GameObject = Instantiate(projectilePrefab, (barrels[i].position + (projectilePrefab.transform.localScale.z * barrels[i].forward)), barrels[i].rotation)
+                Instantiate(projectilePrefab, (barrels[i].position + (projectilePrefab.transform.localScale.z * barrels[i].forward)), barrels[i].rotation)
                 #barrels[i].localPosition = (barrelPositions[i] - Vector3(0, 0, recoilLength))
             
             yield WaitForSeconds(0.3)   // wait a second or burst fire TODO CREATE A RANDOM RANGE FOR BETTER LOOK

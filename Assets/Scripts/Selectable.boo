@@ -1,5 +1,6 @@
 import UnityEngine
 
+[AddComponentMenu('New World/Misc/Selectable')]
 class Selectable(MonoBehaviour):
     public isSelected as bool = false   // Object is currently selected
     public isSelectable as bool = false // Selectable object
@@ -18,7 +19,7 @@ class Selectable(MonoBehaviour):
         selectableBox.renderer.enabled = false
         (selectableBox.collider as SphereCollider).radius = self.radius
 
-    private def OnDrawGizmos():
+    def OnDrawGizmos():
         // Draw perimiter in editor
         if self.drawGizmo:
             pos = transform.position

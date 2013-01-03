@@ -7,7 +7,7 @@ import System
 [RequireComponent(typeof(WeaponsModule))]
 [RequireComponent(typeof(MovementModule))]
 [RequireComponent(typeof(Rigidbody))]
-[AddComponentMenu('Neworld/Space Unit')]
+[AddComponentMenu('New World/Unit/Unit')]
 class Unit(SpaceObject):
     #private _speed as single                // Current speed/velocity
 
@@ -98,8 +98,8 @@ class Unit(SpaceObject):
     def setTarget(t as GameObject):
         target = t
 
-    def setTargetPosition(p as Vector3):
-        targetPosition = p
+    #def setTargetPosition(p as Vector3):
+        #targetPosition = p
 
     /*
     * Receivers

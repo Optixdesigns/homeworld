@@ -15,6 +15,15 @@ public struct Target(System.IComparable[of Target]):
         self.transform = transform
         self.targetable = self.transform.GetComponent[of Targetable]()
         self.targetTracker = targetTracker
+    
+    public def constructor(otherTarget as Target):
+        self.gameObject = otherTarget.gameObject
+        self.transform = otherTarget.transform
+        self.targetable = otherTarget.targetable
+        
+        self.targetTracker = otherTarget.targetTracker
+        #self.fireController = otherTarget.fireController
+        #self.projectile = otherTarget.projectile
 
     // These are required to shut the cimpiler up when == or != is overriden
     // This are implimented as recomended by the msdn documentation.
@@ -29,20 +38,20 @@ public struct Target(System.IComparable[of Target]):
     public def CompareTo(obj as Target):
         return (1 if (self.gameObject == obj.gameObject) else 0)
 
-/*
+
 public class TargetList(List[of Target]):
 
     public override def ToString() as string:
         names as (string) = array(string, super.Count)
         i = 0
-        super.ForEach(def (target as Target):
+        for target as Target in self:
+        #super.ForEach(def (target as Target):
             if target.transform is null:
                 return
             
             names[i] = target.transform.name
             i += 1
-)
         
         return System.String.Join(', ', names)
-*/
+
 

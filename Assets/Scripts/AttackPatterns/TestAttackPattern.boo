@@ -1,13 +1,10 @@
-import UnityEngine
+
 
 
 class TestAttackPattern(AttackPattern):
     private attackMaxDistance = 25 /// Distance needed to start a attack run
     private attackMinDistance = 10 /// Distance to target wich ends a run
     private isInAttackDistance = false
-
-    def Start():
-        pass
     
     def Update():
         dist as single = GetDistance(unit.target.transform.position, unit.transform.position)

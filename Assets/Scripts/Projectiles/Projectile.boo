@@ -6,6 +6,30 @@ abstract class Projectile(MonoBehaviour):
     public damageRadius as single = 5
     public speed as single = 200
     public explosionPrefab as GameObject
+    public target as Target
+
+    public _effectsOnTarget as List[of HitEffectGUIBacker] = List[of HitEffectGUIBacker]()
+
+    // Encodes / Decodes HitEffects to and from HitEffectGUIBackers
+    public effectsOnTarget as HitEffectList:
+        get:
+            // Convert the stored _effectsOnTarget backing field to a list of HitEffects
+            returnHitEffectsList = HitEffectList()
+            for effectBacker in self._effectsOnTarget:
+                // Create and add a struct-form of the backing-field instance
+                returnHitEffectsList.Add(HitEffect())
+            
+            return returnHitEffectsList
+        set:
+            
+            // Convert and store the bassed list of HitEffects as HitEffectGUIBackers
+            // Clear and set the backing-field list also used by the GUI
+            self._effectsOnTarget.Clear()
+            
+            effectBacker as HitEffectGUIBacker
+            for effect in value:
+                effectBacker = HitEffectGUIBacker(effect)
+                self._effectsOnTarget.Add(effectBacker)
 
     def Start ():
         #transform.localScale = Vector3(0.1,0,0)

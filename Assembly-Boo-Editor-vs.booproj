@@ -45,10 +45,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\AIBehaviours\Editor\AIBehavioursEditor.boo" />
-     <Compile Include="Assets\Editor\BooInspector\EasyEditor.boo" />
-     <Compile Include="Assets\Editor\BooInspector\EasyMacros.boo" />
-     <Compile Include="Assets\Editor\BooInspector\EasyStyles.boo" />
-     <Compile Include="Assets\Editor\RageToolsEditor.boo" />
      <Compile Include="Assets\Packages\UnitBuilder\Editor\UnitBuilder.boo" />
      <Compile Include="Assets\Scripts\Weapons\Editor\SimpleTurretEditor.boo" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Depth.shader" />

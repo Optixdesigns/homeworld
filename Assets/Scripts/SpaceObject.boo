@@ -6,12 +6,6 @@ enum SpaceObjectType:
     Asteroid
 
 
-class SpaceObject (MonoBehaviour): 
+class SpaceObject(MonoBehaviour): 
     public _name as string
     public type as SpaceObjectType
-
-    def Start ():
-        pass
-    
-    def Update ():
-        pass
