@@ -4,10 +4,9 @@ import UnityEngine
 [System.Serializable]
 class AIAttackState(AIState): 
     public attackPattern as AttackPattern
-    #[SerializeField]
-    #public attackPattern as AttackPattern
-
     private unit as Unit
+    [SerializeField]
+    public target as Transform
 
     protected override def Init(fsm as AIBehaviours):
         // Setup attack pattern
@@ -46,19 +45,14 @@ class AIAttackState(AIState):
         #if _ship.weapons:   // Check if have a weapon system
             #_ship.weapons.Shoot()
 
-    public override def DrawGizmosSelected(fsm as AIBehaviours):
-        // Debug attack field of view
-        #currentState.OnDrawGizmosSelected()
-        #unit = gameObject.GetComponent(typeof(Unit))
-        unit = fsm.gameObject.GetComponent(typeof(Unit))
-        Gizmos.color = Color.red
-        Gizmos.DrawLine(gameObject.transform.position, unit.target.transform.position)
-
     protected override def StateEnded(fsm as AIBehaviours):
         attackPattern.enabled = false
 
     protected override def DrawStateInspectorEditor(m_Object as SerializedObject, fsm as AIBehaviours):
+        #script = (target cast AIAttackState)
+        #script.target = PGEditorUtils.ObjectField[of Transform]("Emitter (Optional)", script.target)
         pass
+        #pass
         // === Attack Method === //
         #utils = Utils()
         #utils._ListScriptObjects()

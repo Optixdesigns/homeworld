@@ -44,7 +44,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AIBehaviours\Editor\AIBehavioursEditor.boo" />
+     <Compile Include="Assets\AIBehaviours\Editor\AIAttackStateInspector.boo" />
+     <Compile Include="Assets\AIBehaviours\Editor\AIBehavioursInspector.boo" />
      <Compile Include="Assets\Editor\ProjectileInspector.boo" />
      <Compile Include="Assets\Packages\UnitBuilder\Editor\UnitBuilder.boo" />
      <Compile Include="Assets\Scripts\Weapons\Editor\TurretEditor.boo" />
