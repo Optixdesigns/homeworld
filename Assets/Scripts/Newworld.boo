@@ -25,10 +25,15 @@ public struct HitEffect:
     public override def ToString() as string:
         return string.Format('(name \'{0}\', value {1}, duration {2}, hitTime {3}, deltaDurationTime {4})', self.name, self.value, self.duration, self.hitTime, self.deltaDurationTime)
 
+
+#public static def GetClasses(baseType as Type) as List[of Type]:
+    #return System.Reflection.Assembly.GetCallingAssembly().GetTypes().Where(type.IsSubclassOf(baseType)).ToList()
+
+/*
 public static List<Type> GetClasses(Type baseType) {
  return Assembly.GetCallingAssembly().GetTypes().Where(type => type.IsSubclassOf(baseType)).ToList();
  }
-
+*/
 public class HitEffectList(List[of HitEffect]):
 
     // Impliment both constructors to enable the 1 arg copy-style initilizer

@@ -7,13 +7,14 @@ public class AIBehavioursInspector(Editor):
     public expandEffects = true
 
     public def OnEnable():
-    	types = System.Reflection.Assembly.GetExecutingAssembly().GetTypes()
-    	for type in types:
-    		Debug.Log(type)
-    	#Debug.Log(types)
-		#possible = for type in types where type.IsSubclassOf(typeof(AIState))
-		#possible = for type in types where type.IsSubclassOf(typeof(AIState))
-    	#Debug.Log("y")
+        #types = System.Reflection.Assembly.GetExecutingAssembly().GetTypes()
+        types = System.Reflection.Assembly.GetCallingAssembly().GetTypes()
+        for type in types:
+            Debug.Log(type)
+        #Debug.Log(types)
+        #possible = for type in types where type.IsSubclassOf(typeof(AIState))
+        #possible = for type in types where type.IsSubclassOf(typeof(AIState))
+        #Debug.Log("y")
 
     public override def OnInspectorGUI():
         script = (target cast AIBehaviours)
