@@ -1,6 +1,10 @@
 import UnityEngine
 import System
 
+enum UnitClass:
+    Fighter
+    Titan
+
 
 [RequireComponent(typeof(AIBehaviours))]
 [RequireComponent(typeof(HealthModule))]
@@ -10,7 +14,7 @@ import System
 [AddComponentMenu('New World/Unit/Unit')]
 class Unit(SpaceObject):
     #private _speed as single                // Current speed/velocity
-
+    public unitClass as UnitClass
     public target as GameObject // target
     [HideInInspector]
     public targetDistance as single // Distance to target
@@ -75,6 +79,7 @@ class Unit(SpaceObject):
         
         // Set rigibody
         rigidbody.detectCollisions = false // For now
+        rigidbody.useGravity = false // Never use gravity because we are in space stupid
 
         // Setup center of mass
         if centerOfMass != null:

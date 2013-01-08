@@ -9,9 +9,11 @@ class TargetTracker(MonoBehaviour):
     #public targetLaters as int
 
     #private static _cachedDetectableObjects as Dictionary[of Collider, Detectable] = Dictionary[of Collider, Detectable]()
-    
-    public layersChecked as LayerMask
-    #public inLineOfSight as bool = false   // Should targets be in line of sight, should not be bstructed
+    #[LayerField]
+    #public test as int
+    public targetLayers as LayerMask
+    #public perimeterLayer as LayerMask
+    #public inLineOfSight as bool = false   // Should targets be in line of sight, should not be obstructed
 
 
     public range as single:
@@ -23,6 +25,18 @@ class TargetTracker(MonoBehaviour):
             if self.perimeter:
                 self.UpdatePerimeterShape()
 
+    #[Layer]
+    public perimeterLayer as int:
+        get:
+            return self._perimeterLayer
+        set:
+            self._perimeterLayer = value
+
+            if self.perimeter:
+                self.perimeter.gameObject.layer = value
+
+    [SerializeField]  // Private backing fields must be SerializeField. For instances.
+    private _perimeterLayer as int = LayerMask.NameToLayer("Perimeters")
     [SerializeField]
     private _range as single
     [SerializeField]
@@ -85,6 +99,7 @@ class TargetTracker(MonoBehaviour):
         p.transform.parent = transform
         p.transform.position = transform.position
         p.renderer.enabled = false
+        p.layer = self.perimeterLayer
         self.perimeter = p.AddComponent[of Perimeter]()
         self.perimeter.targetTracker = self
         self.UpdatePerimeterShape()

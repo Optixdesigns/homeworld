@@ -4,6 +4,7 @@ import UnityEngine
 class MovementModule(Vehicle):
     private _speed as single 
     public OrientationVelocity as Vector3
+    public thrusters as (Transform)
 
     public override Speed as single:
         get:
