@@ -3,6 +3,8 @@
 [System.Serializable]
 class AIIdleState(AIState):
     private unit as Unit
+    [SerializeField]
+    public test as string = "ahoi"
 
     protected override def Init(fsm as AIBehaviours):
         pass
@@ -26,7 +28,7 @@ class AIIdleState(AIState):
     public override def DrawGizmosSelected(fsm as AIBehaviours):
         pass
 
-    protected override def DrawStateInspectorEditor(m_Object as SerializedObject, fsm as AIBehaviours):
+    public override def OnInspectorGUI():
         pass
 
     #protected override def OnDrawGizmosSelected(fsm as AIBehaviours):

@@ -89,7 +89,7 @@ class Unit(SpaceObject):
         rigidbody.mass = mass / 1000
 
 
-
+        #SetupFSM()
         #print(collider)
 
         // Check our setup
@@ -99,6 +99,13 @@ class Unit(SpaceObject):
     def Update():
         if target:  // Keep distance in the unit object for different systems
             targetDistance = Vector3.Distance(target.transform.position, transform.position)
+
+    def SetupFSM():
+        idle as AIIdleState = AIIdleState()
+        move as AIMoveState = AIMoveState()
+
+        fsm.AddState(idle)
+        fsm.AddState(move)
 
     def setTarget(t as GameObject):
         target = t
@@ -133,3 +140,5 @@ class Unit(SpaceObject):
         Debug.Log("yes")
         #behaviours.ChangeState(behaviours.behaviourOnIdle)
     */
+
+#public class UnitFSM

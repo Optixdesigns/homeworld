@@ -3,6 +3,7 @@
 [System.Serializable]
 class AIMoveState(AIState): 
     private _unit as Unit
+    public test as int
 
     protected override def Init(fsm as AIBehaviours):
         pass
@@ -19,8 +20,9 @@ class AIMoveState(AIState):
     public override def DrawGizmosSelected(fsm as AIBehaviours):
         pass
 
-    protected override def DrawStateInspectorEditor(m_Object as SerializedObject, fsm as AIBehaviours):
-        pass
+    public override def OnInspectorGUI():
+        #script = (target cast AIMoveState)
+        script.test = EditorGUILayout.IntSlider("IntField", test, 0, 10);
         /*
         #moveToPosition = ship.moveToPosition + ship.damageAttribute.range // Stay at perfect damage range
         moveDir as Vector3 = (_ship.moveToPosition - _ship.gameObject.transform.position)

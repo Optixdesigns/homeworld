@@ -28,7 +28,7 @@ public class AIBehaviours(MonoBehaviour):
 
     /// Holds reference to the "States" gameobject
     #public statesGameObject as GameObject = null
-
+    public _editorListItemStates as Dictionary[of object, bool] = Dictionary[of object, bool]()
     /*
         Callables
     */
@@ -47,6 +47,15 @@ public class AIBehaviours(MonoBehaviour):
 
     public def GetAllStates() as List[of AIState]:
         return states
+
+    public def AddState(state):
+        if states.Count == 0:
+            states.Add(state)
+            currentState = state
+            #currentStateID = s.ID
+            return
+ 
+        states.Add(state)
 
     public def ReplaceAllStates(newStates as List[of AIState]):
         #Debug.Log(newStates[0])
@@ -81,13 +90,16 @@ public class AIBehaviours(MonoBehaviour):
 
 #[System.Serializable]
 [System.Serializable]
-public abstract class AIState:
+public abstract class AIState(ScriptableObject):
 #public abstract class AIState(MonoBehaviour):
     public isEnabled as bool = true
     public name as string
 
     #public def constructor():
         #BehaviourStates.Add(self)
+
+    public def OnEnable():
+        hideFlags = HideFlags.HideAndDontSave
 
     #[SerializeField]
     public triggers as (AITrigger) = array(AITrigger, 0)
@@ -145,7 +157,7 @@ public abstract class AIState:
     /*
         Editor methods
     */
-    protected abstract def DrawStateInspectorEditor(m_Object as SerializedObject, fsm as AIBehaviours):
+    public abstract def OnInspectorGUI():
         pass
 
     /*

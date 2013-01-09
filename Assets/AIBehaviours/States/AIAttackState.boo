@@ -48,7 +48,7 @@ class AIAttackState(AIState):
     protected override def StateEnded(fsm as AIBehaviours):
         attackPattern.enabled = false
 
-    protected override def DrawStateInspectorEditor(m_Object as SerializedObject, fsm as AIBehaviours):
+    public override def OnInspectorGUI():
         #script = (target cast AIAttackState)
         #script.target = PGEditorUtils.ObjectField[of Transform]("Emitter (Optional)", script.target)
         pass
