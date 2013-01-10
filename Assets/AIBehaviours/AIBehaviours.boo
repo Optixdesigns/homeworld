@@ -6,55 +6,37 @@ import UnityEditor
 #ifdef not UNITY_EDITOR:
 #    import UnityEngine
 
-
-enum AIStateID:
-    NullStateID = 0 // Use this ID to represent a non-existing State in your system
-    Idle = 1
-    Move = 2
-    Attack = 3  
-
-
 [AddComponentMenu('Neworld/AIBehaviours')]
 public class AIBehaviours(MonoBehaviour):
-    /// Is this AI active (Read Only)?
-    #public isActive as bool
+    /// Tranform of this guy
     /// This is the state the AI is in once the game is playing.
     public initialState as AIState
-    public initialStateIndex as int = 0
+    // Index for the editor
+    public _initialStateIndex as int = 0
     /// This is the state the AI is currently in (Read Only).
-    public currentState as AIState
+    private _currentState as AIState
+    public currentState as AIState:
+        get:
+            if self._currentState:
+                return self._currentState
+            elif self.initialState:
+                return self.initialState
+        set:
+            self._currentState = value
+
+    // Previous state of this AI
+    public previousState as AIState
+    
     /// An array of all the states that belong to this AI.
-    #public states as (AIState) = array(AIState, 0)
-    #[SerializeField]
     public states as List[of AIState] = List[of AIState]()
-    // Keeps the state of each individual foldout item during the editor session
-    #public _editorListItemStates as Dictionary[of object, bool] = Dictionary[of object, bool]()
+
     /// Holds the total state count
     public stateCount as int:
         get:
             return states.Count
 
-    /// Holds reference to the "States" gameobject
-    #public statesGameObject as GameObject = null
-    #public _editorListItemStates as Dictionary[of object, bool] = Dictionary[of object, bool]()
-
-    #public _editorPopupListStates as Dictionary[of object, bool] = Dictionary[of object, bool]()
-
-    #public _statesPopupList as List[of string] = List[of string]()
-    /*
-        Callables
-    */
-    #public callable StateChangedDelegate(newState as AIState, previousState as AIState)
-    #public onStateChanged as StateChangedDelegate = null
-    #public def OnEnable():
-
-        #if (m_Instances == null)
-
-        #self.states = List[of AIState]()
-
- 
-
-        #hideFlags = HideFlags.HideAndDontSave;
+    /// Keeps the state of each individual foldout item during the editor session
+    public _editorStatesFoldout as Dictionary[of AIState, bool] = Dictionary[of AIState, bool]()
 
     public def Start():
         if not currentState and initialState:
@@ -62,22 +44,31 @@ public class AIBehaviours(MonoBehaviour):
 
     public def Update():     
         // If the state remained the same, do the action
-        #Debug.Log(currentState)
-        if currentState:
-            if currentState.HandleReason(self):
-                currentState.HandleAction(self)
+        if self.currentState.HandleReason(self):
+            self.currentState.HandleAction(self)
 
     public def GetAllStates() as List[of AIState]:
         return states
 
-    public def AddState(state):
-        if states.Count == 0:
-            states.Add(state)
-            currentState = state
-            #currentStateID = s.ID
+    public def AddState(s):
+        
+        if s == null:
             return
- 
-        states.Add(state)
+        #Debug.Log(s.isEnabled)
+        // First state is also the initial state
+        if not self.initialState:
+            self.states.Add(s)
+            self.initialState = s
+            return
+        
+        // Check if its already in the list
+        for state in self.states:
+            #Debug.Log(state)
+            if state.GetType().ToString() == s.GetType().ToString():
+                Debug.LogError("AIBehaviours ERROR: Impossible to add state " + state.stateID + " because state has already been added")
+                return
+
+        self.states.Add(s)
 
     public def ReplaceAllStates(newStates as List[of AIState]):
         #Debug.Log(newStates[0])
@@ -103,12 +94,6 @@ public class AIBehaviours(MonoBehaviour):
         
         if currentState is not null:
             currentState.InitState(self)
-    
-    public def OnGUI():
-        Debug.Log(states.Count)
-        for state in self.states:
-
-            state.OnInspectorGUI()
 
     #def OnDrawGizmosSelected():
         #if currentState is not null:
@@ -117,21 +102,17 @@ public class AIBehaviours(MonoBehaviour):
 #BehaviourStates = []
 
 #[System.Serializable]
-[System.Serializable]
+#[System.Serializable]
 public abstract class AIState(ScriptableObject):
 #public abstract class AIState(MonoBehaviour):
     [SerializeField]
+    public stateID as string:
+        get:
+            return self.GetType().ToString()
+
+    [SerializeField]
     public isEnabled as bool = true
 
-    #public name as string
-
-    #public def constructor():
-        #BehaviourStates.Add(self)
-
-    #public def OnEnable():
-        #hideFlags = HideFlags.HideAndDontSave
-
-    #[SerializeField]
     public triggers as (AITrigger) = array(AITrigger, 0)
 
     def GetAllTriggers() as (AITrigger):
@@ -187,8 +168,6 @@ public abstract class AIState(ScriptableObject):
     /*
         Editor methods
     */
-
-
     public def OnInspectorGUI():
         m_State as SerializedObject = SerializedObject(self)
         m_property = m_State.FindProperty("isEnabled")
@@ -197,31 +176,12 @@ public abstract class AIState(ScriptableObject):
         self.DrawStateInspectorGUI(m_State)
         
         m_State.ApplyModifiedProperties()
-        #DrawStateInspectorGUI(m_State)
 
     public abstract def DrawStateInspectorGUI(m_State as SerializedObject):
         pass
 
-    /*
-    public def DrawInspectorEditor(fsm as AIBehaviours):
-        m_Object as SerializedObject = SerializedObject(self)
-        #bool oldEnabled = GUI.enabled
-        #bool drawEnabled = DrawIsEnabled(m_Object)
 
-        GUI.enabled = true
-        #GUILayout.Label('test')
-
-        #AIBehavioursTriggersGUI.Draw(self, fsm)
-        #EditorGUILayout.Separator()
-
-        DrawStateInspectorEditor(m_Object, fsm)
-        EditorGUILayout.Separator()
-
-        m_Object.ApplyModifiedProperties()
-    */
-
-
-#[System.Serializable]
+[System.Serializable]
 public abstract class AITrigger(MonoBehaviour):
     public transitionState as AIState
     public name as string = ""

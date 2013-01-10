@@ -68,6 +68,7 @@ class Unit(SpaceObject):
 
     #private _collisionSphere as SphereCollider // Collision Sphere, used as trigger
 
+
     def Awake():
         // Setup initial values and references
         fsm = gameObject.GetComponent[of AIBehaviours]() // REQUIRED
@@ -88,10 +89,12 @@ class Unit(SpaceObject):
         // Set mass of rigidbody
         rigidbody.mass = mass / 1000
 
-
-        #SetupFSM()
+        
+        
         #Debug.Log("yo")
         #print(collider)
+        # TODO SHOULDNT BE HERE, SHOULD BE IN THE EDITOR
+        #SetupFSM()
 
         // Check our setup
         #if movement.maxVelocity == 0.0:
@@ -102,11 +105,23 @@ class Unit(SpaceObject):
             targetDistance = Vector3.Distance(target.transform.position, transform.position)
 
     def SetupFSM():
+        self.fsm = gameObject.GetComponent[of AIBehaviours]()
+        #newlist as System.Collections.Generic.List[of AIState] = System.Collections.Generic.List[of AIState]()
+        #self.fsm.ReplaceAllStates(newlist)
+
+        /*
         idle as AIIdleState = AIIdleState()
         move as AIMoveState = AIMoveState()
+        attack as AIAttackState = AIAttackState()
+        */
+        idle as AIIdleState = ScriptableObject.CreateInstance(typeof(AIIdleState))
+        move as AIMoveState = ScriptableObject.CreateInstance(typeof(AIMoveState))
+        attack as AIAttackState = ScriptableObject.CreateInstance(typeof(AIAttackState))
+       
 
-        fsm.AddState(idle)
-        fsm.AddState(move)
+        self.fsm.AddState(idle)
+        self.fsm.AddState(move)
+        self.fsm.AddState(attack)
 
     def setTarget(t as GameObject):
         target = t
