@@ -38,6 +38,8 @@ public class AIBehaviours(MonoBehaviour):
     /// Keeps the state of each individual foldout item during the editor session
     public _editorStatesFoldout as Dictionary[of AIState, bool] = Dictionary[of AIState, bool]()
 
+    public statesGameObject as GameObject
+
     public def Start():
         if not currentState and initialState:
             currentState = initialState
@@ -102,8 +104,8 @@ public class AIBehaviours(MonoBehaviour):
 #BehaviourStates = []
 
 #[System.Serializable]
-#[System.Serializable]
-public abstract class AIState(ScriptableObject):
+[System.Serializable]
+public abstract class AIState(MonoBehaviour):
 #public abstract class AIState(MonoBehaviour):
     [SerializeField]
     public stateID as string:

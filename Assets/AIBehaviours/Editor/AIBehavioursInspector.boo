@@ -5,13 +5,18 @@ import System.Collections.Generic
 [CustomEditor(typeof(AIBehaviours))]
 public class AIBehavioursInspector(Editor):
 
+    private SO as SerializedObject
     private script as AIBehaviours
+    private statesGameObjectProp as SerializedProperty
 
     public def Awake():
         script = (target cast AIBehaviours)
+        SO = SerializedObject(target)
+
+        statesGameObjectProp = SO.FindProperty('statesGameObject')
         #script = (AIBehaviours)target
 
-        SetupStates()
+        InitStates()
         #unit = script.gameObject.GetComponent[of Unit]()
         //pass
         # TODO AUCCHHHH
@@ -40,8 +45,8 @@ public class AIBehavioursInspector(Editor):
                 script._initialStateIndex = i
         #Debug.Log(_statesPopupList.Count)
         // Render initial state popup
-        script._initialStateIndex = EditorGUILayout.Popup('Initial State:', script._initialStateIndex, _statesPopupList.ToArray())
-        script.initialState = script.states[script._initialStateIndex]
+        SO._initialStateIndex = EditorGUILayout.Popup('Initial State:', SO._initialStateIndex, _statesPopupList.ToArray())
+        SO.initialState = SO.states[SO._initialStateIndex]
 
         #m_property = serializedObject.FindProperty("states")
         #EditorGUILayout.PropertyField(m_property)
@@ -49,7 +54,7 @@ public class AIBehavioursInspector(Editor):
         // Render current state
         currentStateName = "None"
         if script.currentState:
-            currentStateName = script.currentState.GetType().ToString()
+            currentStateName = So.currentState.GetType().ToString()
         EditorGUILayout.LabelField("Current State:", currentStateName)
 
         // Render all state classes
@@ -70,20 +75,45 @@ public class AIBehavioursInspector(Editor):
         if GUI.changed:
             EditorUtility.SetDirty(target)
 
-    def SetupStates():
-        #self.fsm = gameObject.GetComponent[of AIBehaviours]()
-        #newlist as System.Collections.Generic.List[of AIState] = System.Collections.Generic.List[of AIState]()
-        #self.fsm.ReplaceAllStates(newlist)
+    private def InitStates():
+        if statesGameObjectProp.objectReferenceValue is null:
+            statesGameObject = GameObject('AIStates')
+            statesGameObjectProp.objectReferenceValue = statesGameObject
+            
+            statesGameObject.transform.parent = fsm.transform
+            statesGameObject.transform.localPosition = Vector3.zero
+            statesGameObject.transform.localRotation = Quaternion.identity
+            statesGameObject.transform.localScale = Vector3.one
+            script.ApplyModifiedProperties()
 
-        /*
-        idle as AIIdleState = AIIdleState()
-        move as AIMoveState = AIMoveState()
-        attack as AIAttackState = AIAttackState()
-        */
-        idle as AIIdleState = ScriptableObject.CreateInstance(typeof(AIIdleState))
-        move as AIMoveState = ScriptableObject.CreateInstance(typeof(AIMoveState))
-        attack as AIAttackState = ScriptableObject.CreateInstance(typeof(AIAttackState))
-       
-        script.AddState(idle)
-        script.AddState(move)
-        script.AddState(attack)
+            InitNewStates()
+            Debug.Log("new")
+        else:    
+            statesGameObject as GameObject = statesGameObjectProp.objectReferenceValue
+            Debug.Log("Existing")
+
+        states = script.GetAllStates()
+
+    private def InitNewStates():
+        statesDictionary as Dictionary[of string, AIState] = Dictionary[of string, AIState]()
+        statesList as List[of AIState] = List[of AIState]()
+        
+        // Setup a dictionary of the default states
+        statesDictionary['Idle'] = typeof(AIIdleState)
+        statesDictionary['Move'] = typeof(AIMoveState)
+        statesDictionary['Attack'] = typeof(AIAttackState)
+        
+        for stateName as string in statesDictionary.Keys:
+            stateClassName as string = statesDictionary[stateName].ToString()
+            
+            try:
+                aiState = (statesGameObject.AddComponent(stateClassName) as AIState)
+                aiState.name = stateName
+                
+                statesList.Add(aiState)
+            except :
+                Debug.LogError((((('Type "' + stateClassName) + '" does not exist.  You must have a class named "') + stateClassName) + '" that derives from "AIState".'))
+                inittedSuccessfully = false
+
+        script.ReplaceAllStates(statesList)
+        #states = fsm.GetAllStates()
