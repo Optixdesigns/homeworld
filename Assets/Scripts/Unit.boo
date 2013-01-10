@@ -104,25 +104,6 @@ class Unit(SpaceObject):
         if target:  // Keep distance in the unit object for different systems
             targetDistance = Vector3.Distance(target.transform.position, transform.position)
 
-    def SetupFSM():
-        self.fsm = gameObject.GetComponent[of AIBehaviours]()
-        #newlist as System.Collections.Generic.List[of AIState] = System.Collections.Generic.List[of AIState]()
-        #self.fsm.ReplaceAllStates(newlist)
-
-        /*
-        idle as AIIdleState = AIIdleState()
-        move as AIMoveState = AIMoveState()
-        attack as AIAttackState = AIAttackState()
-        */
-        idle as AIIdleState = ScriptableObject.CreateInstance(typeof(AIIdleState))
-        move as AIMoveState = ScriptableObject.CreateInstance(typeof(AIMoveState))
-        attack as AIAttackState = ScriptableObject.CreateInstance(typeof(AIAttackState))
-       
-
-        self.fsm.AddState(idle)
-        self.fsm.AddState(move)
-        self.fsm.AddState(attack)
-
     def setTarget(t as GameObject):
         target = t
 
