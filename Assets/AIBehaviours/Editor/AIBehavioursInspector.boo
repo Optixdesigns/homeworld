@@ -1,24 +1,15 @@
 import UnityEngine
+import System.Collections.Generic
+
 
 [CustomEditor(typeof(AIBehaviours))]
 public class AIBehavioursInspector(Editor):
 
     // The main foldout state
-    public expandEffects = true
-    #private script
+    private static statesToggle as Dictionary[of AIState, bool] = Dictionary[of AIState, bool]()
 
     public def OnEnable():
         pass
-        #script = (target cast AIBehaviours)
-        #Debug.Log(script.states)
-        #types = System.Reflection.Assembly.GetExecutingAssembly().GetTypes()
-        #types = System.Reflection.Assembly.GetCallingAssembly().GetTypes()
-        #for type in types:
-            #Debug.Log(type)
-        #Debug.Log(types)
-        #possible = for type in types where type.IsSubclassOf(typeof(AIState))
-        #possible = for type in types where type.IsSubclassOf(typeof(AIState))
-        #Debug.Log("y")
 
     public override def OnInspectorGUI():
         script = (target cast AIBehaviours)
@@ -26,29 +17,32 @@ public class AIBehavioursInspector(Editor):
         PGEditorUtils.LookLikeControls()
         EditorGUI.indentLevel = 1
         
+        // Get all states for this FSM
+        _statesPopupList as List[of string] = List[of string]()
+        for i in range(0, script.states.Count):
+            state = script.states[i]
+            _statesPopupList.Add(state.GetType().ToString())
+            if script.initialState is state:
+                script.initialStateIndex = i
+        
+        // Render initial state popup
+        script.initialStateIndex = EditorGUILayout.Popup('Initial State:', script.initialStateIndex, _statesPopupList.ToArray())
+        script.initialState = script.states[script.initialStateIndex]
+        
+        // Render all state classes
+        for state in script.states:
+            if not state in statesToggle:
+                statesToggle[state] = false
 
-        #self.expandEffects = PGEditorUtils.SerializedObjFoldOutList[of AIState]('EffectOnTargets', script.states, self.expandEffects, script._editorListItemStates, true)
-        #script.states = PGEditorUtils.ObjectField[of AIState]("State", script.states)
-        /*
-        i = 0
-        for state in script.states:
-            #Debug.Log(state)
-            #script.states[i] = PGEditorUtils.ObjectField[of AIState]("State", script.states[i])
-            PGEditorUtils.SerializedObjectFields[of AIState](state, true)
-            
-            i += 1
-        */
-        EditorGUI.indentLevel = 2
-        for state in script.states:
-            EditorGUILayout.LabelField("Time since start: ", 
-            EditorApplication.timeSinceStartup.ToString());
-            state.isEnabled = EditorGUILayout.Toggle("Enabled", state.isEnabled)
-            state.OnInspectorGUI()
+            EditorGUI.indentLevel = 0
+            self.statesToggle[state] = EditorGUILayout.Foldout(self.statesToggle[state], state.GetType().ToString())
+
+            if statesToggle[state]:
+                EditorGUI.indentLevel = 2
+                state.OnInspectorGUI()
         
         GUILayout.Space(4)
-        #script.debugLevel = (EditorGUILayout.EnumPopup('Debug Level', (script.debugLevel cast System.Enum)) cast DEBUG_LEVELS)
         
         // Flag Unity to save the changes to to the prefab to disk
         if GUI.changed:
             EditorUtility.SetDirty(target)
-

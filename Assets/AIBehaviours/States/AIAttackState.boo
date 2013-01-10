@@ -8,6 +8,7 @@ class AIAttackState(AIState):
     [SerializeField]
     public target as Transform
 
+
     protected override def Init(fsm as AIBehaviours):
         // Setup attack pattern
         unit = fsm.gameObject.GetComponent(typeof(Unit))
@@ -48,7 +49,7 @@ class AIAttackState(AIState):
     protected override def StateEnded(fsm as AIBehaviours):
         attackPattern.enabled = false
 
-    public override def OnInspectorGUI():
+    public override def DrawStateInspectorGUI(m_State as SerializedObject):
         #script = (target cast AIAttackState)
         #script.target = PGEditorUtils.ObjectField[of Transform]("Emitter (Optional)", script.target)
         pass

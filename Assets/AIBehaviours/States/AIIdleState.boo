@@ -28,7 +28,7 @@ class AIIdleState(AIState):
     public override def DrawGizmosSelected(fsm as AIBehaviours):
         pass
 
-    public override def OnInspectorGUI():
+    public override def DrawStateInspectorGUI(m_State as SerializedObject):
         pass
 
     #protected override def OnDrawGizmosSelected(fsm as AIBehaviours):

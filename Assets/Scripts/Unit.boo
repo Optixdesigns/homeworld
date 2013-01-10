@@ -90,6 +90,7 @@ class Unit(SpaceObject):
 
 
         #SetupFSM()
+        #Debug.Log("yo")
         #print(collider)
 
         // Check our setup

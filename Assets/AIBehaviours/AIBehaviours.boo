@@ -7,17 +7,25 @@ import UnityEditor
 #    import UnityEngine
 
 
+enum AIStateID:
+    NullStateID = 0 // Use this ID to represent a non-existing State in your system
+    Idle = 1
+    Move = 2
+    Attack = 3  
+
+
 [AddComponentMenu('Neworld/AIBehaviours')]
 public class AIBehaviours(MonoBehaviour):
     /// Is this AI active (Read Only)?
     #public isActive as bool
     /// This is the state the AI is in once the game is playing.
     public initialState as AIState
+    public initialStateIndex as int = 0
     /// This is the state the AI is currently in (Read Only).
     public currentState as AIState
     /// An array of all the states that belong to this AI.
     #public states as (AIState) = array(AIState, 0)
-    [SerializeField]
+    #[SerializeField]
     public states as List[of AIState] = List[of AIState]()
     // Keeps the state of each individual foldout item during the editor session
     #public _editorListItemStates as Dictionary[of object, bool] = Dictionary[of object, bool]()
@@ -28,12 +36,25 @@ public class AIBehaviours(MonoBehaviour):
 
     /// Holds reference to the "States" gameobject
     #public statesGameObject as GameObject = null
-    public _editorListItemStates as Dictionary[of object, bool] = Dictionary[of object, bool]()
+    #public _editorListItemStates as Dictionary[of object, bool] = Dictionary[of object, bool]()
+
+    #public _editorPopupListStates as Dictionary[of object, bool] = Dictionary[of object, bool]()
+
+    #public _statesPopupList as List[of string] = List[of string]()
     /*
         Callables
     */
     #public callable StateChangedDelegate(newState as AIState, previousState as AIState)
     #public onStateChanged as StateChangedDelegate = null
+    #public def OnEnable():
+
+        #if (m_Instances == null)
+
+        #self.states = List[of AIState]()
+
+ 
+
+        #hideFlags = HideFlags.HideAndDontSave;
 
     public def Start():
         if not currentState and initialState:
@@ -42,8 +63,9 @@ public class AIBehaviours(MonoBehaviour):
     public def Update():     
         // If the state remained the same, do the action
         #Debug.Log(currentState)
-        if currentState.HandleReason(self):
-            currentState.HandleAction(self)
+        if currentState:
+            if currentState.HandleReason(self):
+                currentState.HandleAction(self)
 
     public def GetAllStates() as List[of AIState]:
         return states
@@ -81,6 +103,12 @@ public class AIBehaviours(MonoBehaviour):
         
         if currentState is not null:
             currentState.InitState(self)
+    
+    public def OnGUI():
+        Debug.Log(states.Count)
+        for state in self.states:
+
+            state.OnInspectorGUI()
 
     #def OnDrawGizmosSelected():
         #if currentState is not null:
@@ -92,14 +120,16 @@ public class AIBehaviours(MonoBehaviour):
 [System.Serializable]
 public abstract class AIState(ScriptableObject):
 #public abstract class AIState(MonoBehaviour):
+    [SerializeField]
     public isEnabled as bool = true
-    public name as string
+
+    #public name as string
 
     #public def constructor():
         #BehaviourStates.Add(self)
 
-    public def OnEnable():
-        hideFlags = HideFlags.HideAndDontSave
+    #public def OnEnable():
+        #hideFlags = HideFlags.HideAndDontSave
 
     #[SerializeField]
     public triggers as (AITrigger) = array(AITrigger, 0)
@@ -157,7 +187,19 @@ public abstract class AIState(ScriptableObject):
     /*
         Editor methods
     */
-    public abstract def OnInspectorGUI():
+
+
+    public def OnInspectorGUI():
+        m_State as SerializedObject = SerializedObject(self)
+        m_property = m_State.FindProperty("isEnabled")
+        EditorGUILayout.PropertyField(m_property)
+        
+        self.DrawStateInspectorGUI(m_State)
+        
+        m_State.ApplyModifiedProperties()
+        #DrawStateInspectorGUI(m_State)
+
+    public abstract def DrawStateInspectorGUI(m_State as SerializedObject):
         pass
 
     /*
