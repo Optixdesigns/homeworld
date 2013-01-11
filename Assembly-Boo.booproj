@@ -83,7 +83,6 @@
      <Compile Include="Assets\Scripts\Targetable.boo" />
      <Compile Include="Assets\Scripts\Thruster.boo" />
      <Compile Include="Assets\Scripts\Unit.boo" />
-     <Compile Include="Assets\Scripts\UnitAI.boo" />
      <Compile Include="Assets\Scripts\UnitProperties.boo" />
      <Compile Include="Assets\Scripts\Weapons\Turret.boo" />
      <Compile Include="Assets\Scripts\Weapons\Weapon.boo" />
@@ -118,6 +117,7 @@
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ContrastComposite.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\FXAAPreset3.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\FisheyeShader.shader" />
+     <None Include="Assets\Packages\Spacebox-4096-Nebula-Collision\readme.txt" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\Contrast Stretch\Apply.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\frag_ao.cginc" />
      <None Include="Assets\Packages\NGUI\Resources\Shaders\Unlit - Transparent Colored (AlphaClip).shader" />

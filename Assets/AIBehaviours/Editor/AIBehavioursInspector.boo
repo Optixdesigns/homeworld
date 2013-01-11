@@ -1,7 +1,7 @@
 import UnityEngine
 import System.Collections.Generic
 
-
+/*
 [CustomEditor(typeof(AIBehaviours))]
 public class AIBehavioursInspector(Editor):
 
@@ -117,3 +117,4 @@ public class AIBehavioursInspector(Editor):
 
         script.ReplaceAllStates(statesList)
         #states = fsm.GetAllStates()
+*/
