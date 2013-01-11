@@ -9,6 +9,9 @@ class Selectable(MonoBehaviour):
 
     private selectableBox as GameObject
 
+    def Update():
+        pass
+
     def Awake():
         // Setup collision sphere
         selectableBox = GameObject.CreatePrimitive(PrimitiveType.Sphere)

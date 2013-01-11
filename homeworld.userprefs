@@ -1,12 +1,7 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Packages/AIBehavior/Plugins/AIBehaviorsMadeEasy/AIBehaviors.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/AIBehaviours/States/AIAttackState.boo">
     <Files>
-      <File FileName="../PathologicalGames/Editor/PathologicalGames/TargetPro/TargetTrackerInspector.cs" Line="56" Column="31" />
-      <File FileName="../PathologicalGames/TargetPro/Perimeter.cs" Line="66" Column="38" />
-      <File FileName="../PathologicalGames/TargetPro/TargetTracker.cs" Line="1" Column="1" />
-      <File FileName="../PathologicalGames/TargetPro/TargetPro.cs" Line="320" Column="36" />
-      <File FileName="../PathologicalGames/TargetPro/Projectile.cs" Line="1" Column="1" />
       <File FileName="Assets/Plugins/UnitySteer/Behaviors/Radar.cs" Line="1" Column="1" />
       <File FileName="Assets/Plugins/UnitySteer/Behaviors/DetectableObjectCreator.cs" Line="1" Column="1" />
       <File FileName="Assets/Plugins/UnitySteer/Behaviors/Vehicle.cs" Line="1" Column="1" />
